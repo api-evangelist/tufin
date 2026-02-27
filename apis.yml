@@ -1,0 +1,92 @@
+name: Tufin
+description: Tufin provides security policy orchestration solutions for managing network security policies across hybrid cloud environments, including firewalls, SDN, and cloud security controls.
+image: https://www.tufin.com/themes/custom/tufin/logo.svg
+url: https://www.tufin.com
+created: '2025'
+modified: '2025'
+specificationVersion: '0.18'
+tags:
+- Network Security
+- Security Policy Management
+- Firewall Management
+- Cloud Security
+- Compliance
+- Risk Management
+apis:
+- name: Tufin SecureTrack API
+  description: API for querying network topology, security policies, and performing policy analysis across multi-vendor firewall infrastructure
+  image: https://www.tufin.com/themes/custom/tufin/logo.svg
+  humanURL: https://www.tufin.com/products/securetrack
+  baseURL: https://securetrack.example.com/securetrack/api
+  tags:
+  - Policy Analysis
+  - Network Topology
+  - Firewall Rules
+  - Compliance
+  properties:
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/securetrack/Content/Suite/API/index.htm
+  - type: OpenAPI
+    url: https://securetrack.example.com/securetrack/api/swagger.json
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/securetrack/Content/Suite/API/Authentication.htm
+- name: Tufin SecureChange API
+  description: API for automating security policy change workflows, approvals, and implementation across network infrastructure
+  image: https://www.tufin.com/themes/custom/tufin/logo.svg
+  humanURL: https://www.tufin.com/products/securechange
+  baseURL: https://securechange.example.com/securechangeworkflow/api
+  tags:
+  - Change Management
+  - Workflow Automation
+  - Policy Changes
+  - Approvals
+  properties:
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/securechange/Content/Suite/API/index.htm
+  - type: OpenAPI
+    url: https://securechange.example.com/securechangeworkflow/api/swagger.json
+- name: Tufin SecureApp API
+  description: API for application-centric security policy management and micro-segmentation
+  image: https://www.tufin.com/themes/custom/tufin/logo.svg
+  humanURL: https://www.tufin.com/products/secureapp
+  baseURL: https://secureapp.example.com/api
+  tags:
+  - Application Security
+  - Micro-segmentation
+  - Zero Trust
+  properties:
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/secureapp/
+- name: Tufin Orchestration Suite REST API
+  description: Unified REST API for the Tufin Orchestration Suite providing comprehensive security policy lifecycle management
+  image: https://www.tufin.com/themes/custom/tufin/logo.svg
+  humanURL: https://www.tufin.com/products/tufin-orchestration-suite
+  baseURL: https://tufin.example.com/api/v1
+  tags:
+  - Orchestration
+  - Policy Management
+  - Automation
+  properties:
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc
+common:
+- type: Portal
+  url: https://forum.tufin.com/
+- type: Support
+  url: https://www.tufin.com/support
+- type: Documentation
+  url: https://forum.tufin.com/support/kc
+- type: Blog
+  url: https://www.tufin.com/blog
+- type: Login
+  url: https://portal.tufin.io/
+- type: Contact
+  url: https://www.tufin.com/company/contact-us
+- type: Privacy Policy
+  url: https://www.tufin.com/privacy-policy
+- type: Terms of Service
+  url: https://www.tufin.com/terms-of-use
+maintainers:
+- FN: Tufin
+  email: support@tufin.com
+  url: https://www.tufin.com
