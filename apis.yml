@@ -3,7 +3,7 @@ description: Tufin provides security policy orchestration solutions for managing
 image: https://www.tufin.com/themes/custom/tufin/logo.svg
 url: https://www.tufin.com
 created: '2025'
-modified: '2025'
+modified: '2026-03-04'
 specificationVersion: '0.18'
 tags:
 - Network Security
@@ -30,6 +30,10 @@ apis:
     url: https://securetrack.example.com/securetrack/api/swagger.json
   - type: Authentication
     url: https://forum.tufin.com/support/kc/securetrack/Content/Suite/API/Authentication.htm
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4420.htm
+  - type: Getting Started
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
 - name: Tufin SecureChange API
   description: API for automating security policy change workflows, approvals, and implementation across network infrastructure
   image: https://www.tufin.com/themes/custom/tufin/logo.svg
@@ -45,6 +49,10 @@ apis:
     url: https://forum.tufin.com/support/kc/securechange/Content/Suite/API/index.htm
   - type: OpenAPI
     url: https://securechange.example.com/securechangeworkflow/api/swagger.json
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
 - name: Tufin SecureApp API
   description: API for application-centric security policy management and micro-segmentation
   image: https://www.tufin.com/themes/custom/tufin/logo.svg
@@ -57,6 +65,8 @@ apis:
   properties:
   - type: Documentation
     url: https://forum.tufin.com/support/kc/secureapp/
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/6481.htm
 - name: Tufin Orchestration Suite REST API
   description: Unified REST API for the Tufin Orchestration Suite providing comprehensive security policy lifecycle management
   image: https://www.tufin.com/themes/custom/tufin/logo.svg
@@ -69,6 +79,50 @@ apis:
   properties:
   - type: Documentation
     url: https://forum.tufin.com/support/kc
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
+  - type: Getting Started
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+- name: Tufin SecureTrack GraphQL API
+  description: >-
+    GraphQL API for the Tufin Orchestration Suite providing flexible querying
+    capabilities for security policy data, network topology, and compliance
+    information. Uses OAuth2 authentication and supports complex nested queries
+    across SecureTrack resources.
+  image: https://www.tufin.com/themes/custom/tufin/logo.svg
+  humanURL: https://forum.tufin.com/support/kc/latest/Content/ST2/API/API_Introduction.htm
+  baseURL: https://{tos_ip}/v2/api/sync/graphql
+  tags:
+  - GraphQL
+  - Policy Analysis
+  - Network Topology
+  - Security Data
+  properties:
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/ST2/API/API_Introduction.htm
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/ST2/API/OAuth2.htm
+- name: Tufin SecureCloud API
+  description: >-
+    REST API for Tufin SecureCloud, the cloud-native security policy management
+    platform. Provides endpoints for managing cloud accounts, applications,
+    assets, Kubernetes clusters, and security policies across AWS, Azure, and
+    GCP environments.
+  image: https://www.tufin.com/themes/custom/tufin/logo.svg
+  humanURL: https://www.tufin.com/tufin-orchestration-suite/securecloud
+  baseURL: https://{account}.securecloud.tufin.io/api/v1
+  tags:
+  - Cloud Security
+  - Kubernetes
+  - Multi-Cloud
+  - Policy Management
+  properties:
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/securecloud/
+  - type: Reference
+    url: https://securecloud.tufin.io/api-documentation/index.html
 common:
 - type: Portal
   url: https://forum.tufin.com/
@@ -86,7 +140,22 @@ common:
   url: https://www.tufin.com/privacy-policy
 - type: Terms of Service
   url: https://www.tufin.com/terms-of-use
-maintainers:
-- FN: Tufin
-  email: support@tufin.com
+- type: Website
   url: https://www.tufin.com
+- type: Getting Started
+  url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+- type: Community
+  url: https://community.tufin.com/
+- type: GitHub Organization
+  url: https://github.com/Tufin
+- type: SDKs
+  url: https://gitlab.com/tufinps/pytos2-ce
+- type: PostmanCollection
+  url: https://github.com/Tufin/postman
+- type: Sign Up
+  url: https://www.tufin.com/demo
+- type: Videos
+  url: https://www.tufin.com/resources/type/videos
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
