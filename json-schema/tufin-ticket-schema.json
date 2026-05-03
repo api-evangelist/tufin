@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.tufin.com/schemas/ticket.json",
+  "title": "Tufin SecureChange Ticket",
+  "description": "Schema for a security policy change ticket in Tufin SecureChange.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier of the ticket"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Subject line summarizing the change request"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the requested security policy change"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the ticket",
+      "enum": ["Open", "Resolved", "Rejected", "Cancelled", "In Progress"]
+    },
+    "priority": {
+      "type": "string",
+      "description": "Priority level of the change request",
+      "enum": ["Low", "Normal", "High", "Critical"],
+      "default": "Normal"
+    },
+    "requester": {
+      "type": "string",
+      "description": "Username of the person requesting the change"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the ticket was created"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of the last modification"
+    },
+    "workflow": {
+      "type": "object",
+      "description": "The workflow definition this ticket follows",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "description": "Workflow tasks associated with this ticket",
+      "items": {
+        "$ref": "#/$defs/Task"
+      }
+    }
+  },
+  "$defs": {
+    "Task": {
+      "type": "object",
+      "description": "A workflow task within a change ticket",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["New", "In Progress", "Completed", "Rejected", "Not Started"]
+        },
+        "assignee": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "id": 12345,
+      "subject": "Allow HTTPS from DMZ to Database",
+      "description": "Request to allow TCP/443 traffic from 10.1.1.0/24 to 192.168.50.10",
+      "status": "Open",
+      "priority": "Normal",
+      "requester": "admin",
+      "created": "2026-05-03T10:30:00Z",
+      "workflow": {
+        "id": 5,
+        "name": "Firewall Rule Change"
+      }
+    }
+  ]
+}

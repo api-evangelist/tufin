@@ -1,0 +1,45 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://tufin.example.com/securetrack/api/devices",
+    "headers": {
+      "Authorization": "Basic dXNlcm5hbWU6cGFzc3dvcmQ=",
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "devices": {
+        "count": 3,
+        "device": [
+          {
+            "id": 1,
+            "name": "fw-dmz-01",
+            "ip": "192.168.1.1",
+            "vendor": "Palo Alto Networks",
+            "model": "PA-5220",
+            "version": "10.2.3",
+            "domain": "default",
+            "topology": true,
+            "managedBy": "Panorama"
+          },
+          {
+            "id": 2,
+            "name": "fw-core-01",
+            "ip": "10.0.0.1",
+            "vendor": "Check Point",
+            "model": "R81.20",
+            "version": "R81.20",
+            "domain": "default",
+            "topology": true,
+            "managedBy": "SmartCenter"
+          }
+        ]
+      }
+    }
+  }
+}

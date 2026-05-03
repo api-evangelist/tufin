@@ -1,0 +1,15 @@
+{
+  "title": "Tufin SecureTrack Device Structure",
+  "description": "JSON structure for a network device managed by Tufin SecureTrack",
+  "structure": {
+    "id": "integer",
+    "name": "string",
+    "ip": "string (IPv4)",
+    "vendor": "string (Palo Alto Networks, Check Point, Cisco, Fortinet, Juniper)",
+    "model": "string",
+    "version": "string",
+    "domain": "string",
+    "topology": "boolean",
+    "managedBy": "string (Panorama, SmartCenter, FortiManager, etc.)"
+  }
+}

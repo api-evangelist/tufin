@@ -1,0 +1,406 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Tufin SecureTrack API"
+  description: >-
+    Tufin SecureTrack REST API for network security policy management across
+    multi-vendor firewall infrastructure. Provides device management, rule querying,
+    topology analysis, network object search, risk analysis, and compliance reporting.
+  tags:
+    - Compliance
+    - Firewall Management
+    - Network Security
+    - Network Topology
+    - Policy Analysis
+    - Risk Analysis
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      SECURETRACK_USERNAME: SECURETRACK_USERNAME
+      SECURETRACK_PASSWORD: SECURETRACK_PASSWORD
+
+capability:
+  consumes:
+    - type: http
+      namespace: securetrack
+      baseUri: https://{tos_host}/securetrack/api
+      description: "Tufin SecureTrack REST API for network security policy management"
+      authentication:
+        type: basic
+        username: "{{SECURETRACK_USERNAME}}"
+        password: "{{SECURETRACK_PASSWORD}}"
+      resources:
+        - name: devices
+          path: /devices
+          description: "Network devices managed by SecureTrack"
+          operations:
+            - name: get-devices
+              method: GET
+              description: "Retrieve all network devices managed by SecureTrack"
+              inputParameters:
+                - name: name
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by device name"
+                - name: vendor
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by vendor"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: device
+          path: /devices/{deviceId}
+          description: "Single network device"
+          operations:
+            - name: get-device-by-id
+              method: GET
+              description: "Retrieve a specific network device by ID"
+              inputParameters:
+                - name: deviceId
+                  in: path
+                  type: integer
+                  required: true
+                  description: "Device identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: device-revisions
+          path: /devices/{deviceId}/revisions
+          description: "Policy revisions for a device"
+          operations:
+            - name: get-device-revisions
+              method: GET
+              description: "Retrieve policy revision history for a device"
+              inputParameters:
+                - name: deviceId
+                  in: path
+                  type: integer
+                  required: true
+                  description: "Device identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: device-rules
+          path: /devices/{deviceId}/rules
+          description: "Firewall rules for a device"
+          operations:
+            - name: get-rules-by-device
+              method: GET
+              description: "Retrieve all firewall rules for a specific device"
+              inputParameters:
+                - name: deviceId
+                  in: path
+                  type: integer
+                  required: true
+                  description: "Device identifier"
+                - name: policy
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by policy name"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: topology-path
+          path: /topology/path
+          description: "Network path analysis"
+          operations:
+            - name: get-topology-path
+              method: GET
+              description: "Query network topology to determine if traffic is permitted between endpoints"
+              inputParameters:
+                - name: src
+                  in: query
+                  type: string
+                  required: true
+                  description: "Source IP address or CIDR"
+                - name: dst
+                  in: query
+                  type: string
+                  required: true
+                  description: "Destination IP address or CIDR"
+                - name: service
+                  in: query
+                  type: string
+                  required: false
+                  description: "Service (e.g., tcp/443)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: topology-map
+          path: /topology/map
+          description: "Full network topology map"
+          operations:
+            - name: get-topology-map
+              method: GET
+              description: "Retrieve the full network topology map"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: network-objects
+          path: /network_objects
+          description: "Network objects across managed devices"
+          operations:
+            - name: get-network-objects
+              method: GET
+              description: "Search for network objects across all managed devices"
+              inputParameters:
+                - name: name
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by object name"
+                - name: ip
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by IP address"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: services
+          path: /services
+          description: "Service objects across managed devices"
+          operations:
+            - name: get-services
+              method: GET
+              description: "Search for service objects across all managed devices"
+              inputParameters:
+                - name: name
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by service name"
+                - name: port
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by port number"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: zones
+          path: /zones
+          description: "Security zones"
+          operations:
+            - name: get-zones
+              method: GET
+              description: "Retrieve all security zones"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: risk
+          path: /risk
+          description: "Risk analysis findings"
+          operations:
+            - name: get-risk-analysis
+              method: GET
+              description: "Retrieve risk analysis findings including policy violations"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: securetrack-api
+      resources:
+        - path: /v1/devices
+          name: devices
+          description: "Network devices managed by SecureTrack"
+          operations:
+            - method: GET
+              name: get-devices
+              description: "List all network devices"
+              call: "securetrack.get-devices"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/devices/{deviceId}/rules
+          name: device-rules
+          description: "Firewall rules for a device"
+          operations:
+            - method: GET
+              name: get-rules-by-device
+              description: "Get firewall rules for a device"
+              call: "securetrack.get-rules-by-device"
+              with:
+                deviceId: "rest.deviceId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/topology/path
+          name: topology-path
+          description: "Network topology path analysis"
+          operations:
+            - method: GET
+              name: get-topology-path
+              description: "Check if traffic is allowed between source and destination"
+              call: "securetrack.get-topology-path"
+              with:
+                src: "rest.src"
+                dst: "rest.dst"
+                service: "rest.service"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/risk
+          name: risk
+          description: "Risk analysis findings"
+          operations:
+            - method: GET
+              name: get-risk-analysis
+              description: "Get risk analysis and policy violations"
+              call: "securetrack.get-risk-analysis"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: securetrack-mcp
+      transport: http
+      tools:
+        - name: list-devices
+          description: "List all network devices managed by Tufin SecureTrack"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "securetrack.get-devices"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-device
+          description: "Get details for a specific network device"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "securetrack.get-device-by-id"
+          with:
+            deviceId: "tools.deviceId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-device-rules
+          description: "Get firewall rules for a specific device"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "securetrack.get-rules-by-device"
+          with:
+            deviceId: "tools.deviceId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: check-topology-path
+          description: "Check if network traffic is allowed between source and destination IPs"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "securetrack.get-topology-path"
+          with:
+            src: "tools.src"
+            dst: "tools.dst"
+            service: "tools.service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-topology-map
+          description: "Retrieve the full network topology map"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "securetrack.get-topology-map"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-network-objects
+          description: "Search for network objects (hosts, ranges, groups) across managed devices"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "securetrack.get-network-objects"
+          with:
+            name: "tools.name"
+            ip: "tools.ip"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-services
+          description: "Search for service definitions (protocols and ports) across managed devices"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "securetrack.get-services"
+          with:
+            name: "tools.name"
+            port: "tools.port"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-risk-findings
+          description: "Get risk analysis findings including policy violations and unused rules"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "securetrack.get-risk-analysis"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-device-revisions
+          description: "Get the policy revision history for a network device"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "securetrack.get-device-revisions"
+          with:
+            deviceId: "tools.deviceId"
+          outputParameters:
+            - type: object
+              mapping: "$."

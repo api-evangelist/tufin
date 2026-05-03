@@ -1,0 +1,27 @@
+{
+  "title": "Tufin SecureChange Ticket Structure",
+  "description": "JSON structure for a security change ticket in Tufin SecureChange",
+  "structure": {
+    "id": "integer",
+    "subject": "string",
+    "description": "string",
+    "status": "string (Open, Resolved, Rejected, Cancelled, In Progress)",
+    "priority": "string (Low, Normal, High, Critical)",
+    "requester": "string",
+    "created": "string (date-time)",
+    "modified": "string (date-time)",
+    "workflow": {
+      "id": "integer",
+      "name": "string"
+    },
+    "tasks": [
+      {
+        "id": "integer",
+        "name": "string",
+        "type": "string",
+        "status": "string (New, In Progress, Completed, Rejected, Not Started)",
+        "assignee": "string"
+      }
+    ]
+  }
+}

@@ -1,0 +1,223 @@
+vocabulary:
+  name: Tufin Network Security Policy Management Vocabulary
+  description: >-
+    Domain vocabulary for the Tufin Orchestration Suite (TOS) covering network security
+    policy management, firewall administration, topology analysis, and security change automation.
+  version: "1.0"
+  created: "2026-05-03"
+  modified: "2026-05-03"
+  provider: Tufin
+
+terms:
+  - term: Access Request
+    definition: >-
+      A security change ticket type in SecureChange that requests new network connectivity
+      between source and destination endpoints. SecureChange automatically verifies the
+      request against existing policies and routes it through an approval workflow.
+    category: Change Management
+    tags:
+      - SecureChange
+      - Ticketing
+
+  - term: Application (SecureApp)
+    definition: >-
+      In Tufin SecureApp, an application is a logical grouping of connectivity requirements
+      defined from the application perspective. Applications abstract firewall rules into
+      business-level access requirements, enabling application owners to manage their own
+      security policies.
+    category: Application Security
+    tags:
+      - Micro-Segmentation
+      - SecureApp
+
+  - term: Device
+    definition: >-
+      A network security device managed by Tufin SecureTrack, including physical and virtual
+      firewalls, routers, and switches from vendors including Palo Alto Networks, Check Point,
+      Cisco, Fortinet, and Juniper. Devices are the primary entities through which SecureTrack
+      collects policy and topology data.
+    category: Network Infrastructure
+    tags:
+      - Firewall
+      - Network Management
+
+  - term: Domain
+    definition: >-
+      A SecureTrack management domain that groups devices and policies into isolated
+      administrative units. Domains support multi-tenancy and role-based access control
+      for large enterprise environments.
+    category: Administration
+    tags:
+      - Multi-Tenancy
+      - SecureTrack
+
+  - term: Firewall Rule
+    definition: >-
+      A policy entry on a network security device that defines whether traffic matching
+      specified source, destination, and service criteria is permitted (ACCEPT) or blocked
+      (DROP/REJECT). SecureTrack collects and normalizes rules across multi-vendor devices.
+    category: Network Security
+    tags:
+      - Compliance
+      - Firewall
+      - Policy
+
+  - term: Micro-Segmentation
+    definition: >-
+      The practice of creating security zones to isolate individual workloads and applications
+      within a datacenter or cloud. Tufin SecureApp supports micro-segmentation by translating
+      application connectivity requirements into granular firewall policies.
+    category: Zero Trust
+    tags:
+      - Application Security
+      - Network Security
+      - Zero Trust
+
+  - term: Network Object
+    definition: >-
+      A named entity representing a network address in SecureTrack, which can be a host
+      (single IP), range (IP range), or group (collection of hosts/ranges). Network objects
+      are used in firewall rules to define sources and destinations.
+    category: Network Security
+    tags:
+      - Firewall
+      - SecureTrack
+
+  - term: Network Topology
+    definition: >-
+      The logical map of the network maintained by SecureTrack that represents how devices
+      are connected and how traffic flows between network segments. SecureTrack builds the
+      topology from routing tables, interface configurations, and zone information.
+    category: Network Analysis
+    tags:
+      - Path Analysis
+      - Topology
+
+  - term: Path Analysis
+    definition: >-
+      A SecureTrack capability that traces the network path between a source and destination
+      endpoint, identifies which devices are traversed, and determines whether traffic is
+      permitted or blocked based on firewall rules along the path.
+    category: Network Analysis
+    tags:
+      - Connectivity
+      - Topology
+      - Troubleshooting
+
+  - term: Policy Cleanup
+    definition: >-
+      A SecureTrack compliance feature that identifies unused, shadowed, and overly permissive
+      firewall rules. Policy cleanup recommendations help security teams reduce attack surface
+      and maintain rule base hygiene.
+    category: Compliance
+    tags:
+      - Firewall
+      - Optimization
+      - Risk
+
+  - term: Risk Analysis
+    definition: >-
+      SecureTrack's analysis of firewall rules against regulatory frameworks, security best
+      practices, and customer-defined policies to identify violations, overly permissive rules,
+      unused rules, and other risk factors.
+    category: Compliance
+    tags:
+      - Compliance
+      - Risk
+      - SecureTrack
+
+  - term: SecureApp
+    definition: >-
+      The application-centric component of the Tufin Orchestration Suite (TOS) that provides
+      application owner self-service for managing network connectivity requirements. SecureApp
+      translates application access needs into firewall policy changes automatically.
+    category: Platform Component
+    tags:
+      - Application Security
+      - Automation
+      - Self-Service
+
+  - term: SecureChange
+    definition: >-
+      The network change management component of the Tufin Orchestration Suite (TOS) that
+      automates the full lifecycle of firewall policy changes from access request through
+      approval, design, implementation, and verification.
+    category: Platform Component
+    tags:
+      - Automation
+      - Change Management
+      - Workflow
+
+  - term: SecureCloud
+    definition: >-
+      Tufin's cloud-native security policy management platform for managing security policies
+      across AWS, Azure, and GCP environments and Kubernetes clusters. Provides cloud security
+      posture management (CSPM) and Kubernetes network policy enforcement.
+    category: Platform Component
+    tags:
+      - Cloud Security
+      - CSPM
+      - Kubernetes
+
+  - term: SecureTrack
+    definition: >-
+      The network security monitoring component of the Tufin Orchestration Suite (TOS) that
+      collects and analyzes firewall policies, tracks changes, provides topology visibility,
+      performs risk analysis, and monitors compliance across multi-vendor network infrastructure.
+    category: Platform Component
+    tags:
+      - Compliance
+      - Firewall Management
+      - Monitoring
+
+  - term: Service
+    definition: >-
+      A named protocol/port definition used in firewall rules to specify what type of traffic
+      is being controlled. Services can be individual ports (TCP/443), port ranges, or groups
+      of multiple protocols/ports.
+    category: Network Security
+    tags:
+      - Firewall
+      - Network Objects
+
+  - term: Ticket
+    definition: >-
+      A SecureChange workflow item representing a security policy change request. Tickets
+      follow a defined workflow with steps for request submission, risk analysis, approval,
+      design, implementation, and verification.
+    category: Change Management
+    tags:
+      - SecureChange
+      - Workflow
+
+  - term: Topology Orchestration Suite (TOS)
+    definition: >-
+      The Tufin Orchestration Suite, which combines SecureTrack (monitoring and analysis),
+      SecureChange (change automation), and SecureApp (application connectivity) into a
+      unified network security policy management platform.
+    category: Platform
+    tags:
+      - Network Security
+      - Platform
+      - Policy Orchestration
+
+  - term: Workflow Definition
+    definition: >-
+      A SecureChange template that defines the steps, approvers, and automation rules for
+      a category of security policy changes. Common workflow types include firewall rule
+      changes, access requests, network object modifications, and cleanup tasks.
+    category: Change Management
+    tags:
+      - Automation
+      - SecureChange
+      - Workflow
+
+  - term: Zone
+    definition: >-
+      A named security boundary in the network representing a segment with common trust
+      level or access requirements. SecureTrack uses zones in topology analysis to determine
+      traffic flows between network segments.
+    category: Network Security
+    tags:
+      - Segmentation
+      - Topology

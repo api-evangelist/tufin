@@ -1,0 +1,30 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://tufin.example.com/securetrack/api/topology/path?src=10.1.1.100&dst=192.168.50.10&service=tcp/443",
+    "headers": {
+      "Authorization": "Basic dXNlcm5hbWU6cGFzc3dvcmQ=",
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "traffic_allowed": true,
+      "is_fully_routed": true,
+      "device_info": [
+        {
+          "name": "fw-core-01",
+          "id": 2
+        },
+        {
+          "name": "fw-dmz-01",
+          "id": 1
+        }
+      ]
+    }
+  }
+}

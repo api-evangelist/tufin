@@ -1,91 +1,134 @@
-# Tufin (tufin)
-Tufin provides security policy orchestration solutions for managing network security policies across hybrid cloud environments, including firewalls, SDN, and cloud security controls.
+# Tufin
 
-**URL:** [Visit APIs.json URL](https://www.tufin.com)
+Tufin provides security policy orchestration solutions for managing network security policies
+across hybrid cloud environments, including firewalls, SDN, and cloud security controls.
+The Tufin Orchestration Suite (TOS) combines SecureTrack, SecureChange, SecureApp, and
+SecureCloud into a unified platform with comprehensive REST and GraphQL APIs.
 
-## Tags:
+**Website:** https://www.tufin.com
 
- - Network Security, Security Policy Management, Firewall Management, Cloud Security, Compliance, Risk Management
+**APIs.yml:** https://raw.githubusercontent.com/api-evangelist/tufin/refs/heads/main/apis.yml
 
-## Timestamps
+## Tags
 
-- **Created:** 2025 
-- **Modified:** 2025 
+- Cloud Security
+- Compliance
+- Firewall Management
+- Network Security
+- Network Topology
+- Policy Orchestration
+- Risk Management
+- Security Policy Management
+- Zero Trust
 
 ## APIs
 
-### Tufin SecureTrack API
-API for querying network topology, security policies, and performing policy analysis across multi-vendor firewall infrastructure
+### Tufin SecureTrack REST API (v R25-2)
 
-**Human URL:** [https://www.tufin.com/products/securetrack](https://www.tufin.com/products/securetrack)
+Network security policy monitoring, topology analysis, and compliance.
 
+- **Base URL:** `https://{tos_host}/securetrack/api`
+- **Authentication:** HTTP Basic Auth
+- **Documentation:** https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
+- **Swagger UI:** https://forum.tufin.com/support/kc/rest-api/R24-1/securetrack/apidoc/
+- **OpenAPI Spec:** [openapi/tufin-securetrack-openapi.yml](openapi/tufin-securetrack-openapi.yml)
 
-#### Tags:
+### Tufin SecureChange REST API (v R25-2)
 
- - Policy Analysis, Network Topology, Firewall Rules, Compliance
+Security policy change workflow automation and ITSM integration.
 
-#### Properties
+- **Base URL:** `https://{tos_host}/securechangeworkflow/api/securechange`
+- **Authentication:** HTTP Basic Auth
+- **Documentation:** https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+- **Swagger UI:** https://forum.tufin.com/support/kc/rest-api/R24-1/securechangeworkflow/apidoc/
+- **OpenAPI Spec:** [openapi/tufin-securechange-openapi.yml](openapi/tufin-securechange-openapi.yml)
 
-- [Documentation](https://forum.tufin.com/support/kc/securetrack/Content/Suite/API/index.htm)
-- [OpenAPI](https://securetrack.example.com/securetrack/api/swagger.json)
-- [Authentication](https://forum.tufin.com/support/kc/securetrack/Content/Suite/API/Authentication.htm)
+### Tufin SecureTrack GraphQL API
 
-### Tufin SecureChange API
-API for automating security policy change workflows, approvals, and implementation across network infrastructure
+GraphQL API for flexible querying of security policy data with OAuth2 authentication.
 
-**Human URL:** [https://www.tufin.com/products/securechange](https://www.tufin.com/products/securechange)
+- **Base URL:** `https://{tos_ip}/v2/api/sync/graphql`
+- **Authentication:** OAuth2
 
+### Tufin SecureCloud API
 
-#### Tags:
+Cloud-native security posture management for AWS, Azure, GCP, and Kubernetes.
 
- - Change Management, Workflow Automation, Policy Changes, Approvals
+- **Base URL:** `https://{account}.securecloud.tufin.io/api/v1`
 
-#### Properties
+## Capabilities
 
-- [Documentation](https://forum.tufin.com/support/kc/securechange/Content/Suite/API/index.htm)
-- [OpenAPI](https://securechange.example.com/securechangeworkflow/api/swagger.json)
+### Shared Definitions
 
-### Tufin SecureApp API
-API for application-centric security policy management and micro-segmentation
+| File | Description |
+|---|---|
+| [capabilities/shared/securetrack.yaml](capabilities/shared/securetrack.yaml) | SecureTrack API consumed definition (10 MCP tools) |
+| [capabilities/shared/securechange.yaml](capabilities/shared/securechange.yaml) | SecureChange API consumed definition (6 MCP tools) |
 
-**Human URL:** [https://www.tufin.com/products/secureapp](https://www.tufin.com/products/secureapp)
+### Workflow Capabilities
 
+| File | Description |
+|---|---|
+| [capabilities/network-security-policy-management.yaml](capabilities/network-security-policy-management.yaml) | Unified network policy lifecycle management (13 MCP tools) |
 
-#### Tags:
+## Schemas
 
- - Application Security, Micro-segmentation, Zero Trust
+### JSON Schema
 
-#### Properties
+| File | Description |
+|---|---|
+| [json-schema/tufin-device-schema.json](json-schema/tufin-device-schema.json) | Network device schema |
+| [json-schema/tufin-ticket-schema.json](json-schema/tufin-ticket-schema.json) | SecureChange ticket schema |
 
-- [Documentation](https://forum.tufin.com/support/kc/secureapp/)
+### JSON Structure
 
-### Tufin Orchestration Suite REST API
-Unified REST API for the Tufin Orchestration Suite providing comprehensive security policy lifecycle management
+| File | Description |
+|---|---|
+| [json-structure/tufin-device-structure.json](json-structure/tufin-device-structure.json) | Device field structure |
+| [json-structure/tufin-ticket-structure.json](json-structure/tufin-ticket-structure.json) | Ticket field structure |
 
-**Human URL:** [https://www.tufin.com/products/tufin-orchestration-suite](https://www.tufin.com/products/tufin-orchestration-suite)
+### JSON-LD
 
+| File | Description |
+|---|---|
+| [json-ld/tufin-context.jsonld](json-ld/tufin-context.jsonld) | Linked data context for Tufin resources |
 
-#### Tags:
+## Examples
 
- - Orchestration, Policy Management, Automation
+| File | Description |
+|---|---|
+| [examples/tufin-getDevices-example.json](examples/tufin-getDevices-example.json) | List network devices |
+| [examples/tufin-getTopologyPath-example.json](examples/tufin-getTopologyPath-example.json) | Network path analysis |
+| [examples/tufin-getRulesByDevice-example.json](examples/tufin-getRulesByDevice-example.json) | Get firewall rules |
+| [examples/tufin-createTicket-example.json](examples/tufin-createTicket-example.json) | Submit change ticket |
 
-#### Properties
+## Rules
 
-- [Documentation](https://forum.tufin.com/support/kc)
+| File | Description |
+|---|---|
+| [rules/tufin-securetrack-rules.yml](rules/tufin-securetrack-rules.yml) | Spectral ruleset for Tufin API conventions |
 
-## Common Properties
+## Vocabulary
 
-- [Portal](https://forum.tufin.com/)
-- [Support](https://www.tufin.com/support)
-- [Documentation](https://forum.tufin.com/support/kc)
-- [Blog](https://www.tufin.com/blog)
-- [Login](https://portal.tufin.io/)
-- [Contact](https://www.tufin.com/company/contact-us)
-- [Privacy Policy](https://www.tufin.com/privacy-policy)
-- [Terms of Service](https://www.tufin.com/terms-of-use)
+| File | Description |
+|---|---|
+| [vocabulary/tufin-vocabulary.yml](vocabulary/tufin-vocabulary.yml) | Domain vocabulary for network security policy management |
+
+## Developer Resources
+
+- **GitHub:** https://github.com/Tufin
+- **Python SDK:** https://github.com/Tufin/pytos
+- **Postman Collections:** https://github.com/Tufin/postman
+- **Developer Portal:** https://www.tufin.com/developers
+- **Community:** https://community.tufin.com/
+
+## Timestamps
+
+- **Created:** 2025
+- **Modified:** 2026-05-03
 
 ## Maintainers
 
-**FN:** Tufin
+**FN:** Kin Lane
 
-**Email:** support@tufin.com
+**Email:** kin@apievangelist.com

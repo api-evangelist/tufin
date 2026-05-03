@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.tufin.com/schemas/device.json",
+  "title": "Tufin SecureTrack Device",
+  "description": "Schema for a network device (firewall, router) managed by Tufin SecureTrack.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier of the device in SecureTrack"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the device"
+    },
+    "ip": {
+      "type": "string",
+      "description": "Management IP address",
+      "format": "ipv4"
+    },
+    "vendor": {
+      "type": "string",
+      "description": "Device manufacturer",
+      "examples": ["Palo Alto Networks", "Check Point", "Cisco", "Fortinet", "Juniper"]
+    },
+    "model": {
+      "type": "string",
+      "description": "Device model or software version"
+    },
+    "version": {
+      "type": "string",
+      "description": "Software/firmware version running on the device"
+    },
+    "domain": {
+      "type": "string",
+      "description": "SecureTrack management domain this device belongs to"
+    },
+    "topology": {
+      "type": "boolean",
+      "description": "Whether this device participates in network topology analysis"
+    },
+    "managedBy": {
+      "type": "string",
+      "description": "Management system controlling this device (e.g., Panorama, SmartCenter)"
+    }
+  },
+  "examples": [
+    {
+      "id": 1,
+      "name": "fw-dmz-01",
+      "ip": "192.168.1.1",
+      "vendor": "Palo Alto Networks",
+      "model": "PA-5220",
+      "version": "10.2.3",
+      "domain": "default",
+      "topology": true,
+      "managedBy": "Panorama"
+    }
+  ]
+}

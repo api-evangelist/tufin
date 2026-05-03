@@ -1,0 +1,112 @@
+extends: spectral:oas
+rules:
+  tufin-operation-summary-title-case:
+    description: Operation summaries must use Title Case
+    message: "Summary '{{value}}' should use Title Case"
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 ]*$"
+
+  tufin-operation-id-required:
+    description: All operations must have an operationId
+    message: "Operation must have an operationId"
+    severity: error
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: operationId
+      function: truthy
+
+  tufin-basic-auth-required:
+    description: >-
+      Tufin SecureTrack uses HTTP Basic Authentication for all API endpoints.
+      All operations must declare the basicAuth security requirement.
+    message: "Tufin SecureTrack operations must require basicAuth"
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: security
+      function: truthy
+
+  tufin-200-response-defined:
+    description: All operations should define a 200 success response
+    message: "Operation should define a 200 success response"
+    severity: warn
+    given: "$.paths[*][get,post,put].responses"
+    then:
+      field: "200"
+      function: truthy
+
+  tufin-tag-required:
+    description: All operations must be tagged for documentation organization
+    message: "Operation must have at least one tag"
+    severity: error
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: tags
+      function: truthy
+
+  tufin-description-required:
+    description: All operations should have a description
+    message: "Operation should include a description"
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: description
+      function: truthy
+
+  tufin-integer-id-path-params:
+    description: >-
+      Tufin uses integer-based IDs for deviceId, ruleId, ticketId, and taskId.
+      These path parameters must use integer type.
+    message: "Tufin ID path parameters should use integer type"
+    severity: warn
+    given: "$.paths[*][*].parameters[?(@.in == 'path' && @.name =~ /Id$/)]"
+    then:
+      field: schema.type
+      function: enumeration
+      functionOptions:
+        values:
+          - integer
+
+  tufin-xml-json-response:
+    description: >-
+      Tufin SecureTrack API supports both XML and JSON responses. Operations
+      should document the response content type.
+    message: "Operations should define response content type"
+    severity: info
+    given: "$.paths[*][get,post,put].responses.200"
+    then:
+      field: content
+      function: truthy
+
+  tufin-parameter-description:
+    description: All parameters should have a description
+    message: "Parameter '{{value}}' should have a description"
+    severity: warn
+    given: "$.paths[*][*].parameters[*]"
+    then:
+      field: description
+      function: truthy
+
+  tufin-components-schemas:
+    description: API must define reusable schemas in components/schemas
+    message: "API should define schemas in components/schemas"
+    severity: warn
+    given: "$.components"
+    then:
+      field: schemas
+      function: truthy
+
+  tufin-no-trailing-slashes:
+    description: Paths must not have trailing slashes
+    message: "Path '{{property}}' must not end with a trailing slash"
+    severity: warn
+    given: "$.paths"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        notMatch: "/$"

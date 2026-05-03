@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://tufin.example.com/securechangeworkflow/api/securechange/tickets",
+    "headers": {
+      "Authorization": "Basic dXNlcm5hbWU6cGFzc3dvcmQ=",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "subject": "Allow HTTPS from DMZ to Database",
+      "description": "Request to allow TCP/443 traffic from 10.1.1.0/24 to 192.168.50.10 for application connectivity",
+      "priority": "Normal",
+      "workflow": {
+        "name": "Firewall Rule Change"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 12345,
+      "subject": "Allow HTTPS from DMZ to Database",
+      "description": "Request to allow TCP/443 traffic from 10.1.1.0/24 to 192.168.50.10 for application connectivity",
+      "status": "Open",
+      "priority": "Normal",
+      "requester": "admin",
+      "created": "2026-05-03T10:30:00Z",
+      "workflow": {
+        "id": 5,
+        "name": "Firewall Rule Change"
+      }
+    }
+  }
+}

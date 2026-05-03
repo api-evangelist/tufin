@@ -1,0 +1,115 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "tufin": "https://www.tufin.com/vocabulary#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "netsec": "https://www.tufin.com/network-security#",
+
+    "Device": {
+      "@id": "tufin:Device",
+      "@context": {
+        "id": "tufin:deviceId",
+        "name": "schema:name",
+        "ip": "netsec:ipAddress",
+        "vendor": "schema:manufacturer",
+        "model": "schema:model",
+        "version": "schema:softwareVersion",
+        "domain": "tufin:managementDomain",
+        "topology": "tufin:participatesInTopology",
+        "managedBy": "tufin:managedBySystem"
+      }
+    },
+
+    "Rule": {
+      "@id": "tufin:FirewallRule",
+      "@context": {
+        "id": "tufin:ruleId",
+        "name": "schema:name",
+        "enabled": "tufin:isEnabled",
+        "action": "netsec:firewallAction",
+        "sources": {
+          "@id": "netsec:sourceObjects",
+          "@container": "@set"
+        },
+        "destinations": {
+          "@id": "netsec:destinationObjects",
+          "@container": "@set"
+        },
+        "services": {
+          "@id": "netsec:serviceObjects",
+          "@container": "@set"
+        },
+        "comment": "schema:description",
+        "lastHit": {
+          "@id": "tufin:lastHitTime",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Ticket": {
+      "@id": "tufin:ChangeTicket",
+      "@context": {
+        "id": "tufin:ticketId",
+        "subject": "schema:name",
+        "description": "schema:description",
+        "status": "schema:actionStatus",
+        "priority": "schema:importance",
+        "requester": "schema:agent",
+        "created": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "modified": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "workflow": "tufin:workflowDefinition",
+        "tasks": {
+          "@id": "tufin:workflowTasks",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "Task": {
+      "@id": "tufin:WorkflowTask",
+      "@context": {
+        "id": "tufin:taskId",
+        "name": "schema:name",
+        "type": "tufin:taskType",
+        "status": "schema:actionStatus",
+        "assignee": "schema:assignee",
+        "dueDate": {
+          "@id": "schema:scheduledTime",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "NetworkObject": {
+      "@id": "netsec:NetworkObject",
+      "@context": {
+        "id": "tufin:objectId",
+        "name": "schema:name",
+        "type": "netsec:objectType",
+        "ip": "netsec:ipAddress",
+        "netmask": "netsec:networkMask"
+      }
+    },
+
+    "TopologyPath": {
+      "@id": "netsec:TopologyPath",
+      "@context": {
+        "traffic_allowed": "netsec:trafficAllowed",
+        "is_fully_routed": "netsec:isFullyRouted",
+        "device_info": {
+          "@id": "netsec:traversedDevices",
+          "@container": "@list"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://tufin.example.com/securetrack/api/devices/1/rules",
+    "headers": {
+      "Authorization": "Basic dXNlcm5hbWU6cGFzc3dvcmQ=",
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "rules": {
+        "count": 2,
+        "rule": [
+          {
+            "id": 101,
+            "name": "Allow-HTTPS-DMZ",
+            "enabled": true,
+            "action": "ACCEPT",
+            "sources": [
+              {
+                "id": 10,
+                "name": "DMZ-Subnet",
+                "type": "range",
+                "ip": "10.1.1.0",
+                "netmask": "255.255.255.0"
+              }
+            ],
+            "destinations": [
+              {
+                "id": 20,
+                "name": "DB-Server",
+                "type": "host",
+                "ip": "192.168.50.10"
+              }
+            ],
+            "services": [
+              {
+                "id": 5,
+                "name": "HTTPS",
+                "protocol": "TCP",
+                "port": "443"
+              }
+            ],
+            "comment": "Application connectivity for web tier",
+            "lastHit": "2026-05-02T18:00:00Z"
+          }
+        ]
+      }
+    }
+  }
+}
