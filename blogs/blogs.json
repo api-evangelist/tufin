@@ -3,11 +3,11 @@
   "feeds": [
     {
       "source": "https://www.tufin.com/blog",
-      "feed_url": "https://www.tufin.com/feed",
-      "saved": 10,
-      "title": "Tufin"
+      "feed_url": "https://www.tufin.com/blog/feed/",
+      "title": "Tufin",
+      "saved": 0
     }
   ],
   "post_count": 10,
-  "fetched": "2026-05-03T23:37:41Z"
+  "fetched": "2026-05-09T20:17:51Z"
 }
