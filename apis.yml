@@ -205,6 +205,11 @@ common:
     url: json-schema/tufin-device-schema.json
   - type: JSONSchema
     url: json-schema/tufin-ticket-schema.json
+  - type: Integrations
+    url: https://www.tufin.com/partners
+integrations:
+  - name: MSSP Program
+  - name: Become a Partner
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
