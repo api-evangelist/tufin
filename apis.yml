@@ -169,9 +169,9 @@ common:
     url: https://portal.tufin.io/
   - type: Contact
     url: https://www.tufin.com/company/contact-us
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.tufin.com/privacy-policy
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.tufin.com/terms-of-use
   - type: Website
     url: https://www.tufin.com
@@ -179,7 +179,7 @@ common:
     url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
   - type: Community
     url: https://community.tufin.com/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/Tufin
   - type: SDK
     url: https://gitlab.com/tufinps/pytos2-ce
@@ -187,7 +187,7 @@ common:
     url: https://github.com/Tufin/pytos
   - type: PostmanCollection
     url: https://github.com/Tufin/postman
-  - type: Sign Up
+  - type: SignUp
     url: https://www.tufin.com/demo
   - type: Videos
     url: https://www.tufin.com/resources/type/videos
@@ -199,7 +199,7 @@ common:
     url: openapi/tufin-securechange-openapi.yml
   - type: Vocabulary
     url: vocabulary/tufin-vocabulary.yml
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/tufin-context.jsonld
   - type: JSONSchema
     url: json-schema/tufin-device-schema.json
