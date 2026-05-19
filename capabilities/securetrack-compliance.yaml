@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tufin SecureTrack REST API — Compliance
+  description: 'Tufin SecureTrack REST API — Compliance. 1 operations. Lead operation: Get Risk Analysis. Self-contained Naftiko
+    capability covering one Tufin business surface.'
+  tags:
+  - Tufin
+  - Compliance
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TUFIN_API_KEY: TUFIN_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: securetrack-compliance
+    baseUri: https://{tos_host}/securetrack/api
+    description: Tufin SecureTrack REST API — Compliance business capability. Self-contained, no shared references.
+    resources:
+    - name: risk
+      path: /risk
+      operations:
+      - name: getriskanalysis
+        method: GET
+        description: Get Risk Analysis
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: device_id
+          in: query
+          type: integer
+          description: Filter by device ID
+    authentication:
+      type: basic
+      username: '{{env.TUFIN_USER}}'
+      password: '{{env.TUFIN_PASS}}'
+  exposes:
+  - type: rest
+    namespace: securetrack-compliance-rest
+    port: 8080
+    description: REST adapter for Tufin SecureTrack REST API — Compliance. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/risk
+      name: risk
+      description: REST surface for risk.
+      operations:
+      - method: GET
+        name: getriskanalysis
+        description: Get Risk Analysis
+        call: securetrack-compliance.getriskanalysis
+        with:
+          device_id: rest.device_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: securetrack-compliance-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tufin SecureTrack REST API — Compliance. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-risk-analysis
+      description: Get Risk Analysis
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: securetrack-compliance.getriskanalysis
+      with:
+        device_id: tools.device_id
+      outputParameters:
+      - type: object
+        mapping: $.

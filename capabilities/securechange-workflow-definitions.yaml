@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tufin SecureChange REST API — Workflow Definitions
+  description: 'Tufin SecureChange REST API — Workflow Definitions. 1 operations. Lead operation: Get Workflow Definitions.
+    Self-contained Naftiko capability covering one Tufin business surface.'
+  tags:
+  - Tufin
+  - Workflow Definitions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TUFIN_API_KEY: TUFIN_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: securechange-workflow-definitions
+    baseUri: https://{tos_host}/securechangeworkflow/api/securechange
+    description: Tufin SecureChange REST API — Workflow Definitions business capability. Self-contained, no shared references.
+    resources:
+    - name: workflow_definitions
+      path: /workflow_definitions
+      operations:
+      - name: getworkflowdefinitions
+        method: GET
+        description: Get Workflow Definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.TUFIN_USER}}'
+      password: '{{env.TUFIN_PASS}}'
+  exposes:
+  - type: rest
+    namespace: securechange-workflow-definitions-rest
+    port: 8080
+    description: REST adapter for Tufin SecureChange REST API — Workflow Definitions. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/workflow-definitions
+      name: workflow-definitions
+      description: REST surface for workflow_definitions.
+      operations:
+      - method: GET
+        name: getworkflowdefinitions
+        description: Get Workflow Definitions
+        call: securechange-workflow-definitions.getworkflowdefinitions
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: securechange-workflow-definitions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tufin SecureChange REST API — Workflow Definitions. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-workflow-definitions
+      description: Get Workflow Definitions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: securechange-workflow-definitions.getworkflowdefinitions
+      outputParameters:
+      - type: object
+        mapping: $.

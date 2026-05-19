@@ -1,0 +1,136 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tufin SecureTrack REST API — Rules
+  description: 'Tufin SecureTrack REST API — Rules. 2 operations. Lead operation: Get Rules By Device. Self-contained Naftiko
+    capability covering one Tufin business surface.'
+  tags:
+  - Tufin
+  - Rules
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TUFIN_API_KEY: TUFIN_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: securetrack-rules
+    baseUri: https://{tos_host}/securetrack/api
+    description: Tufin SecureTrack REST API — Rules business capability. Self-contained, no shared references.
+    resources:
+    - name: devices-deviceId-rules
+      path: /devices/{deviceId}/rules
+      operations:
+      - name: getrulesbydevice
+        method: GET
+        description: Get Rules By Device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceId
+          in: path
+          type: integer
+          description: The unique identifier of the device
+          required: true
+        - name: policy
+          in: query
+          type: string
+          description: Filter by policy name
+    - name: devices-deviceId-rules-ruleId
+      path: /devices/{deviceId}/rules/{ruleId}
+      operations:
+      - name: getrulebydeviceandid
+        method: GET
+        description: Get Rule By Device and ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceId
+          in: path
+          type: integer
+          description: The unique identifier of the device
+          required: true
+        - name: ruleId
+          in: path
+          type: integer
+          description: The unique identifier of the rule
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.TUFIN_USER}}'
+      password: '{{env.TUFIN_PASS}}'
+  exposes:
+  - type: rest
+    namespace: securetrack-rules-rest
+    port: 8080
+    description: REST adapter for Tufin SecureTrack REST API — Rules. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/devices/{deviceid}/rules
+      name: devices-deviceid-rules
+      description: REST surface for devices-deviceId-rules.
+      operations:
+      - method: GET
+        name: getrulesbydevice
+        description: Get Rules By Device
+        call: securetrack-rules.getrulesbydevice
+        with:
+          deviceId: rest.deviceId
+          policy: rest.policy
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devices/{deviceid}/rules/{ruleid}
+      name: devices-deviceid-rules-ruleid
+      description: REST surface for devices-deviceId-rules-ruleId.
+      operations:
+      - method: GET
+        name: getrulebydeviceandid
+        description: Get Rule By Device and ID
+        call: securetrack-rules.getrulebydeviceandid
+        with:
+          deviceId: rest.deviceId
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: securetrack-rules-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tufin SecureTrack REST API — Rules. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-rules-device
+      description: Get Rules By Device
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: securetrack-rules.getrulesbydevice
+      with:
+        deviceId: tools.deviceId
+        policy: tools.policy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-rule-device-and-id
+      description: Get Rule By Device and ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: securetrack-rules.getrulebydeviceandid
+      with:
+        deviceId: tools.deviceId
+        ruleId: tools.ruleId
+      outputParameters:
+      - type: object
+        mapping: $.

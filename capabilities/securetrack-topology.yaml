@@ -1,0 +1,175 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tufin SecureTrack REST API — Topology
+  description: 'Tufin SecureTrack REST API — Topology. 3 operations. Lead operation: Get Topology Map. Self-contained Naftiko
+    capability covering one Tufin business surface.'
+  tags:
+  - Tufin
+  - Topology
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TUFIN_API_KEY: TUFIN_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: securetrack-topology
+    baseUri: https://{tos_host}/securetrack/api
+    description: Tufin SecureTrack REST API — Topology business capability. Self-contained, no shared references.
+    resources:
+    - name: topology-map
+      path: /topology/map
+      operations:
+      - name: gettopologymap
+        method: GET
+        description: Get Topology Map
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: topology-path
+      path: /topology/path
+      operations:
+      - name: gettopologypath
+        method: GET
+        description: Get Network Path
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: src
+          in: query
+          type: string
+          description: Source IP address or CIDR range
+          required: true
+        - name: dst
+          in: query
+          type: string
+          description: Destination IP address or CIDR range
+          required: true
+        - name: service
+          in: query
+          type: string
+          description: Service (protocol/port, e.g., tcp/443)
+    - name: topology-path-image
+      path: /topology/path/image
+      operations:
+      - name: gettopologypathimage
+        method: GET
+        description: Get Topology Path Image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: src
+          in: query
+          type: string
+          description: Source IP address or CIDR range
+          required: true
+        - name: dst
+          in: query
+          type: string
+          description: Destination IP address or CIDR range
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.TUFIN_USER}}'
+      password: '{{env.TUFIN_PASS}}'
+  exposes:
+  - type: rest
+    namespace: securetrack-topology-rest
+    port: 8080
+    description: REST adapter for Tufin SecureTrack REST API — Topology. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/topology/map
+      name: topology-map
+      description: REST surface for topology-map.
+      operations:
+      - method: GET
+        name: gettopologymap
+        description: Get Topology Map
+        call: securetrack-topology.gettopologymap
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/topology/path
+      name: topology-path
+      description: REST surface for topology-path.
+      operations:
+      - method: GET
+        name: gettopologypath
+        description: Get Network Path
+        call: securetrack-topology.gettopologypath
+        with:
+          src: rest.src
+          dst: rest.dst
+          service: rest.service
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/topology/path/image
+      name: topology-path-image
+      description: REST surface for topology-path-image.
+      operations:
+      - method: GET
+        name: gettopologypathimage
+        description: Get Topology Path Image
+        call: securetrack-topology.gettopologypathimage
+        with:
+          src: rest.src
+          dst: rest.dst
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: securetrack-topology-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tufin SecureTrack REST API — Topology. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-topology-map
+      description: Get Topology Map
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: securetrack-topology.gettopologymap
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-network-path
+      description: Get Network Path
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: securetrack-topology.gettopologypath
+      with:
+        src: tools.src
+        dst: tools.dst
+        service: tools.service
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-topology-path-image
+      description: Get Topology Path Image
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: securetrack-topology.gettopologypathimage
+      with:
+        src: tools.src
+        dst: tools.dst
+      outputParameters:
+      - type: object
+        mapping: $.

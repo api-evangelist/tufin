@@ -1,0 +1,363 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tufin SecureTrack REST API — Devices
+  description: 'Tufin SecureTrack REST API — Devices. 7 operations. Lead operation: Get All Devices. Self-contained Naftiko
+    capability covering one Tufin business surface.'
+  tags:
+  - Tufin
+  - Devices
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TUFIN_API_KEY: TUFIN_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: securetrack-devices
+    baseUri: https://{tos_host}/securetrack/api
+    description: Tufin SecureTrack REST API — Devices business capability. Self-contained, no shared references.
+    resources:
+    - name: devices
+      path: /devices
+      operations:
+      - name: getdevices
+        method: GET
+        description: Get All Devices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by device name (partial match)
+        - name: vendor
+          in: query
+          type: string
+          description: Filter by vendor (e.g., Cisco, Palo Alto, Check Point)
+        - name: type
+          in: query
+          type: string
+          description: Filter by device type
+        - name: status
+          in: query
+          type: string
+          description: Filter by management status
+    - name: devices-offline
+      path: /devices/offline
+      operations:
+      - name: addofflinedevice
+        method: POST
+        description: Add Offline Device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: devices-deviceId
+      path: /devices/{deviceId}
+      operations:
+      - name: getdevicebyid
+        method: GET
+        description: Get Device By ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceId
+          in: path
+          type: integer
+          description: The unique identifier of the device
+          required: true
+      - name: updatedevice
+        method: PUT
+        description: Update Device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceId
+          in: path
+          type: integer
+          description: The unique identifier of the device
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: devices-deviceId-revisions
+      path: /devices/{deviceId}/revisions
+      operations:
+      - name: getdevicerevisions
+        method: GET
+        description: Get Device Revisions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceId
+          in: path
+          type: integer
+          description: The unique identifier of the device
+          required: true
+    - name: devices-deviceId-rules
+      path: /devices/{deviceId}/rules
+      operations:
+      - name: getrulesbydevice
+        method: GET
+        description: Get Rules By Device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceId
+          in: path
+          type: integer
+          description: The unique identifier of the device
+          required: true
+        - name: policy
+          in: query
+          type: string
+          description: Filter by policy name
+    - name: devices-deviceId-rules-ruleId
+      path: /devices/{deviceId}/rules/{ruleId}
+      operations:
+      - name: getrulebydeviceandid
+        method: GET
+        description: Get Rule By Device and ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceId
+          in: path
+          type: integer
+          description: The unique identifier of the device
+          required: true
+        - name: ruleId
+          in: path
+          type: integer
+          description: The unique identifier of the rule
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.TUFIN_USER}}'
+      password: '{{env.TUFIN_PASS}}'
+  exposes:
+  - type: rest
+    namespace: securetrack-devices-rest
+    port: 8080
+    description: REST adapter for Tufin SecureTrack REST API — Devices. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/devices
+      name: devices
+      description: REST surface for devices.
+      operations:
+      - method: GET
+        name: getdevices
+        description: Get All Devices
+        call: securetrack-devices.getdevices
+        with:
+          name: rest.name
+          vendor: rest.vendor
+          type: rest.type
+          status: rest.status
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devices/offline
+      name: devices-offline
+      description: REST surface for devices-offline.
+      operations:
+      - method: POST
+        name: addofflinedevice
+        description: Add Offline Device
+        call: securetrack-devices.addofflinedevice
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devices/{deviceid}
+      name: devices-deviceid
+      description: REST surface for devices-deviceId.
+      operations:
+      - method: GET
+        name: getdevicebyid
+        description: Get Device By ID
+        call: securetrack-devices.getdevicebyid
+        with:
+          deviceId: rest.deviceId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatedevice
+        description: Update Device
+        call: securetrack-devices.updatedevice
+        with:
+          deviceId: rest.deviceId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devices/{deviceid}/revisions
+      name: devices-deviceid-revisions
+      description: REST surface for devices-deviceId-revisions.
+      operations:
+      - method: GET
+        name: getdevicerevisions
+        description: Get Device Revisions
+        call: securetrack-devices.getdevicerevisions
+        with:
+          deviceId: rest.deviceId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devices/{deviceid}/rules
+      name: devices-deviceid-rules
+      description: REST surface for devices-deviceId-rules.
+      operations:
+      - method: GET
+        name: getrulesbydevice
+        description: Get Rules By Device
+        call: securetrack-devices.getrulesbydevice
+        with:
+          deviceId: rest.deviceId
+          policy: rest.policy
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/devices/{deviceid}/rules/{ruleid}
+      name: devices-deviceid-rules-ruleid
+      description: REST surface for devices-deviceId-rules-ruleId.
+      operations:
+      - method: GET
+        name: getrulebydeviceandid
+        description: Get Rule By Device and ID
+        call: securetrack-devices.getrulebydeviceandid
+        with:
+          deviceId: rest.deviceId
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: securetrack-devices-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tufin SecureTrack REST API — Devices. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-all-devices
+      description: Get All Devices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: securetrack-devices.getdevices
+      with:
+        name: tools.name
+        vendor: tools.vendor
+        type: tools.type
+        status: tools.status
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-offline-device
+      description: Add Offline Device
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: securetrack-devices.addofflinedevice
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-device-id
+      description: Get Device By ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: securetrack-devices.getdevicebyid
+      with:
+        deviceId: tools.deviceId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-device
+      description: Update Device
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: securetrack-devices.updatedevice
+      with:
+        deviceId: tools.deviceId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-device-revisions
+      description: Get Device Revisions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: securetrack-devices.getdevicerevisions
+      with:
+        deviceId: tools.deviceId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-rules-device
+      description: Get Rules By Device
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: securetrack-devices.getrulesbydevice
+      with:
+        deviceId: tools.deviceId
+        policy: tools.policy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-rule-device-and-id
+      description: Get Rule By Device and ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: securetrack-devices.getrulebydeviceandid
+      with:
+        deviceId: tools.deviceId
+        ruleId: tools.ruleId
+      outputParameters:
+      - type: object
+        mapping: $.
