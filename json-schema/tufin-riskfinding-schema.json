@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RiskFinding",
+  "title": "RiskFinding",
+  "type": "object",
+  "description": "A risk analysis finding",
+  "properties": {
+    "rule_id": {
+      "type": "integer",
+      "description": "Rule identifier with the finding"
+    },
+    "device_id": {
+      "type": "integer",
+      "description": "Device with the finding"
+    },
+    "risk_type": {
+      "type": "string",
+      "description": "Type of risk (violation, unused_rule, shadowed_rule)"
+    },
+    "severity": {
+      "type": "string",
+      "description": "Risk severity level"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the risk finding"
+    }
+  }
+}

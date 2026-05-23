@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Revision",
+  "title": "Revision",
+  "type": "object",
+  "description": "A policy revision for a device",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Revision identifier"
+    },
+    "device_id": {
+      "type": "integer",
+      "description": "Device this revision belongs to"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this revision was recorded"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of changes in this revision"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Zone",
+  "title": "Zone",
+  "type": "object",
+  "description": "A security zone",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Zone identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Zone name"
+    },
+    "comment": {
+      "type": "string",
+      "description": "Zone description"
+    },
+    "subnets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "IP subnets belonging to this zone"
+    }
+  }
+}

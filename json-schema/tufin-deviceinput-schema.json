@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeviceInput",
+  "title": "DeviceInput",
+  "type": "object",
+  "description": "Input for adding or updating a device",
+  "required": [
+    "vendor",
+    "model",
+    "name"
+  ],
+  "properties": {
+    "vendor": {
+      "type": "string",
+      "description": "Device vendor"
+    },
+    "model": {
+      "type": "string",
+      "description": "Device model"
+    },
+    "name": {
+      "type": "string",
+      "description": "Device display name"
+    },
+    "ip": {
+      "type": "string",
+      "description": "Management IP address"
+    }
+  }
+}

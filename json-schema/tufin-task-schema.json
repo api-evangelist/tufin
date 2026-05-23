@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Task",
+  "title": "Task",
+  "type": "object",
+  "description": "A workflow task within a SecureChange ticket",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier of the task"
+    },
+    "name": {
+      "type": "string",
+      "description": "Task name"
+    },
+    "type": {
+      "type": "string",
+      "description": "Task type (e.g., approval, implementation, verification)"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current task status",
+      "enum": [
+        "New",
+        "In Progress",
+        "Completed",
+        "Rejected",
+        "Not Started"
+      ]
+    },
+    "assignee": {
+      "type": "string",
+      "description": "Username assigned to this task"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Task due date"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Dynamic task fields based on workflow configuration"
+    }
+  }
+}

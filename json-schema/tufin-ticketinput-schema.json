@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TicketInput",
+  "title": "TicketInput",
+  "type": "object",
+  "description": "Input for creating or updating a ticket",
+  "required": [
+    "subject",
+    "workflow"
+  ],
+  "properties": {
+    "subject": {
+      "type": "string",
+      "description": "Subject line of the ticket"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the requested change"
+    },
+    "priority": {
+      "type": "string",
+      "description": "Priority level",
+      "enum": [
+        "Low",
+        "Normal",
+        "High",
+        "Critical"
+      ],
+      "default": "Normal"
+    },
+    "workflow": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the workflow definition to use"
+        }
+      }
+    },
+    "requester": {
+      "type": "string",
+      "description": "Username of the requester (defaults to authenticated user)"
+    },
+    "steps": {
+      "type": "object",
+      "description": "Initial step data for the ticket"
+    }
+  }
+}

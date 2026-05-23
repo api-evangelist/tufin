@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TaskUpdate",
+  "title": "TaskUpdate",
+  "type": "object",
+  "description": "Input for updating a task",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "New task status"
+    },
+    "comment": {
+      "type": "string",
+      "description": "Comment to add to the task"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Updated field values"
+    }
+  }
+}

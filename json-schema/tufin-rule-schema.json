@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Rule",
+  "title": "Rule",
+  "type": "object",
+  "description": "A firewall rule on a network device",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Rule identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Rule name"
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the rule is enabled"
+    },
+    "action": {
+      "type": "string",
+      "description": "Rule action (ACCEPT, DROP, REJECT)",
+      "enum": [
+        "ACCEPT",
+        "DROP",
+        "REJECT"
+      ]
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/NetworkObject"
+      },
+      "description": "Source network objects"
+    },
+    "destinations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/NetworkObject"
+      },
+      "description": "Destination network objects"
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Service"
+      },
+      "description": "Services this rule applies to"
+    },
+    "comment": {
+      "type": "string",
+      "description": "Rule comment or documentation"
+    },
+    "lastHit": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time this rule was matched"
+    }
+  }
+}

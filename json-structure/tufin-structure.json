@@ -1,0 +1,205 @@
+{
+  "provider": "Tufin",
+  "providerId": "tufin",
+  "kind": "json-structure",
+  "description": "Structural overview of the Tufin API surface; extracted from openapi/.",
+  "schemaCount": 10,
+  "operationCount": 14,
+  "schemas": [
+    {
+      "name": "Device",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "DeviceInput",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "vendor",
+        "model",
+        "name"
+      ]
+    },
+    {
+      "name": "Revision",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Rule",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "TopologyPath",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "TopologyMap",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "NetworkObject",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Service",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Zone",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "RiskFinding",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/devices",
+      "operationId": "getDevices",
+      "summary": "Get All Devices",
+      "tags": [
+        "Devices"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/devices/{deviceId}",
+      "operationId": "getDeviceById",
+      "summary": "Get Device By ID",
+      "tags": [
+        "Devices"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/devices/{deviceId}",
+      "operationId": "updateDevice",
+      "summary": "Update Device",
+      "tags": [
+        "Devices"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/devices/{deviceId}/revisions",
+      "operationId": "getDeviceRevisions",
+      "summary": "Get Device Revisions",
+      "tags": [
+        "Devices",
+        "Revisions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/devices/{deviceId}/rules",
+      "operationId": "getRulesByDevice",
+      "summary": "Get Rules By Device",
+      "tags": [
+        "Devices",
+        "Rules"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/devices/{deviceId}/rules/{ruleId}",
+      "operationId": "getRuleByDeviceAndId",
+      "summary": "Get Rule By Device and ID",
+      "tags": [
+        "Devices",
+        "Rules"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/devices/offline",
+      "operationId": "addOfflineDevice",
+      "summary": "Add Offline Device",
+      "tags": [
+        "Devices"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/topology/path",
+      "operationId": "getTopologyPath",
+      "summary": "Get Network Path",
+      "tags": [
+        "Topology"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/topology/path/image",
+      "operationId": "getTopologyPathImage",
+      "summary": "Get Topology Path Image",
+      "tags": [
+        "Topology"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/topology/map",
+      "operationId": "getTopologyMap",
+      "summary": "Get Topology Map",
+      "tags": [
+        "Topology"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/network_objects",
+      "operationId": "getNetworkObjects",
+      "summary": "Get Network Objects",
+      "tags": [
+        "Objects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/services",
+      "operationId": "getServices",
+      "summary": "Get Services",
+      "tags": [
+        "Objects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/zones",
+      "operationId": "getZones",
+      "summary": "Get Security Zones",
+      "tags": [
+        "Zones"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/risk",
+      "operationId": "getRiskAnalysis",
+      "summary": "Get Risk Analysis",
+      "tags": [
+        "Compliance"
+      ]
+    }
+  ]
+}

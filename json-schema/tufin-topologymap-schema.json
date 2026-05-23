@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TopologyMap",
+  "title": "TopologyMap",
+  "type": "object",
+  "description": "Network topology map data",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Topology nodes (devices, subnets)"
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Topology connections between nodes"
+    }
+  }
+}

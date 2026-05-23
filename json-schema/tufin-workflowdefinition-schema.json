@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WorkflowDefinition",
+  "title": "WorkflowDefinition",
+  "type": "object",
+  "description": "A workflow template definition in SecureChange",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Workflow definition identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Workflow definition name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of when to use this workflow"
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether this workflow is available for new tickets"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Workflow step definitions"
+    }
+  }
+}

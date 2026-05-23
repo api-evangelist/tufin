@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetworkObject",
+  "title": "NetworkObject",
+  "type": "object",
+  "description": "A network object (host, range, or group)",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Object identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Object name"
+    },
+    "type": {
+      "type": "string",
+      "description": "Object type (host, range, group)"
+    },
+    "ip": {
+      "type": "string",
+      "description": "IP address or range"
+    },
+    "netmask": {
+      "type": "string",
+      "description": "Network mask"
+    }
+  }
+}
