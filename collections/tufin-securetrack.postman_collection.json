@@ -1,0 +1,2520 @@
+{
+  "item": [
+    {
+      "id": "76bfa71c-31c0-4733-9bdb-cf9fc2dfa9d4",
+      "name": "Devices",
+      "description": {
+        "content": "Manage network devices and firewalls",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7e9ea47b-843d-4fe2-b8c5-61fabaf7a20f",
+          "name": "Get All Devices",
+          "request": {
+            "name": "Get All Devices",
+            "description": {
+              "content": "Retrieve all network devices (firewalls, routers) managed by SecureTrack, optionally filtered by name, vendor, or management status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by device name (partial match)"
+                },
+                {
+                  "disabled": false,
+                  "key": "vendor",
+                  "value": "<string>",
+                  "description": "Filter by vendor (e.g., Cisco, Palo Alto, Check Point)"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by device type"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by management status"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "97cd914b-c2cd-45e7-8656-9de644c56ebd",
+              "name": "List of devices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"devices\": {\n    \"count\": 3125,\n    \"device\": [\n      {\n        \"id\": 6548,\n        \"name\": \"string\",\n        \"ip\": \"string\",\n        \"vendor\": \"string\",\n        \"model\": \"string\",\n        \"version\": \"string\",\n        \"domain\": \"string\",\n        \"topology\": false,\n        \"managedBy\": \"string\"\n      },\n      {\n        \"id\": 25,\n        \"name\": \"string\",\n        \"ip\": \"string\",\n        \"vendor\": \"string\",\n        \"model\": \"string\",\n        \"version\": \"string\",\n        \"domain\": \"string\",\n        \"topology\": true,\n        \"managedBy\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5895464d-077a-4a0a-b453-7fc31126eb43",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "743e6156-f697-4a98-8959-69359340f4f0",
+          "name": "Get Device By ID",
+          "request": {
+            "name": "Get Device By ID",
+            "description": {
+              "content": "Retrieve a specific network device by its identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices",
+                ":deviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "deviceId",
+                  "description": "(Required) The unique identifier of the device"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e1b7f933-a93c-4600-9e91-5980435f8739",
+              "name": "Device details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceId",
+                      "description": "(Required) The unique identifier of the device"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8896,\n  \"name\": \"string\",\n  \"ip\": \"string\",\n  \"vendor\": \"string\",\n  \"model\": \"string\",\n  \"version\": \"string\",\n  \"domain\": \"string\",\n  \"topology\": false,\n  \"managedBy\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c539891-3772-4c4a-a2a7-6e1c1883b1cc",
+              "name": "Device not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceId",
+                      "description": "(Required) The unique identifier of the device"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f727ec27-455e-47a7-8148-e8e1843b11e2",
+          "name": "Update Device",
+          "request": {
+            "name": "Update Device",
+            "description": {
+              "content": "Update an offline device's configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices",
+                ":deviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "deviceId",
+                  "description": "(Required) The unique identifier of the device"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vendor\": \"<string>\",\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"ip\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e21ac4a-a72f-4d47-97d3-498d42a6ec2f",
+              "name": "Device updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceId",
+                      "description": "(Required) The unique identifier of the device"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vendor\": \"<string>\",\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"ip\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "430d80ff-b174-4a89-9f97-179fae4353b1",
+          "name": "Get Device Revisions",
+          "request": {
+            "name": "Get Device Revisions",
+            "description": {
+              "content": "Retrieve the list of policy revisions for a device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices",
+                ":deviceId",
+                "revisions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "deviceId",
+                  "description": "(Required) The unique identifier of the device"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c895caf4-d209-4f6a-a333-147a638fe741",
+              "name": "List of revisions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceId",
+                    "revisions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceId",
+                      "description": "(Required) The unique identifier of the device"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"revisions\": {\n    \"revision\": [\n      {\n        \"id\": 1047,\n        \"device_id\": 2377,\n        \"date\": \"2024-09-01T11:57:08.645Z\",\n        \"description\": \"string\"\n      },\n      {\n        \"id\": 3352,\n        \"device_id\": 16,\n        \"date\": \"1980-11-02T05:03:36.058Z\",\n        \"description\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f12d64cb-05b5-487a-8547-a6e32ac0df20",
+          "name": "Get Rules By Device",
+          "request": {
+            "name": "Get Rules By Device",
+            "description": {
+              "content": "Retrieve all firewall rules for a specific device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices",
+                ":deviceId",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "policy",
+                  "value": "<string>",
+                  "description": "Filter by policy name"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "deviceId",
+                  "description": "(Required) The unique identifier of the device"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c67c9ac2-6dab-40a4-a7b3-10f414c9fd7a",
+              "name": "List of rules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceId",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "policy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceId",
+                      "description": "(Required) The unique identifier of the device"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": {\n    \"count\": 2380,\n    \"rule\": [\n      {\n        \"id\": 7177,\n        \"name\": \"string\",\n        \"enabled\": false,\n        \"action\": \"REJECT\",\n        \"sources\": [\n          {\n            \"id\": 2709,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          },\n          {\n            \"id\": 6163,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          }\n        ],\n        \"destinations\": [\n          {\n            \"id\": 2482,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          },\n          {\n            \"id\": 4159,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          }\n        ],\n        \"services\": [\n          {\n            \"id\": 1738,\n            \"name\": \"string\",\n            \"protocol\": \"string\",\n            \"port\": \"string\"\n          },\n          {\n            \"id\": 7091,\n            \"name\": \"string\",\n            \"protocol\": \"string\",\n            \"port\": \"string\"\n          }\n        ],\n        \"comment\": \"string\",\n        \"lastHit\": \"1988-10-20T04:53:02.434Z\"\n      },\n      {\n        \"id\": 923,\n        \"name\": \"string\",\n        \"enabled\": true,\n        \"action\": \"ACCEPT\",\n        \"sources\": [\n          {\n            \"id\": 8809,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          },\n          {\n            \"id\": 5540,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          }\n        ],\n        \"destinations\": [\n          {\n            \"id\": 6961,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          },\n          {\n            \"id\": 9744,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          }\n        ],\n        \"services\": [\n          {\n            \"id\": 9733,\n            \"name\": \"string\",\n            \"protocol\": \"string\",\n            \"port\": \"string\"\n          },\n          {\n            \"id\": 1509,\n            \"name\": \"string\",\n            \"protocol\": \"string\",\n            \"port\": \"string\"\n          }\n        ],\n        \"comment\": \"string\",\n        \"lastHit\": \"1977-05-21T10:50:06.480Z\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6701eeee-15d1-43b3-b8cf-47bdc2658006",
+          "name": "Get Rule By Device and ID",
+          "request": {
+            "name": "Get Rule By Device and ID",
+            "description": {
+              "content": "Retrieve a specific firewall rule by device and rule ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices",
+                ":deviceId",
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "deviceId",
+                  "description": "(Required) The unique identifier of the device"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ruleId",
+                  "description": "(Required) The unique identifier of the rule"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "21273ccb-2995-478f-be5f-ef1dbb7b6be5",
+              "name": "Rule details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceId",
+                      "description": "(Required) The unique identifier of the device"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier of the rule"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6205,\n  \"name\": \"string\",\n  \"enabled\": false,\n  \"action\": \"REJECT\",\n  \"sources\": [\n    {\n      \"id\": 4322,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"ip\": \"string\",\n      \"netmask\": \"string\"\n    },\n    {\n      \"id\": 1494,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"ip\": \"string\",\n      \"netmask\": \"string\"\n    }\n  ],\n  \"destinations\": [\n    {\n      \"id\": 533,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"ip\": \"string\",\n      \"netmask\": \"string\"\n    },\n    {\n      \"id\": 3359,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"ip\": \"string\",\n      \"netmask\": \"string\"\n    }\n  ],\n  \"services\": [\n    {\n      \"id\": 3529,\n      \"name\": \"string\",\n      \"protocol\": \"string\",\n      \"port\": \"string\"\n    },\n    {\n      \"id\": 6006,\n      \"name\": \"string\",\n      \"protocol\": \"string\",\n      \"port\": \"string\"\n    }\n  ],\n  \"comment\": \"string\",\n  \"lastHit\": \"2012-07-13T00:33:15.123Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f07c6b23-71b9-455d-bd60-083d80806bdc",
+              "name": "Rule not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceId",
+                      "description": "(Required) The unique identifier of the device"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier of the rule"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1adf969-4ac4-497b-8377-10ccee3031b2",
+          "name": "Add Offline Device",
+          "request": {
+            "name": "Add Offline Device",
+            "description": {
+              "content": "Add an offline device to SecureTrack management.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices",
+                "offline"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vendor\": \"<string>\",\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"ip\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "45428187-d73e-4b9d-83d3-4e6de90ac6b2",
+              "name": "Offline device added",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    "offline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vendor\": \"<string>\",\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"ip\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8896,\n  \"name\": \"string\",\n  \"ip\": \"string\",\n  \"vendor\": \"string\",\n  \"model\": \"string\",\n  \"version\": \"string\",\n  \"domain\": \"string\",\n  \"topology\": false,\n  \"managedBy\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "553d85e5-42dd-47e7-bdf2-b751181ccf05",
+      "name": "Rules",
+      "description": {
+        "content": "Query and manage firewall rules and policies",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2db66ed2-a158-42fd-a5d8-b7e4709dfa7e",
+          "name": "Get Rules By Device",
+          "request": {
+            "name": "Get Rules By Device",
+            "description": {
+              "content": "Retrieve all firewall rules for a specific device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices",
+                ":deviceId",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "policy",
+                  "value": "<string>",
+                  "description": "Filter by policy name"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "deviceId",
+                  "description": "(Required) The unique identifier of the device"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "19a43d59-9cdc-4aee-bdf9-e79f690a3009",
+              "name": "List of rules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceId",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "policy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceId",
+                      "description": "(Required) The unique identifier of the device"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": {\n    \"count\": 6285,\n    \"rule\": [\n      {\n        \"id\": 4169,\n        \"name\": \"string\",\n        \"enabled\": false,\n        \"action\": \"ACCEPT\",\n        \"sources\": [\n          {\n            \"id\": 5425,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          },\n          {\n            \"id\": 4131,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          }\n        ],\n        \"destinations\": [\n          {\n            \"id\": 4276,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          },\n          {\n            \"id\": 633,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          }\n        ],\n        \"services\": [\n          {\n            \"id\": 5672,\n            \"name\": \"string\",\n            \"protocol\": \"string\",\n            \"port\": \"string\"\n          },\n          {\n            \"id\": 8992,\n            \"name\": \"string\",\n            \"protocol\": \"string\",\n            \"port\": \"string\"\n          }\n        ],\n        \"comment\": \"string\",\n        \"lastHit\": \"1964-10-04T12:25:47.113Z\"\n      },\n      {\n        \"id\": 8709,\n        \"name\": \"string\",\n        \"enabled\": false,\n        \"action\": \"REJECT\",\n        \"sources\": [\n          {\n            \"id\": 5196,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          },\n          {\n            \"id\": 236,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          }\n        ],\n        \"destinations\": [\n          {\n            \"id\": 3734,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          },\n          {\n            \"id\": 9185,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"ip\": \"string\",\n            \"netmask\": \"string\"\n          }\n        ],\n        \"services\": [\n          {\n            \"id\": 5683,\n            \"name\": \"string\",\n            \"protocol\": \"string\",\n            \"port\": \"string\"\n          },\n          {\n            \"id\": 3818,\n            \"name\": \"string\",\n            \"protocol\": \"string\",\n            \"port\": \"string\"\n          }\n        ],\n        \"comment\": \"string\",\n        \"lastHit\": \"1993-11-13T21:22:33.395Z\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2447dd04-e30a-4405-8783-5ef0075e25c8",
+          "name": "Get Rule By Device and ID",
+          "request": {
+            "name": "Get Rule By Device and ID",
+            "description": {
+              "content": "Retrieve a specific firewall rule by device and rule ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices",
+                ":deviceId",
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "deviceId",
+                  "description": "(Required) The unique identifier of the device"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ruleId",
+                  "description": "(Required) The unique identifier of the rule"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e11fece7-293e-4824-b4db-7b1b7bce3f25",
+              "name": "Rule details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceId",
+                      "description": "(Required) The unique identifier of the device"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier of the rule"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3348,\n  \"name\": \"string\",\n  \"enabled\": false,\n  \"action\": \"ACCEPT\",\n  \"sources\": [\n    {\n      \"id\": 1941,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"ip\": \"string\",\n      \"netmask\": \"string\"\n    },\n    {\n      \"id\": 4397,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"ip\": \"string\",\n      \"netmask\": \"string\"\n    }\n  ],\n  \"destinations\": [\n    {\n      \"id\": 5862,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"ip\": \"string\",\n      \"netmask\": \"string\"\n    },\n    {\n      \"id\": 3332,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"ip\": \"string\",\n      \"netmask\": \"string\"\n    }\n  ],\n  \"services\": [\n    {\n      \"id\": 3512,\n      \"name\": \"string\",\n      \"protocol\": \"string\",\n      \"port\": \"string\"\n    },\n    {\n      \"id\": 8938,\n      \"name\": \"string\",\n      \"protocol\": \"string\",\n      \"port\": \"string\"\n    }\n  ],\n  \"comment\": \"string\",\n  \"lastHit\": \"1980-12-22T07:29:54.854Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42e5b862-55cf-4afd-9323-a6f46609d117",
+              "name": "Rule not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceId",
+                      "description": "(Required) The unique identifier of the device"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier of the rule"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "cacd0ee1-863e-4a19-964f-e724da8e2467",
+      "name": "Topology",
+      "description": {
+        "content": "Network topology analysis and path queries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9450d3b8-3f8d-4709-be9d-10cf2f469537",
+          "name": "Get Network Path",
+          "request": {
+            "name": "Get Network Path",
+            "description": {
+              "content": "Query the network topology to determine whether traffic is permitted between source and destination endpoints, and which devices are traversed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "topology",
+                "path"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "src",
+                  "value": "<string>",
+                  "description": "(Required) Source IP address or CIDR range"
+                },
+                {
+                  "disabled": false,
+                  "key": "dst",
+                  "value": "<string>",
+                  "description": "(Required) Destination IP address or CIDR range"
+                },
+                {
+                  "disabled": false,
+                  "key": "service",
+                  "value": "<string>",
+                  "description": "Service (protocol/port, e.g., tcp/443)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d0aa8fa8-8225-4bd3-9929-a874dc41ddb8",
+              "name": "Path analysis result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "topology",
+                    "path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "src",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dst",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "service",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"traffic_allowed\": false,\n  \"is_fully_routed\": false,\n  \"device_info\": [\n    {\n      \"name\": \"string\",\n      \"id\": 6744\n    },\n    {\n      \"name\": \"string\",\n      \"id\": 3185\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fbfc775c-d7e3-44a0-98b5-3dd3dc5e4722",
+          "name": "Get Topology Path Image",
+          "request": {
+            "name": "Get Topology Path Image",
+            "description": {
+              "content": "Export a visualization of the network path as a PNG image.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "topology",
+                "path",
+                "image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "src",
+                  "value": "<string>",
+                  "description": "(Required) Source IP address or CIDR range"
+                },
+                {
+                  "disabled": false,
+                  "key": "dst",
+                  "value": "<string>",
+                  "description": "(Required) Destination IP address or CIDR range"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d6198e69-70b4-4aad-b740-e93989a61ee1",
+              "name": "Path topology image",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "topology",
+                    "path",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "src",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dst",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d410f19d-388a-4755-aceb-3b46fe0e525b",
+          "name": "Get Topology Map",
+          "request": {
+            "name": "Get Topology Map",
+            "description": {
+              "content": "Retrieve the full network topology map.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "topology",
+                "map"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e5ccbf61-c13c-4ab8-b5c0-58ef179f412d",
+              "name": "Topology map data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "topology",
+                    "map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "88dafb65-a82e-4f4e-a815-0dced3b7246c",
+      "name": "Objects",
+      "description": {
+        "content": "Network objects, services, and address groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "81cc0532-f75e-4cc0-9856-c400ae857892",
+          "name": "Get Network Objects",
+          "request": {
+            "name": "Get Network Objects",
+            "description": {
+              "content": "Search for network objects (hosts, ranges, groups) across all managed devices.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network_objects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by object name"
+                },
+                {
+                  "disabled": false,
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "Filter by IP address"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by object type (host, range, group)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "40c340fe-a237-4415-8c8f-7a04415271b6",
+              "name": "List of network objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network_objects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"network_objects\": {\n    \"count\": 1620,\n    \"network_object\": [\n      {\n        \"id\": 6742,\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"ip\": \"string\",\n        \"netmask\": \"string\"\n      },\n      {\n        \"id\": 5514,\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"ip\": \"string\",\n        \"netmask\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef07e0ee-8f95-4d79-992f-d39a6d62dd86",
+          "name": "Get Services",
+          "request": {
+            "name": "Get Services",
+            "description": {
+              "content": "Search for service objects (protocols and ports) across all managed devices.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by service name"
+                },
+                {
+                  "disabled": false,
+                  "key": "port",
+                  "value": "<string>",
+                  "description": "Filter by port number"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "361c058c-2b24-4639-81d3-29f13c251fa9",
+              "name": "List of services",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "port",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"services\": {\n    \"service\": [\n      {\n        \"id\": 3865,\n        \"name\": \"string\",\n        \"protocol\": \"string\",\n        \"port\": \"string\"\n      },\n      {\n        \"id\": 1945,\n        \"name\": \"string\",\n        \"protocol\": \"string\",\n        \"port\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2cdc1f5a-915b-453e-babd-a20bfb1c24ee",
+      "name": "Compliance",
+      "description": {
+        "content": "Policy compliance and risk analysis",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f6d59ae9-813f-423e-bf79-3ccc85f5cc56",
+          "name": "Get Risk Analysis",
+          "request": {
+            "name": "Get Risk Analysis",
+            "description": {
+              "content": "Retrieve risk analysis findings including policy violations and cleanup tasks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "risk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<integer>",
+                  "description": "Filter by device ID"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6aaa18af-da7b-429d-baa0-8b820486ae8e",
+              "name": "Risk analysis results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "risk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"rule_id\": 8588,\n    \"device_id\": 928,\n    \"risk_type\": \"string\",\n    \"severity\": \"string\",\n    \"description\": \"string\"\n  },\n  {\n    \"rule_id\": 3195,\n    \"device_id\": 1087,\n    \"risk_type\": \"string\",\n    \"severity\": \"string\",\n    \"description\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7d5e815e-1207-445f-8dd4-d32e75b6d0d3",
+      "name": "Revisions",
+      "description": {
+        "content": "Device policy revisions and change history",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ae0cf8c3-e3ca-498f-a91e-2a75d0521f77",
+          "name": "Get Device Revisions",
+          "request": {
+            "name": "Get Device Revisions",
+            "description": {
+              "content": "Retrieve the list of policy revisions for a device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices",
+                ":deviceId",
+                "revisions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "deviceId",
+                  "description": "(Required) The unique identifier of the device"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d16c030a-6dc7-4252-bbe1-a83c6c272e69",
+              "name": "List of revisions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceId",
+                    "revisions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceId",
+                      "description": "(Required) The unique identifier of the device"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"revisions\": {\n    \"revision\": [\n      {\n        \"id\": 7490,\n        \"device_id\": 4885,\n        \"date\": \"1989-09-03T10:05:32.211Z\",\n        \"description\": \"string\"\n      },\n      {\n        \"id\": 4324,\n        \"device_id\": 2008,\n        \"date\": \"2015-04-10T14:00:32.404Z\",\n        \"description\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "618fd43e-ebf8-4416-875c-01840e8497e6",
+      "name": "Zones",
+      "description": {
+        "content": "Security zones and zone-to-zone matrix",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e048880f-39cc-427b-bcb3-1ac09e26209b",
+          "name": "Get Security Zones",
+          "request": {
+            "name": "Get Security Zones",
+            "description": {
+              "content": "Retrieve all security zones defined across managed devices.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "zones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3fc2dbda-c7ea-4d95-92ad-1e644e447ef0",
+              "name": "List of security zones",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zones\": {\n    \"zone\": [\n      {\n        \"id\": 6374,\n        \"name\": \"string\",\n        \"comment\": \"string\",\n        \"subnets\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"id\": 2294,\n        \"name\": \"string\",\n        \"comment\": \"string\",\n        \"subnets\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of the TOS server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "tufin.example.com",
+      "key": "tos_host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tos_host}}/securetrack/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "046b5279-7e97-4e1a-bd73-dbfdc05d0495",
+    "name": "Tufin SecureTrack REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tufin SecureTrack REST API enables programmatic access to network security policy management across multi-vendor firewall infrastructure. It provides endpoints for querying network devices, analyzing firewall rules and policies, performing network topology analysis, executing path queries, managing rule documentation, and retrieving compliance and risk analysis data. Authentication uses HTTP Basic Auth with Tufin Orchestration Suite (TOS) credentials.\n\nContact Support:\n Name: Tufin Support",
+      "type": "text/plain"
+    }
+  }
+}

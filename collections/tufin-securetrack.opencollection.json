@@ -1,0 +1,436 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tufin SecureTrack REST API",
+    "version": "R25-2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securetrack/api/devices",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by device name (partial match)"
+              },
+              {
+                "name": "vendor",
+                "value": "",
+                "type": "query",
+                "description": "Filter by vendor (e.g., Cisco, Palo Alto, Check Point)"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by device type"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by management status"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve all network devices (firewalls, routers) managed by SecureTrack, optionally filtered by name, vendor, or management status."
+        },
+        {
+          "info": {
+            "name": "Get Device By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securetrack/api/devices/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the device"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve a specific network device by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tos_host}/securetrack/api/devices/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the device"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Update an offline device's configuration."
+        },
+        {
+          "info": {
+            "name": "Get Device Revisions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securetrack/api/devices/:deviceId/revisions",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the device"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve the list of policy revisions for a device."
+        },
+        {
+          "info": {
+            "name": "Get Rules By Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securetrack/api/devices/:deviceId/rules",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the device"
+              },
+              {
+                "name": "policy",
+                "value": "",
+                "type": "query",
+                "description": "Filter by policy name"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve all firewall rules for a specific device."
+        },
+        {
+          "info": {
+            "name": "Get Rule By Device and ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securetrack/api/devices/:deviceId/rules/:ruleId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the device"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the rule"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve a specific firewall rule by device and rule ID."
+        },
+        {
+          "info": {
+            "name": "Add Offline Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tos_host}/securetrack/api/devices/offline",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Add an offline device to SecureTrack management."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Topology",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Network Path",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securetrack/api/topology/path",
+            "params": [
+              {
+                "name": "src",
+                "value": "",
+                "type": "query",
+                "description": "Source IP address or CIDR range"
+              },
+              {
+                "name": "dst",
+                "value": "",
+                "type": "query",
+                "description": "Destination IP address or CIDR range"
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "query",
+                "description": "Service (protocol/port, e.g., tcp/443)"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Query the network topology to determine whether traffic is permitted between source and destination endpoints, and which devices are traversed."
+        },
+        {
+          "info": {
+            "name": "Get Topology Path Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securetrack/api/topology/path/image",
+            "params": [
+              {
+                "name": "src",
+                "value": "",
+                "type": "query",
+                "description": "Source IP address or CIDR range"
+              },
+              {
+                "name": "dst",
+                "value": "",
+                "type": "query",
+                "description": "Destination IP address or CIDR range"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Export a visualization of the network path as a PNG image."
+        },
+        {
+          "info": {
+            "name": "Get Topology Map",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securetrack/api/topology/map",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve the full network topology map."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Objects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Network Objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securetrack/api/network_objects",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by object name"
+              },
+              {
+                "name": "ip",
+                "value": "",
+                "type": "query",
+                "description": "Filter by IP address"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by object type (host, range, group)"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Search for network objects (hosts, ranges, groups) across all managed devices."
+        },
+        {
+          "info": {
+            "name": "Get Services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securetrack/api/services",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service name"
+              },
+              {
+                "name": "port",
+                "value": "",
+                "type": "query",
+                "description": "Filter by port number"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Search for service objects (protocols and ports) across all managed devices."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Security Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securetrack/api/zones",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve all security zones defined across managed devices."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Compliance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Risk Analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securetrack/api/risk",
+            "params": [
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by device ID"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve risk analysis findings including policy violations and cleanup tasks."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

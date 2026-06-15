@@ -1,0 +1,296 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tufin SecureChange REST API",
+    "version": "R25-2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tickets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/tickets",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by ticket status (Open, Resolved, Rejected, Cancelled, In Progress)"
+              },
+              {
+                "name": "requester",
+                "value": "",
+                "type": "query",
+                "description": "Filter by requester username"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter tickets created after this date (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter tickets created before this date (ISO 8601)"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of tickets to return"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Offset for pagination"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve a list of security change tickets, optionally filtered by status, requester, or time range."
+        },
+        {
+          "info": {
+            "name": "Create Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/tickets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Submit a new security change ticket to the SecureChange workflow. The ticket type must match a configured workflow definition. Common types include access requests, firewall rule changes, and cleanup requests."
+        },
+        {
+          "info": {
+            "name": "Get Ticket By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/tickets/:ticketId",
+            "params": [
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the ticket"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve a specific security change ticket by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/tickets/:ticketId",
+            "params": [
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the ticket"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Update the details of an existing change ticket."
+        },
+        {
+          "info": {
+            "name": "Get Ticket Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/tickets/:ticketId/tasks",
+            "params": [
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the ticket"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve all workflow tasks associated with a ticket."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Task By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/tickets/:ticketId/tasks/:taskId",
+            "params": [
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the ticket"
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the task"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve a specific workflow task by ticket and task ID."
+        },
+        {
+          "info": {
+            "name": "Update Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/tickets/:ticketId/tasks/:taskId",
+            "params": [
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the ticket"
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the task"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Update a workflow task (e.g., approve, reject, or provide implementation details)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Workflow Definitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Workflow Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/workflow_definitions",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve all workflow definitions (templates) configured in SecureChange."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/users",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by username"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve all users defined in SecureChange."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1755 @@
+{
+  "item": [
+    {
+      "id": "2062115b-9a69-4bd2-bfc9-eb13d12cdce7",
+      "name": "Tickets",
+      "description": {
+        "content": "Create and manage security change tickets",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d821c1f0-373a-4ee2-af2b-a7966466cce8",
+          "name": "Get Tickets",
+          "request": {
+            "name": "Get Tickets",
+            "description": {
+              "content": "Retrieve a list of security change tickets, optionally filtered by status, requester, or time range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by ticket status (Open, Resolved, Rejected, Cancelled, In Progress)"
+                },
+                {
+                  "disabled": false,
+                  "key": "requester",
+                  "value": "<string>",
+                  "description": "Filter by requester username"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<dateTime>",
+                  "description": "Filter tickets created after this date (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<dateTime>",
+                  "description": "Filter tickets created before this date (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "50",
+                  "description": "Number of tickets to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Offset for pagination"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "328f8593-d7b8-4aff-9300-fa8ef5f3be66",
+              "name": "List of tickets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requester",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "50"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tickets\": {\n    \"count\": 8005,\n    \"ticket\": [\n      {\n        \"id\": 5072,\n        \"subject\": \"string\",\n        \"description\": \"string\",\n        \"status\": \"Rejected\",\n        \"priority\": \"Critical\",\n        \"requester\": \"string\",\n        \"created\": \"1951-10-20T23:16:18.966Z\",\n        \"modified\": \"1989-08-25T03:50:14.160Z\",\n        \"workflow\": {\n          \"id\": 5355,\n          \"name\": \"string\"\n        },\n        \"tasks\": [\n          {\n            \"id\": 5162,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"status\": \"Not Started\",\n            \"assignee\": \"string\",\n            \"due_date\": \"1977-08-11T06:11:45.988Z\"\n          },\n          {\n            \"id\": 1011,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"status\": \"Rejected\",\n            \"assignee\": \"string\",\n            \"due_date\": \"2002-04-26T07:07:41.873Z\"\n          }\n        ]\n      },\n      {\n        \"id\": 7829,\n        \"subject\": \"string\",\n        \"description\": \"string\",\n        \"status\": \"Resolved\",\n        \"priority\": \"High\",\n        \"requester\": \"string\",\n        \"created\": \"1958-01-25T19:18:15.319Z\",\n        \"modified\": \"2006-11-17T14:00:44.545Z\",\n        \"workflow\": {\n          \"id\": 7846,\n          \"name\": \"string\"\n        },\n        \"tasks\": [\n          {\n            \"id\": 8914,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"status\": \"New\",\n            \"assignee\": \"string\",\n            \"due_date\": \"1989-11-01T05:04:06.453Z\"\n          },\n          {\n            \"id\": 4456,\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"status\": \"In Progress\",\n            \"assignee\": \"string\",\n            \"due_date\": \"1971-08-26T21:15:39.680Z\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "384c5e62-94e6-4f5e-a91f-81c80f5b93d5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requester",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "50"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e22d2031-5a1f-47d1-b8b0-4b70b9feeee1",
+          "name": "Create Ticket",
+          "request": {
+            "name": "Create Ticket",
+            "description": {
+              "content": "Submit a new security change ticket to the SecureChange workflow. The ticket type must match a configured workflow definition. Common types include access requests, firewall rule changes, and cleanup requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3755e9f4-5265-4fa4-b7b2-f93352a8bb37",
+              "name": "Ticket created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6748,\n  \"subject\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"In Progress\",\n  \"priority\": \"Low\",\n  \"requester\": \"string\",\n  \"created\": \"2002-12-30T09:15:40.040Z\",\n  \"modified\": \"1995-08-11T10:57:26.198Z\",\n  \"workflow\": {\n    \"id\": 9757,\n    \"name\": \"string\"\n  },\n  \"tasks\": [\n    {\n      \"id\": 3216,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"New\",\n      \"assignee\": \"string\",\n      \"due_date\": \"1974-07-29T18:05:50.600Z\"\n    },\n    {\n      \"id\": 8257,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"New\",\n      \"assignee\": \"string\",\n      \"due_date\": \"2021-11-06T01:15:14.003Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "176524df-3036-429f-8e19-e33afdba3fb0",
+              "name": "Invalid ticket data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "15be006a-47e2-45ff-9449-4247a8f7e0ee",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d68b25e9-1d37-4574-8162-c5d55f9f3fb8",
+          "name": "Get Ticket By ID",
+          "request": {
+            "name": "Get Ticket By ID",
+            "description": {
+              "content": "Retrieve a specific security change ticket by its identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickets",
+                ":ticketId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ticketId",
+                  "description": "(Required) The unique identifier of the ticket"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c15eb206-f26b-4050-9b1a-60813f486fa6",
+              "name": "Ticket details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    ":ticketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketId",
+                      "description": "(Required) The unique identifier of the ticket"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6748,\n  \"subject\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"In Progress\",\n  \"priority\": \"Low\",\n  \"requester\": \"string\",\n  \"created\": \"2002-12-30T09:15:40.040Z\",\n  \"modified\": \"1995-08-11T10:57:26.198Z\",\n  \"workflow\": {\n    \"id\": 9757,\n    \"name\": \"string\"\n  },\n  \"tasks\": [\n    {\n      \"id\": 3216,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"New\",\n      \"assignee\": \"string\",\n      \"due_date\": \"1974-07-29T18:05:50.600Z\"\n    },\n    {\n      \"id\": 8257,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"New\",\n      \"assignee\": \"string\",\n      \"due_date\": \"2021-11-06T01:15:14.003Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37152851-c3fd-40d2-a9df-190fc353b1fa",
+              "name": "Ticket not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    ":ticketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketId",
+                      "description": "(Required) The unique identifier of the ticket"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0b7706a-22e9-4d55-9243-6fed604e5c5f",
+          "name": "Update Ticket",
+          "request": {
+            "name": "Update Ticket",
+            "description": {
+              "content": "Update the details of an existing change ticket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickets",
+                ":ticketId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ticketId",
+                  "description": "(Required) The unique identifier of the ticket"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "89f35681-801e-4709-b9d7-747120cb2b3d",
+              "name": "Ticket updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    ":ticketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketId",
+                      "description": "(Required) The unique identifier of the ticket"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6748,\n  \"subject\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"In Progress\",\n  \"priority\": \"Low\",\n  \"requester\": \"string\",\n  \"created\": \"2002-12-30T09:15:40.040Z\",\n  \"modified\": \"1995-08-11T10:57:26.198Z\",\n  \"workflow\": {\n    \"id\": 9757,\n    \"name\": \"string\"\n  },\n  \"tasks\": [\n    {\n      \"id\": 3216,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"New\",\n      \"assignee\": \"string\",\n      \"due_date\": \"1974-07-29T18:05:50.600Z\"\n    },\n    {\n      \"id\": 8257,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"New\",\n      \"assignee\": \"string\",\n      \"due_date\": \"2021-11-06T01:15:14.003Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82e26424-7582-4e99-a404-181f08172893",
+              "name": "Ticket not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    ":ticketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketId",
+                      "description": "(Required) The unique identifier of the ticket"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96bc1a87-c07c-4cc7-9b43-24f14b653c6b",
+          "name": "Get Ticket Tasks",
+          "request": {
+            "name": "Get Ticket Tasks",
+            "description": {
+              "content": "Retrieve all workflow tasks associated with a ticket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickets",
+                ":ticketId",
+                "tasks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ticketId",
+                  "description": "(Required) The unique identifier of the ticket"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "66d34fd9-b041-4765-98aa-131dc4467670",
+              "name": "List of tasks",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    ":ticketId",
+                    "tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketId",
+                      "description": "(Required) The unique identifier of the ticket"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tasks\": {\n    \"task\": [\n      {\n        \"id\": 5483,\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"status\": \"Not Started\",\n        \"assignee\": \"string\",\n        \"due_date\": \"1971-10-09T21:29:46.438Z\"\n      },\n      {\n        \"id\": 1316,\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"status\": \"Not Started\",\n        \"assignee\": \"string\",\n        \"due_date\": \"1972-05-21T18:43:22.029Z\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a0cd7c12-0789-443a-a62f-11766db75a9a",
+      "name": "Requests",
+      "description": {
+        "content": "Access request workflows and approvals",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "ea436784-ca73-495a-9e10-c1847000e4e3",
+      "name": "Tasks",
+      "description": {
+        "content": "Workflow tasks and approvals",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "37c06071-9d2a-46e1-baa4-799a37cf5a4d",
+          "name": "Get Ticket Tasks",
+          "request": {
+            "name": "Get Ticket Tasks",
+            "description": {
+              "content": "Retrieve all workflow tasks associated with a ticket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickets",
+                ":ticketId",
+                "tasks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ticketId",
+                  "description": "(Required) The unique identifier of the ticket"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fdecf4f5-c2ce-4260-8992-637866966b8f",
+              "name": "List of tasks",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    ":ticketId",
+                    "tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketId",
+                      "description": "(Required) The unique identifier of the ticket"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tasks\": {\n    \"task\": [\n      {\n        \"id\": 8562,\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"status\": \"In Progress\",\n        \"assignee\": \"string\",\n        \"due_date\": \"1996-09-17T20:31:33.676Z\"\n      },\n      {\n        \"id\": 7238,\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"status\": \"In Progress\",\n        \"assignee\": \"string\",\n        \"due_date\": \"1983-11-28T21:52:22.536Z\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb88ffd1-c147-4f15-8421-93445d3d8230",
+          "name": "Get Task By ID",
+          "request": {
+            "name": "Get Task By ID",
+            "description": {
+              "content": "Retrieve a specific workflow task by ticket and task ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickets",
+                ":ticketId",
+                "tasks",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ticketId",
+                  "description": "(Required) The unique identifier of the ticket"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "taskId",
+                  "description": "(Required) The unique identifier of the task"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "df77f544-4065-4682-87e8-a1cdf8b15265",
+              "name": "Task details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    ":ticketId",
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketId",
+                      "description": "(Required) The unique identifier of the ticket"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) The unique identifier of the task"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3747,\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"Not Started\",\n  \"assignee\": \"string\",\n  \"due_date\": \"2001-06-04T20:29:01.142Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3f83317-84cd-4ee1-86e6-7c00f8029e59",
+              "name": "Task not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    ":ticketId",
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketId",
+                      "description": "(Required) The unique identifier of the ticket"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) The unique identifier of the task"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63b37224-3f98-4aa4-854a-98da417a8681",
+          "name": "Update Task",
+          "request": {
+            "name": "Update Task",
+            "description": {
+              "content": "Update a workflow task (e.g., approve, reject, or provide implementation details).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickets",
+                ":ticketId",
+                "tasks",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ticketId",
+                  "description": "(Required) The unique identifier of the ticket"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "taskId",
+                  "description": "(Required) The unique identifier of the task"
+                },
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"fields\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e8145b4a-a5a1-4a35-a7f4-bd2b3c15465a",
+              "name": "Task updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    ":ticketId",
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketId",
+                      "description": "(Required) The unique identifier of the ticket"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) The unique identifier of the task"
+                    },
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"fields\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3747,\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"Not Started\",\n  \"assignee\": \"string\",\n  \"due_date\": \"2001-06-04T20:29:01.142Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0176f65a-1ae0-4c80-8f43-c61e159885f5",
+      "name": "Users",
+      "description": {
+        "content": "User and group management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6d746a11-152d-4b46-bc4c-f7c4b102b454",
+          "name": "Get Users",
+          "request": {
+            "name": "Get Users",
+            "description": {
+              "content": "Retrieve all users defined in SecureChange.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by username"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d59752fb-461e-4c89-9922-a501bb32cdd8",
+              "name": "List of users",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": {\n    \"user\": [\n      {\n        \"id\": 3382,\n        \"username\": \"string\",\n        \"email\": \"string\",\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"groups\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"id\": 1207,\n        \"username\": \"string\",\n        \"email\": \"string\",\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"groups\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e2ded8d8-5702-4532-ab98-40589d6b642d",
+      "name": "Workflow Definitions",
+      "description": {
+        "content": "Workflow template definitions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "400c7562-bbb5-4786-8ddf-b4990cd251fb",
+          "name": "Get Workflow Definitions",
+          "request": {
+            "name": "Get Workflow Definitions",
+            "description": {
+              "content": "Retrieve all workflow definitions (templates) configured in SecureChange.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workflow_definitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d9929d67-f09d-48de-a70a-604adafe8c71",
+              "name": "List of workflow definitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workflow_definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"workflow_definitions\": {\n    \"workflow_definition\": [\n      {\n        \"id\": 4840,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"enabled\": false\n      },\n      {\n        \"id\": 1259,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"enabled\": true\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of the TOS server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "tufin.example.com",
+      "key": "tos_host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tos_host}}/securechangeworkflow/api/securechange",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "435637a7-c97b-4a5e-95f2-fe4210801f70",
+    "name": "Tufin SecureChange REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.\n\nContact Support:\n Name: Tufin Support",
+      "type": "text/plain"
+    }
+  }
+}
