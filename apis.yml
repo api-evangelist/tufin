@@ -179,13 +179,13 @@ common:
   url: https://community.tufin.com/
 - type: GitHubOrganization
   url: https://github.com/Tufin
-- type: SDK
+- type: SDKs
   url: https://gitlab.com/tufinps/pytos2-ce
-- type: SDK
+- type: SDKs
   url: https://github.com/Tufin/pytos
 - type: PostmanCollection
   url: https://github.com/Tufin/postman
-- type: SignUp
+- type: Signup
   url: https://www.tufin.com/demo
 - type: Videos
   url: https://www.tufin.com/resources/type/videos
