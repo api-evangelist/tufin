@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tufin-securechange-openapi.yml, openapi/tufin-securetrack-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic Authentication using Tufin Orchestration Suite credentials. The authenticated
+    user's TOS permissions apply to all API requests.
+  sources:
+  - openapi/tufin-securechange-openapi.yml
+  - openapi/tufin-securetrack-openapi.yml

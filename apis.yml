@@ -153,6 +153,10 @@ apis:
   - type: Reference
     url: https://securecloud.tufin.io/api-documentation/index.html
 common:
+- type: DomainSecurity
+  url: security/tufin-domain-security.yml
+- type: Authentication
+  url: authentication/tufin-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/tufin-technologies
 - type: Portal
