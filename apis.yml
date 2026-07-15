@@ -153,6 +153,8 @@ apis:
   - type: Reference
     url: https://securecloud.tufin.io/api-documentation/index.html
 common:
+- type: AgenticAccess
+  url: agentic-access/tufin-agentic-access.yml
 - type: DomainSecurity
   url: security/tufin-domain-security.yml
 - type: Authentication
