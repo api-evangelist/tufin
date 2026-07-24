@@ -1,0 +1,148 @@
+openapi: 3.1.0
+info:
+  title: Tufin SecureChange REST Compliance Topology API
+  description: The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.
+  version: R25-2
+  contact:
+    name: Tufin Support
+    url: https://www.tufin.com/support
+  license:
+    name: Tufin Terms of Use
+    url: https://www.tufin.com/terms-of-use
+servers:
+- url: https://{tos_host}/securechangeworkflow/api/securechange
+  description: Tufin SecureChange Server
+  variables:
+    tos_host:
+      description: Hostname or IP address of the TOS server
+      default: tufin.example.com
+tags:
+- name: Topology
+  description: Network topology analysis and path queries
+paths:
+  /topology/path:
+    get:
+      operationId: getTopologyPath
+      summary: Get Network Path
+      description: Query the network topology to determine whether traffic is permitted between source and destination endpoints, and which devices are traversed.
+      tags:
+      - Topology
+      security:
+      - basicAuth: []
+      parameters:
+      - name: src
+        in: query
+        required: true
+        description: Source IP address or CIDR range
+        schema:
+          type: string
+      - name: dst
+        in: query
+        required: true
+        description: Destination IP address or CIDR range
+        schema:
+          type: string
+      - name: service
+        in: query
+        description: Service (protocol/port, e.g., tcp/443)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Path analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopologyPath'
+  /topology/path/image:
+    get:
+      operationId: getTopologyPathImage
+      summary: Get Topology Path Image
+      description: Export a visualization of the network path as a PNG image.
+      tags:
+      - Topology
+      security:
+      - basicAuth: []
+      parameters:
+      - name: src
+        in: query
+        required: true
+        description: Source IP address or CIDR range
+        schema:
+          type: string
+      - name: dst
+        in: query
+        required: true
+        description: Destination IP address or CIDR range
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Path topology image
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+  /topology/map:
+    get:
+      operationId: getTopologyMap
+      summary: Get Topology Map
+      description: Retrieve the full network topology map.
+      tags:
+      - Topology
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          description: Topology map data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopologyMap'
+components:
+  schemas:
+    TopologyPath:
+      type: object
+      description: Result of a network topology path query
+      properties:
+        traffic_allowed:
+          type: boolean
+          description: Whether traffic is allowed between source and destination
+        is_fully_routed:
+          type: boolean
+          description: Whether a complete routed path exists
+        device_info:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Device name
+              id:
+                type: integer
+                description: Device ID
+          description: Devices traversed in the path
+    TopologyMap:
+      type: object
+      description: Network topology map data
+      properties:
+        nodes:
+          type: array
+          items:
+            type: object
+          description: Topology nodes (devices, subnets)
+        edges:
+          type: array
+          items:
+            type: object
+          description: Topology connections between nodes
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Tufin Orchestration Suite credentials. The authenticated user's TOS permissions apply to all API requests.
+externalDocs:
+  description: Tufin SecureChange REST API Documentation
+  url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm

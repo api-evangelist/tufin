@@ -1,0 +1,397 @@
+openapi: 3.1.0
+info:
+  title: Tufin SecureChange REST Compliance Devices API
+  description: The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.
+  version: R25-2
+  contact:
+    name: Tufin Support
+    url: https://www.tufin.com/support
+  license:
+    name: Tufin Terms of Use
+    url: https://www.tufin.com/terms-of-use
+servers:
+- url: https://{tos_host}/securechangeworkflow/api/securechange
+  description: Tufin SecureChange Server
+  variables:
+    tos_host:
+      description: Hostname or IP address of the TOS server
+      default: tufin.example.com
+tags:
+- name: Devices
+  description: Manage network devices and firewalls
+paths:
+  /devices:
+    get:
+      operationId: getDevices
+      summary: Get All Devices
+      description: Retrieve all network devices (firewalls, routers) managed by SecureTrack, optionally filtered by name, vendor, or management status.
+      tags:
+      - Devices
+      security:
+      - basicAuth: []
+      parameters:
+      - name: name
+        in: query
+        description: Filter by device name (partial match)
+        schema:
+          type: string
+      - name: vendor
+        in: query
+        description: Filter by vendor (e.g., Cisco, Palo Alto, Check Point)
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Filter by device type
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Filter by management status
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of devices
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  devices:
+                    type: object
+                    properties:
+                      count:
+                        type: integer
+                      device:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Device'
+        '401':
+          description: Unauthorized
+  /devices/{deviceId}:
+    get:
+      operationId: getDeviceById
+      summary: Get Device By ID
+      description: Retrieve a specific network device by its identifier.
+      tags:
+      - Devices
+      security:
+      - basicAuth: []
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        description: The unique identifier of the device
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Device details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '404':
+          description: Device not found
+    put:
+      operationId: updateDevice
+      summary: Update Device
+      description: Update an offline device's configuration.
+      tags:
+      - Devices
+      security:
+      - basicAuth: []
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        description: The unique identifier of the device
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceInput'
+      responses:
+        '200':
+          description: Device updated
+  /devices/{deviceId}/revisions:
+    get:
+      operationId: getDeviceRevisions
+      summary: Get Device Revisions
+      description: Retrieve the list of policy revisions for a device.
+      tags:
+      - Devices
+      security:
+      - basicAuth: []
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        description: The unique identifier of the device
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of revisions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  revisions:
+                    type: object
+                    properties:
+                      revision:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Revision'
+  /devices/{deviceId}/rules:
+    get:
+      operationId: getRulesByDevice
+      summary: Get Rules By Device
+      description: Retrieve all firewall rules for a specific device.
+      tags:
+      - Devices
+      security:
+      - basicAuth: []
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        description: The unique identifier of the device
+        schema:
+          type: integer
+      - name: policy
+        in: query
+        description: Filter by policy name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of rules
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rules:
+                    type: object
+                    properties:
+                      count:
+                        type: integer
+                      rule:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Rule'
+  /devices/{deviceId}/rules/{ruleId}:
+    get:
+      operationId: getRuleByDeviceAndId
+      summary: Get Rule By Device and ID
+      description: Retrieve a specific firewall rule by device and rule ID.
+      tags:
+      - Devices
+      security:
+      - basicAuth: []
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        description: The unique identifier of the device
+        schema:
+          type: integer
+      - name: ruleId
+        in: path
+        required: true
+        description: The unique identifier of the rule
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Rule details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rule'
+        '404':
+          description: Rule not found
+  /devices/offline:
+    post:
+      operationId: addOfflineDevice
+      summary: Add Offline Device
+      description: Add an offline device to SecureTrack management.
+      tags:
+      - Devices
+      security:
+      - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceInput'
+      responses:
+        '200':
+          description: Offline device added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+components:
+  schemas:
+    Revision:
+      type: object
+      description: A policy revision for a device
+      properties:
+        id:
+          type: integer
+          description: Revision identifier
+        device_id:
+          type: integer
+          description: Device this revision belongs to
+        date:
+          type: string
+          format: date-time
+          description: When this revision was recorded
+        description:
+          type: string
+          description: Description of changes in this revision
+    Device:
+      type: object
+      description: A network device managed by SecureTrack
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the device
+        name:
+          type: string
+          description: Display name of the device
+        ip:
+          type: string
+          description: Management IP address
+        vendor:
+          type: string
+          description: Device vendor (e.g., Cisco, Palo Alto Networks, Check Point)
+        model:
+          type: string
+          description: Device model
+        version:
+          type: string
+          description: Software version
+        domain:
+          type: string
+          description: Management domain
+        topology:
+          type: boolean
+          description: Whether this device participates in topology analysis
+        managedBy:
+          type: string
+          description: Management system (e.g., Panorama, SmartCenter)
+    Rule:
+      type: object
+      description: A firewall rule on a network device
+      properties:
+        id:
+          type: integer
+          description: Rule identifier
+        name:
+          type: string
+          description: Rule name
+        enabled:
+          type: boolean
+          description: Whether the rule is enabled
+        action:
+          type: string
+          description: Rule action (ACCEPT, DROP, REJECT)
+          enum:
+          - ACCEPT
+          - DROP
+          - REJECT
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/NetworkObject'
+          description: Source network objects
+        destinations:
+          type: array
+          items:
+            $ref: '#/components/schemas/NetworkObject'
+          description: Destination network objects
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
+          description: Services this rule applies to
+        comment:
+          type: string
+          description: Rule comment or documentation
+        lastHit:
+          type: string
+          format: date-time
+          description: Last time this rule was matched
+    NetworkObject:
+      type: object
+      description: A network object (host, range, or group)
+      properties:
+        id:
+          type: integer
+          description: Object identifier
+        name:
+          type: string
+          description: Object name
+        type:
+          type: string
+          description: Object type (host, range, group)
+        ip:
+          type: string
+          description: IP address or range
+        netmask:
+          type: string
+          description: Network mask
+    DeviceInput:
+      type: object
+      description: Input for adding or updating a device
+      required:
+      - vendor
+      - model
+      - name
+      properties:
+        vendor:
+          type: string
+          description: Device vendor
+        model:
+          type: string
+          description: Device model
+        name:
+          type: string
+          description: Device display name
+        ip:
+          type: string
+          description: Management IP address
+    Service:
+      type: object
+      description: A service object (protocol/port combination)
+      properties:
+        id:
+          type: integer
+          description: Service identifier
+        name:
+          type: string
+          description: Service name
+        protocol:
+          type: string
+          description: Protocol (TCP, UDP, ICMP)
+        port:
+          type: string
+          description: Port number or range
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Tufin Orchestration Suite credentials. The authenticated user's TOS permissions apply to all API requests.
+externalDocs:
+  description: Tufin SecureChange REST API Documentation
+  url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm

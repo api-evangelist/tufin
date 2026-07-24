@@ -1,0 +1,177 @@
+openapi: 3.1.0
+info:
+  title: Tufin SecureChange REST Compliance Tasks API
+  description: The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.
+  version: R25-2
+  contact:
+    name: Tufin Support
+    url: https://www.tufin.com/support
+  license:
+    name: Tufin Terms of Use
+    url: https://www.tufin.com/terms-of-use
+servers:
+- url: https://{tos_host}/securechangeworkflow/api/securechange
+  description: Tufin SecureChange Server
+  variables:
+    tos_host:
+      description: Hostname or IP address of the TOS server
+      default: tufin.example.com
+tags:
+- name: Tasks
+  description: Workflow tasks and approvals
+paths:
+  /tickets/{ticketId}/tasks:
+    get:
+      operationId: getTicketTasks
+      summary: Get Ticket Tasks
+      description: Retrieve all workflow tasks associated with a ticket.
+      tags:
+      - Tasks
+      security:
+      - basicAuth: []
+      parameters:
+      - name: ticketId
+        in: path
+        required: true
+        description: The unique identifier of the ticket
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of tasks
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tasks:
+                    type: object
+                    properties:
+                      task:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Task'
+  /tickets/{ticketId}/tasks/{taskId}:
+    get:
+      operationId: getTaskById
+      summary: Get Task By ID
+      description: Retrieve a specific workflow task by ticket and task ID.
+      tags:
+      - Tasks
+      security:
+      - basicAuth: []
+      parameters:
+      - name: ticketId
+        in: path
+        required: true
+        description: The unique identifier of the ticket
+        schema:
+          type: integer
+      - name: taskId
+        in: path
+        required: true
+        description: The unique identifier of the task
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Task details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '404':
+          description: Task not found
+    put:
+      operationId: updateTask
+      summary: Update Task
+      description: Update a workflow task (e.g., approve, reject, or provide implementation details).
+      tags:
+      - Tasks
+      security:
+      - basicAuth: []
+      parameters:
+      - name: ticketId
+        in: path
+        required: true
+        description: The unique identifier of the ticket
+        schema:
+          type: integer
+      - name: taskId
+        in: path
+        required: true
+        description: The unique identifier of the task
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskUpdate'
+      responses:
+        '200':
+          description: Task updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+components:
+  schemas:
+    TaskUpdate:
+      type: object
+      description: Input for updating a task
+      properties:
+        status:
+          type: string
+          description: New task status
+        comment:
+          type: string
+          description: Comment to add to the task
+        fields:
+          type: array
+          items:
+            type: object
+          description: Updated field values
+    Task:
+      type: object
+      description: A workflow task within a SecureChange ticket
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the task
+        name:
+          type: string
+          description: Task name
+        type:
+          type: string
+          description: Task type (e.g., approval, implementation, verification)
+        status:
+          type: string
+          description: Current task status
+          enum:
+          - New
+          - In Progress
+          - Completed
+          - Rejected
+          - Not Started
+        assignee:
+          type: string
+          description: Username assigned to this task
+        due_date:
+          type: string
+          format: date-time
+          description: Task due date
+        fields:
+          type: array
+          items:
+            type: object
+          description: Dynamic task fields based on workflow configuration
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Tufin Orchestration Suite credentials. The authenticated user's TOS permissions apply to all API requests.
+externalDocs:
+  description: Tufin SecureChange REST API Documentation
+  url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm

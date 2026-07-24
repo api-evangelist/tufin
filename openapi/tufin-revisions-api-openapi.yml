@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  title: Tufin SecureChange REST Compliance Revisions API
+  description: The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.
+  version: R25-2
+  contact:
+    name: Tufin Support
+    url: https://www.tufin.com/support
+  license:
+    name: Tufin Terms of Use
+    url: https://www.tufin.com/terms-of-use
+servers:
+- url: https://{tos_host}/securechangeworkflow/api/securechange
+  description: Tufin SecureChange Server
+  variables:
+    tos_host:
+      description: Hostname or IP address of the TOS server
+      default: tufin.example.com
+tags:
+- name: Revisions
+  description: Device policy revisions and change history
+paths:
+  /devices/{deviceId}/revisions:
+    get:
+      operationId: getDeviceRevisions
+      summary: Get Device Revisions
+      description: Retrieve the list of policy revisions for a device.
+      tags:
+      - Revisions
+      security:
+      - basicAuth: []
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        description: The unique identifier of the device
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of revisions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  revisions:
+                    type: object
+                    properties:
+                      revision:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Revision'
+components:
+  schemas:
+    Revision:
+      type: object
+      description: A policy revision for a device
+      properties:
+        id:
+          type: integer
+          description: Revision identifier
+        device_id:
+          type: integer
+          description: Device this revision belongs to
+        date:
+          type: string
+          format: date-time
+          description: When this revision was recorded
+        description:
+          type: string
+          description: Description of changes in this revision
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Tufin Orchestration Suite credentials. The authenticated user's TOS permissions apply to all API requests.
+externalDocs:
+  description: Tufin SecureChange REST API Documentation
+  url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm

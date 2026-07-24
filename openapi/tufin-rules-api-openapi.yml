@@ -1,0 +1,178 @@
+openapi: 3.1.0
+info:
+  title: Tufin SecureChange REST Compliance Rules API
+  description: The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.
+  version: R25-2
+  contact:
+    name: Tufin Support
+    url: https://www.tufin.com/support
+  license:
+    name: Tufin Terms of Use
+    url: https://www.tufin.com/terms-of-use
+servers:
+- url: https://{tos_host}/securechangeworkflow/api/securechange
+  description: Tufin SecureChange Server
+  variables:
+    tos_host:
+      description: Hostname or IP address of the TOS server
+      default: tufin.example.com
+tags:
+- name: Rules
+  description: Query and manage firewall rules and policies
+paths:
+  /devices/{deviceId}/rules:
+    get:
+      operationId: getRulesByDevice
+      summary: Get Rules By Device
+      description: Retrieve all firewall rules for a specific device.
+      tags:
+      - Rules
+      security:
+      - basicAuth: []
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        description: The unique identifier of the device
+        schema:
+          type: integer
+      - name: policy
+        in: query
+        description: Filter by policy name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of rules
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rules:
+                    type: object
+                    properties:
+                      count:
+                        type: integer
+                      rule:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Rule'
+  /devices/{deviceId}/rules/{ruleId}:
+    get:
+      operationId: getRuleByDeviceAndId
+      summary: Get Rule By Device and ID
+      description: Retrieve a specific firewall rule by device and rule ID.
+      tags:
+      - Rules
+      security:
+      - basicAuth: []
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        description: The unique identifier of the device
+        schema:
+          type: integer
+      - name: ruleId
+        in: path
+        required: true
+        description: The unique identifier of the rule
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Rule details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rule'
+        '404':
+          description: Rule not found
+components:
+  schemas:
+    Rule:
+      type: object
+      description: A firewall rule on a network device
+      properties:
+        id:
+          type: integer
+          description: Rule identifier
+        name:
+          type: string
+          description: Rule name
+        enabled:
+          type: boolean
+          description: Whether the rule is enabled
+        action:
+          type: string
+          description: Rule action (ACCEPT, DROP, REJECT)
+          enum:
+          - ACCEPT
+          - DROP
+          - REJECT
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/NetworkObject'
+          description: Source network objects
+        destinations:
+          type: array
+          items:
+            $ref: '#/components/schemas/NetworkObject'
+          description: Destination network objects
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
+          description: Services this rule applies to
+        comment:
+          type: string
+          description: Rule comment or documentation
+        lastHit:
+          type: string
+          format: date-time
+          description: Last time this rule was matched
+    NetworkObject:
+      type: object
+      description: A network object (host, range, or group)
+      properties:
+        id:
+          type: integer
+          description: Object identifier
+        name:
+          type: string
+          description: Object name
+        type:
+          type: string
+          description: Object type (host, range, group)
+        ip:
+          type: string
+          description: IP address or range
+        netmask:
+          type: string
+          description: Network mask
+    Service:
+      type: object
+      description: A service object (protocol/port combination)
+      properties:
+        id:
+          type: integer
+          description: Service identifier
+        name:
+          type: string
+          description: Service name
+        protocol:
+          type: string
+          description: Protocol (TCP, UDP, ICMP)
+        port:
+          type: string
+          description: Port number or range
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Tufin Orchestration Suite credentials. The authenticated user's TOS permissions apply to all API requests.
+externalDocs:
+  description: Tufin SecureChange REST API Documentation
+  url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm

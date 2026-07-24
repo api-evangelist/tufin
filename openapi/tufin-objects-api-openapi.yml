@@ -1,0 +1,144 @@
+openapi: 3.1.0
+info:
+  title: Tufin SecureChange REST Compliance Objects API
+  description: The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.
+  version: R25-2
+  contact:
+    name: Tufin Support
+    url: https://www.tufin.com/support
+  license:
+    name: Tufin Terms of Use
+    url: https://www.tufin.com/terms-of-use
+servers:
+- url: https://{tos_host}/securechangeworkflow/api/securechange
+  description: Tufin SecureChange Server
+  variables:
+    tos_host:
+      description: Hostname or IP address of the TOS server
+      default: tufin.example.com
+tags:
+- name: Objects
+  description: Network objects, services, and address groups
+paths:
+  /network_objects:
+    get:
+      operationId: getNetworkObjects
+      summary: Get Network Objects
+      description: Search for network objects (hosts, ranges, groups) across all managed devices.
+      tags:
+      - Objects
+      security:
+      - basicAuth: []
+      parameters:
+      - name: name
+        in: query
+        description: Filter by object name
+        schema:
+          type: string
+      - name: ip
+        in: query
+        description: Filter by IP address
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Filter by object type (host, range, group)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of network objects
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  network_objects:
+                    type: object
+                    properties:
+                      count:
+                        type: integer
+                      network_object:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/NetworkObject'
+  /services:
+    get:
+      operationId: getServices
+      summary: Get Services
+      description: Search for service objects (protocols and ports) across all managed devices.
+      tags:
+      - Objects
+      security:
+      - basicAuth: []
+      parameters:
+      - name: name
+        in: query
+        description: Filter by service name
+        schema:
+          type: string
+      - name: port
+        in: query
+        description: Filter by port number
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of services
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  services:
+                    type: object
+                    properties:
+                      service:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Service'
+components:
+  schemas:
+    Service:
+      type: object
+      description: A service object (protocol/port combination)
+      properties:
+        id:
+          type: integer
+          description: Service identifier
+        name:
+          type: string
+          description: Service name
+        protocol:
+          type: string
+          description: Protocol (TCP, UDP, ICMP)
+        port:
+          type: string
+          description: Port number or range
+    NetworkObject:
+      type: object
+      description: A network object (host, range, or group)
+      properties:
+        id:
+          type: integer
+          description: Object identifier
+        name:
+          type: string
+          description: Object name
+        type:
+          type: string
+          description: Object type (host, range, group)
+        ip:
+          type: string
+          description: IP address or range
+        netmask:
+          type: string
+          description: Network mask
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Tufin Orchestration Suite credentials. The authenticated user's TOS permissions apply to all API requests.
+externalDocs:
+  description: Tufin SecureChange REST API Documentation
+  url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
