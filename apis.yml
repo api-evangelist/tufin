@@ -5,6 +5,19 @@ description: >-
   SecureTrack for network topology and policy analysis, SecureChange for automated policy change workflows, SecureApp
   for application-centric policy management, and SecureCloud for cloud-native security posture management. Tufin offers
   comprehensive REST APIs and GraphQL APIs for integrating with ITSM, SIEM, and other security tools.
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.tufin.com/themes/custom/tufin/logo.svg
 url: https://www.tufin.com
 created: '2025'
@@ -21,83 +34,11 @@ tags:
 - Security Policy Management
 - Zero Trust
 apis:
-- name: Tufin SecureTrack API
-  description: >-
-    The SecureTrack REST API enables programmatic access to Tufin's network security policy management platform. It
-    supports querying network devices and firewall rules, analyzing network topology and path queries, retrieving
-    policy compliance data, performing risk and cleanup analysis, managing rule documentation and recertification, and
-    searching for network objects, services, and interfaces across multi-vendor firewall infrastructure.
-    Authentication uses HTTP Basic Auth with TOS credentials.
-  image: https://www.tufin.com/themes/custom/tufin/logo.svg
-  humanURL: https://www.tufin.com/products/securetrack
-  baseURL: https://{tos_host}/securetrack/api
-  tags:
-  - Compliance
-  - Firewall Rules
-  - Network Devices
-  - Network Topology
-  - Policy Analysis
-  - Risk Analysis
-  properties:
-  - type: Documentation
-    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
-  - type: SwaggerUI
-    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securetrack/apidoc/
-  - type: Authentication
-    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
-  - type: Reference
-    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4420.htm
-  - type: GettingStarted
-    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
-  - type: OpenAPI
-    url: openapi/tufin-securetrack-openapi.yml
-  features:
-  - name: Device and Policy Management
-    description: Retrieve, add, and update firewall devices and security policies across multi-vendor environments.
-  - name: Network Topology Analysis
-    description: Query network paths, retrieve topology maps, and analyze traffic flows across the managed network.
-  - name: Risk and Compliance Analysis
-    description: Identify policy violations, clean up unused rules, and generate compliance reports.
-  - name: Rule Search and Documentation
-    description: Search for rules, network objects, and services across all managed devices with full documentation support.
-- name: Tufin SecureChange API
-  description: >-
-    The SecureChange REST API automates security policy change workflows, enabling programmatic submission and
-    management of access request tickets, approval workflows, and change implementation across network infrastructure.
-    Supports integration with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation.
-  image: https://www.tufin.com/themes/custom/tufin/logo.svg
-  humanURL: https://www.tufin.com/products/securechange
-  baseURL: https://{tos_host}/securechangeworkflow/api
-  tags:
-  - Approvals
-  - Change Management
-  - ITSM Integration
-  - Policy Changes
-  - Ticketing
-  - Workflow Automation
-  properties:
-  - type: Documentation
-    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
-  - type: SwaggerUI
-    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securechangeworkflow/apidoc/
-  - type: Reference
-    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
-  - type: Authentication
-    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
-  - type: OpenAPI
-    url: openapi/tufin-securechange-openapi.yml
-  features:
-  - name: Access Request Tickets
-    description: Create, retrieve, and update security access request tickets programmatically.
-  - name: Workflow Automation
-    description: Automate the full lifecycle of security policy changes from request through approval to implementation.
-  - name: ITSM Integration
-    description: Integrate with ServiceNow, Jira, and other ITSM platforms for unified change management.
 - name: Tufin SecureApp API
   description: >-
-    API for application-centric security policy management and micro-segmentation. SecureApp enables teams to manage
-    security policies at the application level, define connectivity requirements, and automate policy changes for
-    application deployments.
+    API for application-centric security policy management and micro-segmentation. SecureApp enables teams
+    to manage security policies at the application level, define connectivity requirements, and automate
+    policy changes for application deployments.
   image: https://www.tufin.com/themes/custom/tufin/logo.svg
   humanURL: https://www.tufin.com/products/secureapp
   baseURL: https://{tos_host}/securechangeworkflow/api
@@ -113,9 +54,9 @@ apis:
     url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/6481.htm
 - name: Tufin SecureTrack GraphQL API
   description: >-
-    GraphQL API for the Tufin Orchestration Suite providing flexible querying capabilities for security policy data,
-    network topology, and compliance information. Uses OAuth2 authentication and supports complex nested queries
-    across SecureTrack resources including devices, policies, rules, and topology.
+    GraphQL API for the Tufin Orchestration Suite providing flexible querying capabilities for security
+    policy data, network topology, and compliance information. Uses OAuth2 authentication and supports
+    complex nested queries across SecureTrack resources including devices, policies, rules, and topology.
   image: https://www.tufin.com/themes/custom/tufin/logo.svg
   humanURL: https://forum.tufin.com/support/kc/latest/Content/ST2/API/API_Introduction.htm
   baseURL: https://{tos_ip}/v2/api/sync/graphql
@@ -134,10 +75,10 @@ apis:
     type: GraphQL
 - name: Tufin SecureCloud API
   description: >-
-    REST API for Tufin SecureCloud, the cloud-native security policy management platform. Provides endpoints for
-    managing cloud accounts, applications, assets, Kubernetes clusters, and security policies across AWS, Azure, and
-    GCP environments. Enables cloud security posture management (CSPM) and Kubernetes network policy enforcement
-    through API integration.
+    REST API for Tufin SecureCloud, the cloud-native security policy management platform. Provides endpoints
+    for managing cloud accounts, applications, assets, Kubernetes clusters, and security policies across
+    AWS, Azure, and GCP environments. Enables cloud security posture management (CSPM) and Kubernetes
+    network policy enforcement through API integration.
   image: https://www.tufin.com/themes/custom/tufin/logo.svg
   humanURL: https://www.tufin.com/tufin-orchestration-suite/securecloud
   baseURL: https://{account}.securecloud.tufin.io/api/v1
@@ -152,7 +93,295 @@ apis:
     url: https://forum.tufin.com/support/kc/securecloud/
   - type: Reference
     url: https://securecloud.tufin.io/api-documentation/index.html
+- aid: tufin:tufin-compliance-api
+  name: Tufin Compliance API
+  description: Policy compliance and risk analysis
+  humanURL: https://www.tufin.com/products/securetrack
+  baseURL: https://{tos_host}/securetrack/api
+  tags:
+  - Compliance
+  properties:
+  - type: OpenAPI
+    url: openapi/tufin-compliance-api-openapi.yml
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securetrack/apidoc/
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4420.htm
+  - type: GettingStarted
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securechangeworkflow/apidoc/
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+- aid: tufin:tufin-devices-api
+  name: Tufin Devices API
+  description: Manage network devices and firewalls
+  humanURL: https://www.tufin.com/products/securetrack
+  baseURL: https://{tos_host}/securetrack/api
+  tags:
+  - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/tufin-devices-api-openapi.yml
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securetrack/apidoc/
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4420.htm
+  - type: GettingStarted
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securechangeworkflow/apidoc/
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+- aid: tufin:tufin-objects-api
+  name: Tufin Objects API
+  description: Network objects, services, and address groups
+  humanURL: https://www.tufin.com/products/securetrack
+  baseURL: https://{tos_host}/securetrack/api
+  tags:
+  - Objects
+  properties:
+  - type: OpenAPI
+    url: openapi/tufin-objects-api-openapi.yml
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securetrack/apidoc/
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4420.htm
+  - type: GettingStarted
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securechangeworkflow/apidoc/
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+- aid: tufin:tufin-revisions-api
+  name: Tufin Revisions API
+  description: Device policy revisions and change history
+  humanURL: https://www.tufin.com/products/securetrack
+  baseURL: https://{tos_host}/securetrack/api
+  tags:
+  - Revisions
+  properties:
+  - type: OpenAPI
+    url: openapi/tufin-revisions-api-openapi.yml
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securetrack/apidoc/
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4420.htm
+  - type: GettingStarted
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securechangeworkflow/apidoc/
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+- aid: tufin:tufin-rules-api
+  name: Tufin Rules API
+  description: Query and manage firewall rules and policies
+  humanURL: https://www.tufin.com/products/securetrack
+  baseURL: https://{tos_host}/securetrack/api
+  tags:
+  - Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/tufin-rules-api-openapi.yml
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securetrack/apidoc/
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4420.htm
+  - type: GettingStarted
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securechangeworkflow/apidoc/
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+- aid: tufin:tufin-tasks-api
+  name: Tufin Tasks API
+  description: Workflow tasks and approvals
+  humanURL: https://www.tufin.com/products/securetrack
+  baseURL: https://{tos_host}/securetrack/api
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/tufin-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securetrack/apidoc/
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4420.htm
+  - type: GettingStarted
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securechangeworkflow/apidoc/
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+- aid: tufin:tufin-tickets-api
+  name: Tufin Tickets API
+  description: Create and manage security change tickets
+  humanURL: https://www.tufin.com/products/securetrack
+  baseURL: https://{tos_host}/securetrack/api
+  tags:
+  - Tickets
+  properties:
+  - type: OpenAPI
+    url: openapi/tufin-tickets-api-openapi.yml
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securetrack/apidoc/
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4420.htm
+  - type: GettingStarted
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securechangeworkflow/apidoc/
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+- aid: tufin:tufin-topology-api
+  name: Tufin Topology API
+  description: Network topology analysis and path queries
+  humanURL: https://www.tufin.com/products/securetrack
+  baseURL: https://{tos_host}/securetrack/api
+  tags:
+  - Topology
+  properties:
+  - type: OpenAPI
+    url: openapi/tufin-topology-api-openapi.yml
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securetrack/apidoc/
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4420.htm
+  - type: GettingStarted
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securechangeworkflow/apidoc/
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+- aid: tufin:tufin-users-api
+  name: Tufin Users API
+  description: User and group management
+  humanURL: https://www.tufin.com/products/securetrack
+  baseURL: https://{tos_host}/securetrack/api
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/tufin-users-api-openapi.yml
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securetrack/apidoc/
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4420.htm
+  - type: GettingStarted
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securechangeworkflow/apidoc/
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+- aid: tufin:tufin-workflow-definitions-api
+  name: Tufin Workflow Definitions API
+  description: Workflow template definitions
+  humanURL: https://www.tufin.com/products/securetrack
+  baseURL: https://{tos_host}/securetrack/api
+  tags:
+  - Workflow Definitions
+  properties:
+  - type: OpenAPI
+    url: openapi/tufin-workflow-definitions-api-openapi.yml
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securetrack/apidoc/
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4420.htm
+  - type: GettingStarted
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securechangeworkflow/apidoc/
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+- aid: tufin:tufin-zones-api
+  name: Tufin Zones API
+  description: Security zones and zone-to-zone matrix
+  humanURL: https://www.tufin.com/products/securetrack
+  baseURL: https://{tos_host}/securetrack/api
+  tags:
+  - Zones
+  properties:
+  - type: OpenAPI
+    url: openapi/tufin-zones-api-openapi.yml
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securetrack/apidoc/
+  - type: Authentication
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4420.htm
+  - type: GettingStarted
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/4423.htm
+  - type: Documentation
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+  - type: SwaggerUI
+    url: https://forum.tufin.com/support/kc/rest-api/R24-1/securechangeworkflow/apidoc/
+  - type: Reference
+    url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/tufin/overview
 - type: AgenticAccess
   url: agentic-access/tufin-agentic-access.yml
 - type: DomainSecurity
