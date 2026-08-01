@@ -1,0 +1,135 @@
+{
+  "info": {
+    "_postman_id": "34ee0bda-2640-44f3-9e5d-b90052670f08",
+    "name": "Tufin SecureChange REST Compliance Users API",
+    "description": "The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.\n\nContact Support:\n Name: Tufin Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:45.000Z",
+    "updatedAt": "2026-07-28T03:20:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-34ee0bda-2640-44f3-9e5d-b90052670f08"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "Get Users",
+          "id": "5d19a4f2-a5e8-4324-9e7a-e8ab9a575d9f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users?name=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "description": "Filter by username",
+                  "key": "name",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve all users defined in SecureChange."
+          },
+          "response": [
+            {
+              "id": "da0266ee-0a40-4773-95fb-8050455d8465",
+              "name": "List of users",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?name=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by username",
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"users\": {\n    \"user\": [\n      {\n        \"id\": \"<integer>\",\n        \"username\": \"<string>\",\n        \"email\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"groups\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"id\": \"<integer>\",\n        \"username\": \"<string>\",\n        \"email\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"groups\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T03:20:45.000Z",
+              "updatedAt": "2026-07-28T03:20:45.000Z",
+              "uid": "35240-da0266ee-0a40-4773-95fb-8050455d8465"
+            }
+          ],
+          "createdAt": "2026-07-28T03:20:45.000Z",
+          "updatedAt": "2026-07-28T03:20:45.000Z",
+          "uid": "35240-5d19a4f2-a5e8-4324-9e7a-e8ab9a575d9f"
+        }
+      ],
+      "id": "210029b5-de13-405a-a403-bb7c1463ba68",
+      "createdAt": "2026-07-28T03:20:45.000Z",
+      "updatedAt": "2026-07-28T03:20:45.000Z",
+      "uid": "35240-210029b5-de13-405a-a403-bb7c1463ba68"
+    }
+  ],
+  "variable": [
+    {
+      "key": "tos_host",
+      "value": "tufin.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tos_host}}/securechangeworkflow/api/securechange"
+    }
+  ]
+}

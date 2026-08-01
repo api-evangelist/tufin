@@ -1,0 +1,276 @@
+{
+  "info": {
+    "_postman_id": "835bac9c-c3ed-4ed2-ac5b-c212dc119584",
+    "name": "Tufin SecureChange REST Compliance Objects API",
+    "description": "The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.\n\nContact Support:\n Name: Tufin Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:39.000Z",
+    "updatedAt": "2026-07-28T03:20:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-835bac9c-c3ed-4ed2-ac5b-c212dc119584"
+  },
+  "item": [
+    {
+      "name": "network_objects",
+      "item": [
+        {
+          "name": "Get Network Objects",
+          "id": "881e9812-3da3-412b-b509-9ec9dfdcab52",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/network_objects?name=<string>&ip=<string>&type=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "network_objects"
+              ],
+              "query": [
+                {
+                  "description": "Filter by object name",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by IP address",
+                  "key": "ip",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by object type (host, range, group)",
+                  "key": "type",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Search for network objects (hosts, ranges, groups) across all managed devices."
+          },
+          "response": [
+            {
+              "id": "38e12791-19d7-4529-9830-7bcf3ce8d4d7",
+              "name": "List of network objects",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/network_objects?name=<string>&ip=<string>&type=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "network_objects"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by object name",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by IP address",
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by object type (host, range, group)",
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"network_objects\": {\n    \"count\": \"<integer>\",\n    \"network_object\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"ip\": \"<string>\",\n        \"netmask\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"ip\": \"<string>\",\n        \"netmask\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T03:20:39.000Z",
+              "updatedAt": "2026-07-28T03:20:39.000Z",
+              "uid": "35240-38e12791-19d7-4529-9830-7bcf3ce8d4d7"
+            }
+          ],
+          "createdAt": "2026-07-28T03:20:39.000Z",
+          "updatedAt": "2026-07-28T03:20:39.000Z",
+          "uid": "35240-881e9812-3da3-412b-b509-9ec9dfdcab52"
+        }
+      ],
+      "id": "bd1dff62-00e7-4c06-934a-d148b52e2577",
+      "createdAt": "2026-07-28T03:20:39.000Z",
+      "updatedAt": "2026-07-28T03:20:39.000Z",
+      "uid": "35240-bd1dff62-00e7-4c06-934a-d148b52e2577"
+    },
+    {
+      "name": "services",
+      "item": [
+        {
+          "name": "Get Services",
+          "id": "005419cd-452c-499e-a10d-f4874d19c12f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services?name=<string>&port=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services"
+              ],
+              "query": [
+                {
+                  "description": "Filter by service name",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by port number",
+                  "key": "port",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Search for service objects (protocols and ports) across all managed devices."
+          },
+          "response": [
+            {
+              "id": "ea783131-d3e1-43f6-843f-d1f5f75a37e6",
+              "name": "List of services",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/services?name=<string>&port=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "services"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by service name",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by port number",
+                      "key": "port",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"services\": {\n    \"service\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"port\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"protocol\": \"<string>\",\n        \"port\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T03:20:39.000Z",
+              "updatedAt": "2026-07-28T03:20:39.000Z",
+              "uid": "35240-ea783131-d3e1-43f6-843f-d1f5f75a37e6"
+            }
+          ],
+          "createdAt": "2026-07-28T03:20:39.000Z",
+          "updatedAt": "2026-07-28T03:20:39.000Z",
+          "uid": "35240-005419cd-452c-499e-a10d-f4874d19c12f"
+        }
+      ],
+      "id": "ad32e390-faad-4c5b-b475-bb3c7b2add4b",
+      "createdAt": "2026-07-28T03:20:39.000Z",
+      "updatedAt": "2026-07-28T03:20:39.000Z",
+      "uid": "35240-ad32e390-faad-4c5b-b475-bb3c7b2add4b"
+    }
+  ],
+  "variable": [
+    {
+      "key": "tos_host",
+      "value": "tufin.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tos_host}}/securechangeworkflow/api/securechange"
+    }
+  ]
+}

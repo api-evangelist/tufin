@@ -1,0 +1,469 @@
+{
+  "info": {
+    "_postman_id": "cdfebd51-fe86-47dc-bd0a-e6122ad376b6",
+    "name": "Tufin SecureChange REST Compliance Tasks API",
+    "description": "The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.\n\nContact Support:\n Name: Tufin Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:42.000Z",
+    "updatedAt": "2026-07-28T03:20:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cdfebd51-fe86-47dc-bd0a-e6122ad376b6"
+  },
+  "item": [
+    {
+      "name": "tickets",
+      "item": [
+        {
+          "name": "{ticketId}",
+          "item": [
+            {
+              "name": "tasks",
+              "item": [
+                {
+                  "name": "{taskId}",
+                  "item": [
+                    {
+                      "name": "Get Task By ID",
+                      "id": "27d06462-3d9d-4289-81d7-d8fb268a992d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/tickets/:ticketId/tasks/:taskId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tickets",
+                            ":ticketId",
+                            "tasks",
+                            ":taskId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b26ec894-1269-431e-a6c7-e69232b384c3",
+                              "key": "ticketId",
+                              "value": "<integer>",
+                              "description": "(Required) The unique identifier of the ticket"
+                            },
+                            {
+                              "id": "55d18a72-41af-4626-9902-bce6dbcc7340",
+                              "key": "taskId",
+                              "value": "<integer>",
+                              "description": "(Required) The unique identifier of the task"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a specific workflow task by ticket and task ID."
+                      },
+                      "response": [
+                        {
+                          "id": "8cf328a0-c54f-40e6-8af3-b41056fcd867",
+                          "name": "Task details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/tickets/:ticketId/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "tickets",
+                                ":ticketId",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ticketId"
+                                },
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"status\": \"In Progress\",\n  \"assignee\": \"<string>\",\n  \"due_date\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T03:20:43.000Z",
+                          "updatedAt": "2026-07-28T03:20:43.000Z",
+                          "uid": "35240-8cf328a0-c54f-40e6-8af3-b41056fcd867"
+                        },
+                        {
+                          "id": "9dded733-2f3d-4543-b3e0-929dadc91799",
+                          "name": "Task not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/tickets/:ticketId/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "tickets",
+                                ":ticketId",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ticketId"
+                                },
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:20:43.000Z",
+                          "updatedAt": "2026-07-28T03:20:43.000Z",
+                          "uid": "35240-9dded733-2f3d-4543-b3e0-929dadc91799"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:20:43.000Z",
+                      "updatedAt": "2026-07-28T03:20:43.000Z",
+                      "uid": "35240-27d06462-3d9d-4289-81d7-d8fb268a992d"
+                    },
+                    {
+                      "name": "Update Task",
+                      "id": "c4ebf7ab-f538-4992-813e-0e65aad3e9d4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"status\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/tickets/:ticketId/tasks/:taskId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tickets",
+                            ":ticketId",
+                            "tasks",
+                            ":taskId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fa2c749f-1a10-46ed-a763-c117dc0f8653",
+                              "key": "ticketId",
+                              "value": "<integer>",
+                              "description": "(Required) The unique identifier of the ticket"
+                            },
+                            {
+                              "id": "5feaafa8-3280-4266-9630-5587eb7eb4fc",
+                              "key": "taskId",
+                              "value": "<integer>",
+                              "description": "(Required) The unique identifier of the task"
+                            }
+                          ]
+                        },
+                        "description": "Update a workflow task (e.g., approve, reject, or provide implementation details)."
+                      },
+                      "response": [
+                        {
+                          "id": "b7ca7d08-5262-4a54-a686-5e3c7c87a94f",
+                          "name": "Task updated",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/tickets/:ticketId/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "tickets",
+                                ":ticketId",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ticketId"
+                                },
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"status\": \"In Progress\",\n  \"assignee\": \"<string>\",\n  \"due_date\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T03:20:43.000Z",
+                          "updatedAt": "2026-07-28T03:20:43.000Z",
+                          "uid": "35240-b7ca7d08-5262-4a54-a686-5e3c7c87a94f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:20:43.000Z",
+                      "updatedAt": "2026-07-28T03:20:43.000Z",
+                      "uid": "35240-c4ebf7ab-f538-4992-813e-0e65aad3e9d4"
+                    }
+                  ],
+                  "id": "cd59ac1d-7057-4160-a791-a0dd9c245fa1",
+                  "createdAt": "2026-07-28T03:20:43.000Z",
+                  "updatedAt": "2026-07-28T03:20:43.000Z",
+                  "uid": "35240-cd59ac1d-7057-4160-a791-a0dd9c245fa1"
+                },
+                {
+                  "name": "Get Ticket Tasks",
+                  "id": "90e0ef80-4d3e-4be9-ae11-d048ec7920d2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId/tasks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId",
+                        "tasks"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8990f2a3-5a70-4d5e-aafd-79fcbe1cc9ca",
+                          "key": "ticketId",
+                          "value": "<integer>",
+                          "description": "(Required) The unique identifier of the ticket"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all workflow tasks associated with a ticket."
+                  },
+                  "response": [
+                    {
+                      "id": "e2762fce-aa80-4885-aa55-efd953648f55",
+                      "name": "List of tasks",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/tickets/:ticketId/tasks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tickets",
+                            ":ticketId",
+                            "tasks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ticketId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"tasks\": {\n    \"task\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"Not Started\",\n        \"assignee\": \"<string>\",\n        \"due_date\": \"<dateTime>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"Completed\",\n        \"assignee\": \"<string>\",\n        \"due_date\": \"<dateTime>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T03:20:43.000Z",
+                      "updatedAt": "2026-07-28T03:20:43.000Z",
+                      "uid": "35240-e2762fce-aa80-4885-aa55-efd953648f55"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:43.000Z",
+                  "updatedAt": "2026-07-28T03:20:43.000Z",
+                  "uid": "35240-90e0ef80-4d3e-4be9-ae11-d048ec7920d2"
+                }
+              ],
+              "id": "651ee34f-6627-44ff-b584-9ede0f1fdabc",
+              "createdAt": "2026-07-28T03:20:43.000Z",
+              "updatedAt": "2026-07-28T03:20:43.000Z",
+              "uid": "35240-651ee34f-6627-44ff-b584-9ede0f1fdabc"
+            }
+          ],
+          "id": "536f0bc3-1316-4e3b-ac1e-bc5b47a4b9c5",
+          "createdAt": "2026-07-28T03:20:43.000Z",
+          "updatedAt": "2026-07-28T03:20:43.000Z",
+          "uid": "35240-536f0bc3-1316-4e3b-ac1e-bc5b47a4b9c5"
+        }
+      ],
+      "id": "f05016b9-261b-45ec-a1b4-b8951cf05300",
+      "createdAt": "2026-07-28T03:20:43.000Z",
+      "updatedAt": "2026-07-28T03:20:43.000Z",
+      "uid": "35240-f05016b9-261b-45ec-a1b4-b8951cf05300"
+    }
+  ],
+  "variable": [
+    {
+      "key": "tos_host",
+      "value": "tufin.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tos_host}}/securechangeworkflow/api/securechange"
+    }
+  ]
+}

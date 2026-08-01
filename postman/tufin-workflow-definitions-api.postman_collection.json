@@ -1,0 +1,121 @@
+{
+  "info": {
+    "_postman_id": "ebf6a919-4508-46e1-a0c2-146e32f719ab",
+    "name": "Tufin SecureChange REST Compliance Workflow Definitions API",
+    "description": "The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.\n\nContact Support:\n Name: Tufin Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:46.000Z",
+    "updatedAt": "2026-07-28T03:20:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ebf6a919-4508-46e1-a0c2-146e32f719ab"
+  },
+  "item": [
+    {
+      "name": "workflow_definitions",
+      "item": [
+        {
+          "name": "Get Workflow Definitions",
+          "id": "17df82fb-44d8-4223-bc08-bcc9efa28131",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/workflow_definitions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "workflow_definitions"
+              ]
+            },
+            "description": "Retrieve all workflow definitions (templates) configured in SecureChange."
+          },
+          "response": [
+            {
+              "id": "97668885-cd43-4e91-8560-2980500b730f",
+              "name": "List of workflow definitions",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workflow_definitions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workflow_definitions"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"workflow_definitions\": {\n    \"workflow_definition\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T03:20:46.000Z",
+              "updatedAt": "2026-07-28T03:20:46.000Z",
+              "uid": "35240-97668885-cd43-4e91-8560-2980500b730f"
+            }
+          ],
+          "createdAt": "2026-07-28T03:20:46.000Z",
+          "updatedAt": "2026-07-28T03:20:46.000Z",
+          "uid": "35240-17df82fb-44d8-4223-bc08-bcc9efa28131"
+        }
+      ],
+      "id": "92d22c24-3674-495f-b6f5-cbbe2790cac0",
+      "createdAt": "2026-07-28T03:20:46.000Z",
+      "updatedAt": "2026-07-28T03:20:46.000Z",
+      "uid": "35240-92d22c24-3674-495f-b6f5-cbbe2790cac0"
+    }
+  ],
+  "variable": [
+    {
+      "key": "tos_host",
+      "value": "tufin.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tos_host}}/securechangeworkflow/api/securechange"
+    }
+  ]
+}

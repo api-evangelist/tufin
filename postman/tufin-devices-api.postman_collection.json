@@ -1,0 +1,1027 @@
+{
+  "info": {
+    "_postman_id": "6f45a8c4-292e-40b5-9fff-dd61b56a2847",
+    "name": "Tufin SecureChange REST Compliance Devices API",
+    "description": "The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.\n\nContact Support:\n Name: Tufin Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:38.000Z",
+    "updatedAt": "2026-07-28T03:20:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6f45a8c4-292e-40b5-9fff-dd61b56a2847"
+  },
+  "item": [
+    {
+      "name": "devices",
+      "item": [
+        {
+          "name": "{deviceId}",
+          "item": [
+            {
+              "name": "revisions",
+              "item": [
+                {
+                  "name": "Get Device Revisions",
+                  "id": "c6ed8484-de0a-453a-bb1d-87500ea80dce",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/devices/:deviceId/revisions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "devices",
+                        ":deviceId",
+                        "revisions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "57d19ace-49a7-42d3-b372-43d706519781",
+                          "key": "deviceId",
+                          "value": "<integer>",
+                          "description": "(Required) The unique identifier of the device"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the list of policy revisions for a device."
+                  },
+                  "response": [
+                    {
+                      "id": "7733b8d2-15c0-4c2d-885d-a00f081594e1",
+                      "name": "List of revisions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/devices/:deviceId/revisions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "devices",
+                            ":deviceId",
+                            "revisions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"revisions\": {\n    \"revision\": [\n      {\n        \"id\": \"<integer>\",\n        \"device_id\": \"<integer>\",\n        \"date\": \"<dateTime>\",\n        \"description\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"device_id\": \"<integer>\",\n        \"date\": \"<dateTime>\",\n        \"description\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T03:20:38.000Z",
+                      "updatedAt": "2026-07-28T03:20:38.000Z",
+                      "uid": "35240-7733b8d2-15c0-4c2d-885d-a00f081594e1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:38.000Z",
+                  "updatedAt": "2026-07-28T03:20:38.000Z",
+                  "uid": "35240-c6ed8484-de0a-453a-bb1d-87500ea80dce"
+                }
+              ],
+              "id": "f46c5c6b-284b-4152-a886-0e0619bb624b",
+              "createdAt": "2026-07-28T03:20:38.000Z",
+              "updatedAt": "2026-07-28T03:20:38.000Z",
+              "uid": "35240-f46c5c6b-284b-4152-a886-0e0619bb624b"
+            },
+            {
+              "name": "rules",
+              "item": [
+                {
+                  "name": "{ruleId}",
+                  "item": [
+                    {
+                      "name": "Get Rule By Device and ID",
+                      "id": "763e6788-d52c-4ec3-8913-6637d19bc3af",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/devices/:deviceId/rules/:ruleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "devices",
+                            ":deviceId",
+                            "rules",
+                            ":ruleId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "7d3200f0-14a4-434d-b022-ff4f9e5a0e9a",
+                              "key": "deviceId",
+                              "value": "<integer>",
+                              "description": "(Required) The unique identifier of the device"
+                            },
+                            {
+                              "id": "eece4e5b-f0b8-4c12-9ec8-a6685214118f",
+                              "key": "ruleId",
+                              "value": "<integer>",
+                              "description": "(Required) The unique identifier of the rule"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a specific firewall rule by device and rule ID."
+                      },
+                      "response": [
+                        {
+                          "id": "7f1a0207-221f-4b0c-9db4-651a802d5e76",
+                          "name": "Rule details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/devices/:deviceId/rules/:ruleId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "devices",
+                                ":deviceId",
+                                "rules",
+                                ":ruleId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceId"
+                                },
+                                {
+                                  "key": "ruleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"action\": \"REJECT\",\n  \"sources\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"ip\": \"<string>\",\n      \"netmask\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"ip\": \"<string>\",\n      \"netmask\": \"<string>\"\n    }\n  ],\n  \"destinations\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"ip\": \"<string>\",\n      \"netmask\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"ip\": \"<string>\",\n      \"netmask\": \"<string>\"\n    }\n  ],\n  \"services\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"protocol\": \"<string>\",\n      \"port\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"protocol\": \"<string>\",\n      \"port\": \"<string>\"\n    }\n  ],\n  \"comment\": \"<string>\",\n  \"lastHit\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T03:20:38.000Z",
+                          "updatedAt": "2026-07-28T03:20:38.000Z",
+                          "uid": "35240-7f1a0207-221f-4b0c-9db4-651a802d5e76"
+                        },
+                        {
+                          "id": "f9722243-5e7a-40b4-88fc-df7c9ebf77f4",
+                          "name": "Rule not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/devices/:deviceId/rules/:ruleId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "devices",
+                                ":deviceId",
+                                "rules",
+                                ":ruleId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceId"
+                                },
+                                {
+                                  "key": "ruleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:20:38.000Z",
+                          "updatedAt": "2026-07-28T03:20:38.000Z",
+                          "uid": "35240-f9722243-5e7a-40b4-88fc-df7c9ebf77f4"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:20:38.000Z",
+                      "updatedAt": "2026-07-28T03:20:38.000Z",
+                      "uid": "35240-763e6788-d52c-4ec3-8913-6637d19bc3af"
+                    }
+                  ],
+                  "id": "a56f78c3-64b2-45e4-8a46-048c91876f4c",
+                  "createdAt": "2026-07-28T03:20:38.000Z",
+                  "updatedAt": "2026-07-28T03:20:38.000Z",
+                  "uid": "35240-a56f78c3-64b2-45e4-8a46-048c91876f4c"
+                },
+                {
+                  "name": "Get Rules By Device",
+                  "id": "d043d78e-8fc5-4d58-bf38-c7318b419fb7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/devices/:deviceId/rules?policy=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "devices",
+                        ":deviceId",
+                        "rules"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by policy name",
+                          "key": "policy",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "f961cd6c-fa43-4f7f-a6a3-eb7cd09ee352",
+                          "key": "deviceId",
+                          "value": "<integer>",
+                          "description": "(Required) The unique identifier of the device"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all firewall rules for a specific device."
+                  },
+                  "response": [
+                    {
+                      "id": "3604eb18-0735-4d71-a3b0-2d4893a35483",
+                      "name": "List of rules",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/devices/:deviceId/rules?policy=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "devices",
+                            ":deviceId",
+                            "rules"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by policy name",
+                              "key": "policy",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "deviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"rules\": {\n    \"count\": \"<integer>\",\n    \"rule\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"enabled\": \"<boolean>\",\n        \"action\": \"REJECT\",\n        \"sources\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          }\n        ],\n        \"destinations\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          }\n        ],\n        \"services\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"protocol\": \"<string>\",\n            \"port\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"protocol\": \"<string>\",\n            \"port\": \"<string>\"\n          }\n        ],\n        \"comment\": \"<string>\",\n        \"lastHit\": \"<dateTime>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"enabled\": \"<boolean>\",\n        \"action\": \"REJECT\",\n        \"sources\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          }\n        ],\n        \"destinations\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          }\n        ],\n        \"services\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"protocol\": \"<string>\",\n            \"port\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"protocol\": \"<string>\",\n            \"port\": \"<string>\"\n          }\n        ],\n        \"comment\": \"<string>\",\n        \"lastHit\": \"<dateTime>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T03:20:38.000Z",
+                      "updatedAt": "2026-07-28T03:20:38.000Z",
+                      "uid": "35240-3604eb18-0735-4d71-a3b0-2d4893a35483"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:38.000Z",
+                  "updatedAt": "2026-07-28T03:20:38.000Z",
+                  "uid": "35240-d043d78e-8fc5-4d58-bf38-c7318b419fb7"
+                }
+              ],
+              "id": "8c2d17ae-8489-4e47-bf3c-d3c8a58be17b",
+              "createdAt": "2026-07-28T03:20:38.000Z",
+              "updatedAt": "2026-07-28T03:20:38.000Z",
+              "uid": "35240-8c2d17ae-8489-4e47-bf3c-d3c8a58be17b"
+            },
+            {
+              "name": "Get Device By ID",
+              "id": "0ec9468f-3706-4e59-8416-87778785d2fe",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/devices/:deviceId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices",
+                    ":deviceId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "54c889ba-e60d-4057-aee1-f2a64b950d2d",
+                      "key": "deviceId",
+                      "value": "<integer>",
+                      "description": "(Required) The unique identifier of the device"
+                    }
+                  ]
+                },
+                "description": "Retrieve a specific network device by its identifier."
+              },
+              "response": [
+                {
+                  "id": "cc7a10d1-e877-41b2-b10e-f72fd867c344",
+                  "name": "Device details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/devices/:deviceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "devices",
+                        ":deviceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "deviceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"ip\": \"<string>\",\n  \"vendor\": \"<string>\",\n  \"model\": \"<string>\",\n  \"version\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"topology\": \"<boolean>\",\n  \"managedBy\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:20:38.000Z",
+                  "updatedAt": "2026-07-28T03:20:38.000Z",
+                  "uid": "35240-cc7a10d1-e877-41b2-b10e-f72fd867c344"
+                },
+                {
+                  "id": "0e88676b-9244-4d7d-82ae-a03afcd3acf7",
+                  "name": "Device not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/devices/:deviceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "devices",
+                        ":deviceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "deviceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:20:38.000Z",
+                  "updatedAt": "2026-07-28T03:20:38.000Z",
+                  "uid": "35240-0e88676b-9244-4d7d-82ae-a03afcd3acf7"
+                }
+              ],
+              "createdAt": "2026-07-28T03:20:38.000Z",
+              "updatedAt": "2026-07-28T03:20:38.000Z",
+              "uid": "35240-0ec9468f-3706-4e59-8416-87778785d2fe"
+            },
+            {
+              "name": "Update Device",
+              "id": "e66ab1bb-0433-4819-9e05-3066cec1dd3a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vendor\": \"<string>\",\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"ip\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/devices/:deviceId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices",
+                    ":deviceId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "26701389-0417-45f3-a1e9-453f58423057",
+                      "key": "deviceId",
+                      "value": "<integer>",
+                      "description": "(Required) The unique identifier of the device"
+                    }
+                  ]
+                },
+                "description": "Update an offline device's configuration."
+              },
+              "response": [
+                {
+                  "id": "9d1f5b38-582c-4afa-9672-440c989899b0",
+                  "name": "Device updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"vendor\": \"<string>\",\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"ip\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/devices/:deviceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "devices",
+                        ":deviceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "deviceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:20:38.000Z",
+                  "updatedAt": "2026-07-28T03:20:38.000Z",
+                  "uid": "35240-9d1f5b38-582c-4afa-9672-440c989899b0"
+                }
+              ],
+              "createdAt": "2026-07-28T03:20:38.000Z",
+              "updatedAt": "2026-07-28T03:20:38.000Z",
+              "uid": "35240-e66ab1bb-0433-4819-9e05-3066cec1dd3a"
+            }
+          ],
+          "id": "3a568055-ef12-40b6-8ce6-bc4b835921fe",
+          "createdAt": "2026-07-28T03:20:38.000Z",
+          "updatedAt": "2026-07-28T03:20:38.000Z",
+          "uid": "35240-3a568055-ef12-40b6-8ce6-bc4b835921fe"
+        },
+        {
+          "name": "offline",
+          "item": [
+            {
+              "name": "Add Offline Device",
+              "id": "3a2a5252-bde4-4eb9-b311-714f93bc6594",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vendor\": \"<string>\",\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"ip\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/devices/offline",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices",
+                    "offline"
+                  ]
+                },
+                "description": "Add an offline device to SecureTrack management."
+              },
+              "response": [
+                {
+                  "id": "65d098a0-72eb-48f1-8356-0535b069b22c",
+                  "name": "Offline device added",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"vendor\": \"<string>\",\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"ip\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/devices/offline",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "devices",
+                        "offline"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"ip\": \"<string>\",\n  \"vendor\": \"<string>\",\n  \"model\": \"<string>\",\n  \"version\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"topology\": \"<boolean>\",\n  \"managedBy\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:20:38.000Z",
+                  "updatedAt": "2026-07-28T03:20:38.000Z",
+                  "uid": "35240-65d098a0-72eb-48f1-8356-0535b069b22c"
+                }
+              ],
+              "createdAt": "2026-07-28T03:20:38.000Z",
+              "updatedAt": "2026-07-28T03:20:38.000Z",
+              "uid": "35240-3a2a5252-bde4-4eb9-b311-714f93bc6594"
+            }
+          ],
+          "id": "91d5f2d2-1efc-480b-aa1d-3a4642020d33",
+          "createdAt": "2026-07-28T03:20:38.000Z",
+          "updatedAt": "2026-07-28T03:20:38.000Z",
+          "uid": "35240-91d5f2d2-1efc-480b-aa1d-3a4642020d33"
+        },
+        {
+          "name": "Get All Devices",
+          "id": "992bfe13-4bbd-45cb-a78c-08443fdf539f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/devices?name=<string>&vendor=<string>&type=<string>&status=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "devices"
+              ],
+              "query": [
+                {
+                  "description": "Filter by device name (partial match)",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by vendor (e.g., Cisco, Palo Alto, Check Point)",
+                  "key": "vendor",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by device type",
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by management status",
+                  "key": "status",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve all network devices (firewalls, routers) managed by SecureTrack, optionally filtered by name, vendor, or management status."
+          },
+          "response": [
+            {
+              "id": "0770cd48-8cb1-4a9f-a6cd-07bd226c3bac",
+              "name": "List of devices",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/devices?name=<string>&vendor=<string>&type=<string>&status=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by device name (partial match)",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by vendor (e.g., Cisco, Palo Alto, Check Point)",
+                      "key": "vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by device type",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by management status",
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"devices\": {\n    \"count\": \"<integer>\",\n    \"device\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"ip\": \"<string>\",\n        \"vendor\": \"<string>\",\n        \"model\": \"<string>\",\n        \"version\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"topology\": \"<boolean>\",\n        \"managedBy\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"ip\": \"<string>\",\n        \"vendor\": \"<string>\",\n        \"model\": \"<string>\",\n        \"version\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"topology\": \"<boolean>\",\n        \"managedBy\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T03:20:38.000Z",
+              "updatedAt": "2026-07-28T03:20:38.000Z",
+              "uid": "35240-0770cd48-8cb1-4a9f-a6cd-07bd226c3bac"
+            },
+            {
+              "id": "e6609ad1-5ffe-4b8d-b84b-5b121ef9341c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/devices?name=<string>&vendor=<string>&type=<string>&status=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by device name (partial match)",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by vendor (e.g., Cisco, Palo Alto, Check Point)",
+                      "key": "vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by device type",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by management status",
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:20:38.000Z",
+              "updatedAt": "2026-07-28T03:20:38.000Z",
+              "uid": "35240-e6609ad1-5ffe-4b8d-b84b-5b121ef9341c"
+            }
+          ],
+          "createdAt": "2026-07-28T03:20:38.000Z",
+          "updatedAt": "2026-07-28T03:20:38.000Z",
+          "uid": "35240-992bfe13-4bbd-45cb-a78c-08443fdf539f"
+        }
+      ],
+      "id": "f08da7fb-82ee-4b54-9f84-565c85a47105",
+      "createdAt": "2026-07-28T03:20:38.000Z",
+      "updatedAt": "2026-07-28T03:20:38.000Z",
+      "uid": "35240-f08da7fb-82ee-4b54-9f84-565c85a47105"
+    }
+  ],
+  "variable": [
+    {
+      "key": "tos_host",
+      "value": "tufin.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tos_host}}/securechangeworkflow/api/securechange"
+    }
+  ]
+}

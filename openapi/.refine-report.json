@@ -1,0 +1,34 @@
+{
+  "provider": "tufin",
+  "sources": [
+    "tufin-compliance-api-openapi.yml",
+    "tufin-devices-api-openapi.yml",
+    "tufin-objects-api-openapi.yml",
+    "tufin-revisions-api-openapi.yml",
+    "tufin-rules-api-openapi.yml",
+    "tufin-tasks-api-openapi.yml",
+    "tufin-tickets-api-openapi.yml",
+    "tufin-topology-api-openapi.yml",
+    "tufin-users-api-openapi.yml",
+    "tufin-workflow-definitions-api-openapi.yml",
+    "tufin-zones-api-openapi.yml"
+  ],
+  "outputs": [
+    "tufin-compliance-api-openapi.yml",
+    "tufin-devices-api-openapi.yml",
+    "tufin-objects-api-openapi.yml",
+    "tufin-revisions-api-openapi.yml",
+    "tufin-rules-api-openapi.yml",
+    "tufin-tasks-api-openapi.yml",
+    "tufin-tickets-api-openapi.yml",
+    "tufin-topology-api-openapi.yml",
+    "tufin-users-api-openapi.yml",
+    "tufin-workflow-definitions-api-openapi.yml",
+    "tufin-zones-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

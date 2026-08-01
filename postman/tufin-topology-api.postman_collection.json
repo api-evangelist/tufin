@@ -1,0 +1,390 @@
+{
+  "info": {
+    "_postman_id": "eaf5bc39-a1c7-44d4-8378-7e00ddd003b1",
+    "name": "Tufin SecureChange REST Compliance Topology API",
+    "description": "The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.\n\nContact Support:\n Name: Tufin Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:44.000Z",
+    "updatedAt": "2026-07-28T03:20:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-eaf5bc39-a1c7-44d4-8378-7e00ddd003b1"
+  },
+  "item": [
+    {
+      "name": "topology",
+      "item": [
+        {
+          "name": "path",
+          "item": [
+            {
+              "name": "image",
+              "item": [
+                {
+                  "name": "Get Topology Path Image",
+                  "id": "8c0401b3-f89c-4283-9e80-c3659f2ed1d1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "image/png"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/topology/path/image?src=<string>&dst=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "topology",
+                        "path",
+                        "image"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Source IP address or CIDR range",
+                          "key": "src",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Destination IP address or CIDR range",
+                          "key": "dst",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Export a visualization of the network path as a PNG image."
+                  },
+                  "response": [
+                    {
+                      "id": "6dcd68f1-63ad-4177-afac-27d9e11d9fef",
+                      "name": "Path topology image",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "image/png"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/topology/path/image?src=<string>&dst=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "topology",
+                            "path",
+                            "image"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Source IP address or CIDR range",
+                              "key": "src",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Destination IP address or CIDR range",
+                              "key": "dst",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "image/png"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<binary>",
+                      "createdAt": "2026-07-28T03:20:45.000Z",
+                      "updatedAt": "2026-07-28T03:20:45.000Z",
+                      "uid": "35240-6dcd68f1-63ad-4177-afac-27d9e11d9fef"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:45.000Z",
+                  "updatedAt": "2026-07-28T03:20:45.000Z",
+                  "uid": "35240-8c0401b3-f89c-4283-9e80-c3659f2ed1d1"
+                }
+              ],
+              "id": "18bcb407-569b-4c42-a2b9-5dfab602ad6b",
+              "createdAt": "2026-07-28T03:20:45.000Z",
+              "updatedAt": "2026-07-28T03:20:45.000Z",
+              "uid": "35240-18bcb407-569b-4c42-a2b9-5dfab602ad6b"
+            },
+            {
+              "name": "Get Network Path",
+              "id": "fa90a21d-8eb7-4df8-9e00-f03b5159f7f2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/topology/path?src=<string>&dst=<string>&service=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "topology",
+                    "path"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Source IP address or CIDR range",
+                      "key": "src",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Destination IP address or CIDR range",
+                      "key": "dst",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Service (protocol/port, e.g., tcp/443)",
+                      "key": "service",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Query the network topology to determine whether traffic is permitted between source and destination endpoints, and which devices are traversed."
+              },
+              "response": [
+                {
+                  "id": "2e4af153-8f9c-48c2-b297-fbb0e8e4a75b",
+                  "name": "Path analysis result",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/topology/path?src=<string>&dst=<string>&service=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "topology",
+                        "path"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Source IP address or CIDR range",
+                          "key": "src",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Destination IP address or CIDR range",
+                          "key": "dst",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Service (protocol/port, e.g., tcp/443)",
+                          "key": "service",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"traffic_allowed\": \"<boolean>\",\n  \"is_fully_routed\": \"<boolean>\",\n  \"device_info\": [\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:20:45.000Z",
+                  "updatedAt": "2026-07-28T03:20:45.000Z",
+                  "uid": "35240-2e4af153-8f9c-48c2-b297-fbb0e8e4a75b"
+                }
+              ],
+              "createdAt": "2026-07-28T03:20:45.000Z",
+              "updatedAt": "2026-07-28T03:20:45.000Z",
+              "uid": "35240-fa90a21d-8eb7-4df8-9e00-f03b5159f7f2"
+            }
+          ],
+          "id": "e394b563-9e2b-482f-ac46-a7b82f00aa64",
+          "createdAt": "2026-07-28T03:20:45.000Z",
+          "updatedAt": "2026-07-28T03:20:45.000Z",
+          "uid": "35240-e394b563-9e2b-482f-ac46-a7b82f00aa64"
+        },
+        {
+          "name": "map",
+          "item": [
+            {
+              "name": "Get Topology Map",
+              "id": "712a9a3e-389c-45f8-bbd3-e893b6cf487a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/topology/map",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "topology",
+                    "map"
+                  ]
+                },
+                "description": "Retrieve the full network topology map."
+              },
+              "response": [
+                {
+                  "id": "138479cd-822e-41e0-97f3-d7590ef24ab4",
+                  "name": "Topology map data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/topology/map",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "topology",
+                        "map"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T03:20:45.000Z",
+                  "updatedAt": "2026-07-28T03:20:45.000Z",
+                  "uid": "35240-138479cd-822e-41e0-97f3-d7590ef24ab4"
+                }
+              ],
+              "createdAt": "2026-07-28T03:20:45.000Z",
+              "updatedAt": "2026-07-28T03:20:45.000Z",
+              "uid": "35240-712a9a3e-389c-45f8-bbd3-e893b6cf487a"
+            }
+          ],
+          "id": "655b31e4-2849-48e4-9bf6-a5bcb6cfaa00",
+          "createdAt": "2026-07-28T03:20:45.000Z",
+          "updatedAt": "2026-07-28T03:20:45.000Z",
+          "uid": "35240-655b31e4-2849-48e4-9bf6-a5bcb6cfaa00"
+        }
+      ],
+      "id": "f3c458c7-4170-4578-bfaf-f1f5eb52564a",
+      "createdAt": "2026-07-28T03:20:45.000Z",
+      "updatedAt": "2026-07-28T03:20:45.000Z",
+      "uid": "35240-f3c458c7-4170-4578-bfaf-f1f5eb52564a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "tos_host",
+      "value": "tufin.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tos_host}}/securechangeworkflow/api/securechange"
+    }
+  ]
+}

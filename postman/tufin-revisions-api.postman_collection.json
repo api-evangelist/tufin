@@ -1,0 +1,156 @@
+{
+  "info": {
+    "_postman_id": "1be1630e-c02e-4f8b-9dcf-25ce2954b0e6",
+    "name": "Tufin SecureChange REST Compliance Revisions API",
+    "description": "The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.\n\nContact Support:\n Name: Tufin Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:40.000Z",
+    "updatedAt": "2026-07-28T03:20:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1be1630e-c02e-4f8b-9dcf-25ce2954b0e6"
+  },
+  "item": [
+    {
+      "name": "devices",
+      "item": [
+        {
+          "name": "{deviceId}",
+          "item": [
+            {
+              "name": "revisions",
+              "item": [
+                {
+                  "name": "Get Device Revisions",
+                  "id": "68b0a0c7-a53b-44f2-af3c-adc9aabda597",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/devices/:deviceId/revisions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "devices",
+                        ":deviceId",
+                        "revisions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "85c33507-dc15-47ca-bc38-5722846837e5",
+                          "key": "deviceId",
+                          "value": "<integer>",
+                          "description": "(Required) The unique identifier of the device"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the list of policy revisions for a device."
+                  },
+                  "response": [
+                    {
+                      "id": "eb86cfb8-a1cc-4379-91d2-4d8fd15f037d",
+                      "name": "List of revisions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/devices/:deviceId/revisions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "devices",
+                            ":deviceId",
+                            "revisions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"revisions\": {\n    \"revision\": [\n      {\n        \"id\": \"<integer>\",\n        \"device_id\": \"<integer>\",\n        \"date\": \"<dateTime>\",\n        \"description\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"device_id\": \"<integer>\",\n        \"date\": \"<dateTime>\",\n        \"description\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T03:20:41.000Z",
+                      "updatedAt": "2026-07-28T03:20:41.000Z",
+                      "uid": "35240-eb86cfb8-a1cc-4379-91d2-4d8fd15f037d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:41.000Z",
+                  "updatedAt": "2026-07-28T03:20:41.000Z",
+                  "uid": "35240-68b0a0c7-a53b-44f2-af3c-adc9aabda597"
+                }
+              ],
+              "id": "d05c4d8a-6870-42d8-96c7-76be1c05986e",
+              "createdAt": "2026-07-28T03:20:41.000Z",
+              "updatedAt": "2026-07-28T03:20:41.000Z",
+              "uid": "35240-d05c4d8a-6870-42d8-96c7-76be1c05986e"
+            }
+          ],
+          "id": "5f8ccf06-5e0f-48eb-9982-c7cfc13e046d",
+          "createdAt": "2026-07-28T03:20:41.000Z",
+          "updatedAt": "2026-07-28T03:20:41.000Z",
+          "uid": "35240-5f8ccf06-5e0f-48eb-9982-c7cfc13e046d"
+        }
+      ],
+      "id": "6ed69824-f1d5-4757-9adb-0a9c3629ed0a",
+      "createdAt": "2026-07-28T03:20:41.000Z",
+      "updatedAt": "2026-07-28T03:20:41.000Z",
+      "uid": "35240-6ed69824-f1d5-4757-9adb-0a9c3629ed0a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "tos_host",
+      "value": "tufin.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tos_host}}/securechangeworkflow/api/securechange"
+    }
+  ]
+}

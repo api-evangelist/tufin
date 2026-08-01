@@ -1,0 +1,121 @@
+{
+  "info": {
+    "_postman_id": "5a9bb26f-d64b-4171-9a08-6c7e5c484817",
+    "name": "Tufin SecureChange REST Compliance Zones API",
+    "description": "The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.\n\nContact Support:\n Name: Tufin Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:47.000Z",
+    "updatedAt": "2026-07-28T03:20:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5a9bb26f-d64b-4171-9a08-6c7e5c484817"
+  },
+  "item": [
+    {
+      "name": "zones",
+      "item": [
+        {
+          "name": "Get Security Zones",
+          "id": "335f5228-abbe-4878-9e07-7746a6edf461",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/zones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zones"
+              ]
+            },
+            "description": "Retrieve all security zones defined across managed devices."
+          },
+          "response": [
+            {
+              "id": "f3a5e699-cc01-48d6-bb96-b96d6024ee38",
+              "name": "List of security zones",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/zones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zones"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"zones\": {\n    \"zone\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"comment\": \"<string>\",\n        \"subnets\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"comment\": \"<string>\",\n        \"subnets\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T03:20:47.000Z",
+              "updatedAt": "2026-07-28T03:20:47.000Z",
+              "uid": "35240-f3a5e699-cc01-48d6-bb96-b96d6024ee38"
+            }
+          ],
+          "createdAt": "2026-07-28T03:20:47.000Z",
+          "updatedAt": "2026-07-28T03:20:47.000Z",
+          "uid": "35240-335f5228-abbe-4878-9e07-7746a6edf461"
+        }
+      ],
+      "id": "64a063ba-30fc-4fb9-ae2c-eaae3085301d",
+      "createdAt": "2026-07-28T03:20:47.000Z",
+      "updatedAt": "2026-07-28T03:20:47.000Z",
+      "uid": "35240-64a063ba-30fc-4fb9-ae2c-eaae3085301d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "tos_host",
+      "value": "tufin.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tos_host}}/securechangeworkflow/api/securechange"
+    }
+  ]
+}

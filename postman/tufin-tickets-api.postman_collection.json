@@ -1,0 +1,909 @@
+{
+  "info": {
+    "_postman_id": "09053e5e-9976-4a17-8a58-8c08bc3df004",
+    "name": "Tufin SecureChange REST Compliance Tickets API",
+    "description": "The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.\n\nContact Support:\n Name: Tufin Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:43.000Z",
+    "updatedAt": "2026-07-28T03:20:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-09053e5e-9976-4a17-8a58-8c08bc3df004"
+  },
+  "item": [
+    {
+      "name": "tickets",
+      "item": [
+        {
+          "name": "{ticketId}",
+          "item": [
+            {
+              "name": "tasks",
+              "item": [
+                {
+                  "name": "Get Ticket Tasks",
+                  "id": "0251c1a0-038a-4232-8e5f-0cc7cc233400",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId/tasks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId",
+                        "tasks"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a718a6c6-adfa-44e0-879f-c6a7fc776aac",
+                          "key": "ticketId",
+                          "value": "<integer>",
+                          "description": "(Required) The unique identifier of the ticket"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all workflow tasks associated with a ticket."
+                  },
+                  "response": [
+                    {
+                      "id": "5d8c33f8-dac1-4501-8774-f220fa9afa20",
+                      "name": "List of tasks",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/tickets/:ticketId/tasks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tickets",
+                            ":ticketId",
+                            "tasks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ticketId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"tasks\": {\n    \"task\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"Not Started\",\n        \"assignee\": \"<string>\",\n        \"due_date\": \"<dateTime>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"Rejected\",\n        \"assignee\": \"<string>\",\n        \"due_date\": \"<dateTime>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T03:20:44.000Z",
+                      "updatedAt": "2026-07-28T03:20:44.000Z",
+                      "uid": "35240-5d8c33f8-dac1-4501-8774-f220fa9afa20"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:44.000Z",
+                  "updatedAt": "2026-07-28T03:20:44.000Z",
+                  "uid": "35240-0251c1a0-038a-4232-8e5f-0cc7cc233400"
+                }
+              ],
+              "id": "84dc6235-afa9-4f4b-8448-e4ad869ae537",
+              "createdAt": "2026-07-28T03:20:44.000Z",
+              "updatedAt": "2026-07-28T03:20:44.000Z",
+              "uid": "35240-84dc6235-afa9-4f4b-8448-e4ad869ae537"
+            },
+            {
+              "name": "Get Ticket By ID",
+              "id": "6aa64ea6-e13c-4231-95ef-8e657a57c926",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tickets/:ticketId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets",
+                    ":ticketId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "cf6cb25f-5007-4eb0-9038-10da609a1deb",
+                      "key": "ticketId",
+                      "value": "<integer>",
+                      "description": "(Required) The unique identifier of the ticket"
+                    }
+                  ]
+                },
+                "description": "Retrieve a specific security change ticket by its identifier."
+              },
+              "response": [
+                {
+                  "id": "f4b0a3fa-6002-42cf-9aca-0228d2afb57c",
+                  "name": "Ticket details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ticketId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"In Progress\",\n  \"priority\": \"High\",\n  \"requester\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\",\n  \"workflow\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n  },\n  \"tasks\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"In Progress\",\n      \"assignee\": \"<string>\",\n      \"due_date\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"Rejected\",\n      \"assignee\": \"<string>\",\n      \"due_date\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:20:44.000Z",
+                  "updatedAt": "2026-07-28T03:20:44.000Z",
+                  "uid": "35240-f4b0a3fa-6002-42cf-9aca-0228d2afb57c"
+                },
+                {
+                  "id": "80b30e92-175f-4b31-881a-738ba5ed1cb7",
+                  "name": "Ticket not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ticketId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:20:44.000Z",
+                  "updatedAt": "2026-07-28T03:20:44.000Z",
+                  "uid": "35240-80b30e92-175f-4b31-881a-738ba5ed1cb7"
+                }
+              ],
+              "createdAt": "2026-07-28T03:20:44.000Z",
+              "updatedAt": "2026-07-28T03:20:44.000Z",
+              "uid": "35240-6aa64ea6-e13c-4231-95ef-8e657a57c926"
+            },
+            {
+              "name": "Update Ticket",
+              "id": "0ed2cbab-7e32-4b4d-88ba-1aa4f127351c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tickets/:ticketId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets",
+                    ":ticketId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a9e758d8-8bbc-4df1-9d6d-458ad236e9e9",
+                      "key": "ticketId",
+                      "value": "<integer>",
+                      "description": "(Required) The unique identifier of the ticket"
+                    }
+                  ]
+                },
+                "description": "Update the details of an existing change ticket."
+              },
+              "response": [
+                {
+                  "id": "8d084383-36db-4185-8c34-02f5b3ec3b01",
+                  "name": "Ticket updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ticketId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"In Progress\",\n  \"priority\": \"High\",\n  \"requester\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\",\n  \"workflow\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n  },\n  \"tasks\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"In Progress\",\n      \"assignee\": \"<string>\",\n      \"due_date\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"Rejected\",\n      \"assignee\": \"<string>\",\n      \"due_date\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:20:44.000Z",
+                  "updatedAt": "2026-07-28T03:20:44.000Z",
+                  "uid": "35240-8d084383-36db-4185-8c34-02f5b3ec3b01"
+                },
+                {
+                  "id": "317ba04b-b0e9-40f0-8d8b-1562eb52e01b",
+                  "name": "Ticket not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tickets/:ticketId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tickets",
+                        ":ticketId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ticketId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:20:44.000Z",
+                  "updatedAt": "2026-07-28T03:20:44.000Z",
+                  "uid": "35240-317ba04b-b0e9-40f0-8d8b-1562eb52e01b"
+                }
+              ],
+              "createdAt": "2026-07-28T03:20:44.000Z",
+              "updatedAt": "2026-07-28T03:20:44.000Z",
+              "uid": "35240-0ed2cbab-7e32-4b4d-88ba-1aa4f127351c"
+            }
+          ],
+          "id": "128e2904-d34d-446e-b959-fb1c4f85c11d",
+          "createdAt": "2026-07-28T03:20:44.000Z",
+          "updatedAt": "2026-07-28T03:20:44.000Z",
+          "uid": "35240-128e2904-d34d-446e-b959-fb1c4f85c11d"
+        },
+        {
+          "name": "Get Tickets",
+          "id": "d9a0768e-772a-49e7-8f48-9428ed43d45f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/tickets?status=Resolved&requester=<string>&start_date=<dateTime>&end_date=<dateTime>&count=50&start=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tickets"
+              ],
+              "query": [
+                {
+                  "description": "Filter by ticket status (Open, Resolved, Rejected, Cancelled, In Progress)",
+                  "key": "status",
+                  "value": "Resolved"
+                },
+                {
+                  "description": "Filter by requester username",
+                  "key": "requester",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter tickets created after this date (ISO 8601)",
+                  "key": "start_date",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Filter tickets created before this date (ISO 8601)",
+                  "key": "end_date",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Number of tickets to return",
+                  "key": "count",
+                  "value": "50"
+                },
+                {
+                  "description": "Offset for pagination",
+                  "key": "start",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve a list of security change tickets, optionally filtered by status, requester, or time range."
+          },
+          "response": [
+            {
+              "id": "ebc4286d-1c63-4aba-8f7d-843a4aafbe74",
+              "name": "List of tickets",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tickets?status=Resolved&requester=<string>&start_date=<dateTime>&end_date=<dateTime>&count=50&start=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by ticket status (Open, Resolved, Rejected, Cancelled, In Progress)",
+                      "key": "status",
+                      "value": "Resolved"
+                    },
+                    {
+                      "description": "Filter by requester username",
+                      "key": "requester",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter tickets created after this date (ISO 8601)",
+                      "key": "start_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter tickets created before this date (ISO 8601)",
+                      "key": "end_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Number of tickets to return",
+                      "key": "count",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Offset for pagination",
+                      "key": "start",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"tickets\": {\n    \"count\": \"<integer>\",\n    \"ticket\": [\n      {\n        \"id\": \"<integer>\",\n        \"subject\": \"<string>\",\n        \"description\": \"<string>\",\n        \"status\": \"In Progress\",\n        \"priority\": \"Critical\",\n        \"requester\": \"<string>\",\n        \"created\": \"<dateTime>\",\n        \"modified\": \"<dateTime>\",\n        \"workflow\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\"\n        },\n        \"tasks\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"status\": \"In Progress\",\n            \"assignee\": \"<string>\",\n            \"due_date\": \"<dateTime>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"status\": \"Completed\",\n            \"assignee\": \"<string>\",\n            \"due_date\": \"<dateTime>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<integer>\",\n        \"subject\": \"<string>\",\n        \"description\": \"<string>\",\n        \"status\": \"Resolved\",\n        \"priority\": \"High\",\n        \"requester\": \"<string>\",\n        \"created\": \"<dateTime>\",\n        \"modified\": \"<dateTime>\",\n        \"workflow\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\"\n        },\n        \"tasks\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"status\": \"Completed\",\n            \"assignee\": \"<string>\",\n            \"due_date\": \"<dateTime>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"status\": \"Rejected\",\n            \"assignee\": \"<string>\",\n            \"due_date\": \"<dateTime>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T03:20:44.000Z",
+              "updatedAt": "2026-07-28T03:20:44.000Z",
+              "uid": "35240-ebc4286d-1c63-4aba-8f7d-843a4aafbe74"
+            },
+            {
+              "id": "78737710-0b48-46a9-9df5-ca803e4e8373",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tickets?status=Resolved&requester=<string>&start_date=<dateTime>&end_date=<dateTime>&count=50&start=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by ticket status (Open, Resolved, Rejected, Cancelled, In Progress)",
+                      "key": "status",
+                      "value": "Resolved"
+                    },
+                    {
+                      "description": "Filter by requester username",
+                      "key": "requester",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter tickets created after this date (ISO 8601)",
+                      "key": "start_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter tickets created before this date (ISO 8601)",
+                      "key": "end_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Number of tickets to return",
+                      "key": "count",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Offset for pagination",
+                      "key": "start",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:20:44.000Z",
+              "updatedAt": "2026-07-28T03:20:44.000Z",
+              "uid": "35240-78737710-0b48-46a9-9df5-ca803e4e8373"
+            }
+          ],
+          "createdAt": "2026-07-28T03:20:44.000Z",
+          "updatedAt": "2026-07-28T03:20:44.000Z",
+          "uid": "35240-d9a0768e-772a-49e7-8f48-9428ed43d45f"
+        },
+        {
+          "name": "Create Ticket",
+          "id": "192c222f-8e57-4857-91da-511c177ba5d0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": {}\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/tickets",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tickets"
+              ]
+            },
+            "description": "Submit a new security change ticket to the SecureChange workflow. The ticket type must match a configured workflow definition. Common types include access requests, firewall rule changes, and cleanup requests."
+          },
+          "response": [
+            {
+              "id": "e557acb9-026c-434a-a888-fdebc3662c6a",
+              "name": "Ticket created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tickets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"In Progress\",\n  \"priority\": \"High\",\n  \"requester\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\",\n  \"workflow\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n  },\n  \"tasks\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"In Progress\",\n      \"assignee\": \"<string>\",\n      \"due_date\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"Rejected\",\n      \"assignee\": \"<string>\",\n      \"due_date\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:20:44.000Z",
+              "updatedAt": "2026-07-28T03:20:44.000Z",
+              "uid": "35240-e557acb9-026c-434a-a888-fdebc3662c6a"
+            },
+            {
+              "id": "a2641ecb-7bfd-41ef-996e-9604e3b3bf68",
+              "name": "Invalid ticket data",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tickets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:20:44.000Z",
+              "updatedAt": "2026-07-28T03:20:44.000Z",
+              "uid": "35240-a2641ecb-7bfd-41ef-996e-9604e3b3bf68"
+            },
+            {
+              "id": "40400562-71b0-4616-8a2a-982dd3c741ca",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"workflow\": {\n    \"name\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"priority\": \"Normal\",\n  \"requester\": \"<string>\",\n  \"steps\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tickets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tickets"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:20:44.000Z",
+              "updatedAt": "2026-07-28T03:20:44.000Z",
+              "uid": "35240-40400562-71b0-4616-8a2a-982dd3c741ca"
+            }
+          ],
+          "createdAt": "2026-07-28T03:20:44.000Z",
+          "updatedAt": "2026-07-28T03:20:44.000Z",
+          "uid": "35240-192c222f-8e57-4857-91da-511c177ba5d0"
+        }
+      ],
+      "id": "dd5fb9f2-f0c6-40f7-9a50-32f82b2dfcbd",
+      "createdAt": "2026-07-28T03:20:44.000Z",
+      "updatedAt": "2026-07-28T03:20:44.000Z",
+      "uid": "35240-dd5fb9f2-f0c6-40f7-9a50-32f82b2dfcbd"
+    }
+  ],
+  "variable": [
+    {
+      "key": "tos_host",
+      "value": "tufin.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tos_host}}/securechangeworkflow/api/securechange"
+    }
+  ]
+}

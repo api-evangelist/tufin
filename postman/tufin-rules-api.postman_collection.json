@@ -1,0 +1,339 @@
+{
+  "info": {
+    "_postman_id": "f2b223e5-e983-48b9-bb75-b8dc3556bc1b",
+    "name": "Tufin SecureChange REST Compliance Rules API",
+    "description": "The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.\n\nContact Support:\n Name: Tufin Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:41.000Z",
+    "updatedAt": "2026-07-28T03:20:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f2b223e5-e983-48b9-bb75-b8dc3556bc1b"
+  },
+  "item": [
+    {
+      "name": "devices",
+      "item": [
+        {
+          "name": "{deviceId}",
+          "item": [
+            {
+              "name": "rules",
+              "item": [
+                {
+                  "name": "{ruleId}",
+                  "item": [
+                    {
+                      "name": "Get Rule By Device and ID",
+                      "id": "84859dc8-4d04-40d3-acf5-8200e5441e5c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/devices/:deviceId/rules/:ruleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "devices",
+                            ":deviceId",
+                            "rules",
+                            ":ruleId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "09828c06-3b6e-4609-a191-7688595b1c97",
+                              "key": "deviceId",
+                              "value": "<integer>",
+                              "description": "(Required) The unique identifier of the device"
+                            },
+                            {
+                              "id": "421308af-ac12-4010-9d40-5daf93403d18",
+                              "key": "ruleId",
+                              "value": "<integer>",
+                              "description": "(Required) The unique identifier of the rule"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a specific firewall rule by device and rule ID."
+                      },
+                      "response": [
+                        {
+                          "id": "ef7cf91b-4f79-4a46-943d-97e04f0c2c1d",
+                          "name": "Rule details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/devices/:deviceId/rules/:ruleId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "devices",
+                                ":deviceId",
+                                "rules",
+                                ":ruleId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceId"
+                                },
+                                {
+                                  "key": "ruleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"action\": \"ACCEPT\",\n  \"sources\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"ip\": \"<string>\",\n      \"netmask\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"ip\": \"<string>\",\n      \"netmask\": \"<string>\"\n    }\n  ],\n  \"destinations\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"ip\": \"<string>\",\n      \"netmask\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"ip\": \"<string>\",\n      \"netmask\": \"<string>\"\n    }\n  ],\n  \"services\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"protocol\": \"<string>\",\n      \"port\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"protocol\": \"<string>\",\n      \"port\": \"<string>\"\n    }\n  ],\n  \"comment\": \"<string>\",\n  \"lastHit\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T03:20:42.000Z",
+                          "updatedAt": "2026-07-28T03:20:42.000Z",
+                          "uid": "35240-ef7cf91b-4f79-4a46-943d-97e04f0c2c1d"
+                        },
+                        {
+                          "id": "c0706795-3447-457d-8eeb-fe67e4b6c39c",
+                          "name": "Rule not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/devices/:deviceId/rules/:ruleId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "devices",
+                                ":deviceId",
+                                "rules",
+                                ":ruleId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceId"
+                                },
+                                {
+                                  "key": "ruleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:20:42.000Z",
+                          "updatedAt": "2026-07-28T03:20:42.000Z",
+                          "uid": "35240-c0706795-3447-457d-8eeb-fe67e4b6c39c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:20:42.000Z",
+                      "updatedAt": "2026-07-28T03:20:42.000Z",
+                      "uid": "35240-84859dc8-4d04-40d3-acf5-8200e5441e5c"
+                    }
+                  ],
+                  "id": "da9147c2-1720-4b8f-a2ec-617f2f21846e",
+                  "createdAt": "2026-07-28T03:20:42.000Z",
+                  "updatedAt": "2026-07-28T03:20:42.000Z",
+                  "uid": "35240-da9147c2-1720-4b8f-a2ec-617f2f21846e"
+                },
+                {
+                  "name": "Get Rules By Device",
+                  "id": "1c700d1d-9589-4d76-9da9-33aa8a492327",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/devices/:deviceId/rules?policy=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "devices",
+                        ":deviceId",
+                        "rules"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by policy name",
+                          "key": "policy",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "8d20a748-46b5-477a-a920-2c280cb34773",
+                          "key": "deviceId",
+                          "value": "<integer>",
+                          "description": "(Required) The unique identifier of the device"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all firewall rules for a specific device."
+                  },
+                  "response": [
+                    {
+                      "id": "22657090-e86f-4a19-b98f-bffccf26fc82",
+                      "name": "List of rules",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/devices/:deviceId/rules?policy=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "devices",
+                            ":deviceId",
+                            "rules"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by policy name",
+                              "key": "policy",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "deviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"rules\": {\n    \"count\": \"<integer>\",\n    \"rule\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"enabled\": \"<boolean>\",\n        \"action\": \"ACCEPT\",\n        \"sources\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          }\n        ],\n        \"destinations\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          }\n        ],\n        \"services\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"protocol\": \"<string>\",\n            \"port\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"protocol\": \"<string>\",\n            \"port\": \"<string>\"\n          }\n        ],\n        \"comment\": \"<string>\",\n        \"lastHit\": \"<dateTime>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"enabled\": \"<boolean>\",\n        \"action\": \"ACCEPT\",\n        \"sources\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          }\n        ],\n        \"destinations\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"ip\": \"<string>\",\n            \"netmask\": \"<string>\"\n          }\n        ],\n        \"services\": [\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"protocol\": \"<string>\",\n            \"port\": \"<string>\"\n          },\n          {\n            \"id\": \"<integer>\",\n            \"name\": \"<string>\",\n            \"protocol\": \"<string>\",\n            \"port\": \"<string>\"\n          }\n        ],\n        \"comment\": \"<string>\",\n        \"lastHit\": \"<dateTime>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T03:20:42.000Z",
+                      "updatedAt": "2026-07-28T03:20:42.000Z",
+                      "uid": "35240-22657090-e86f-4a19-b98f-bffccf26fc82"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:42.000Z",
+                  "updatedAt": "2026-07-28T03:20:42.000Z",
+                  "uid": "35240-1c700d1d-9589-4d76-9da9-33aa8a492327"
+                }
+              ],
+              "id": "6126de64-066f-4859-b7c6-cf410f8a5f3f",
+              "createdAt": "2026-07-28T03:20:42.000Z",
+              "updatedAt": "2026-07-28T03:20:42.000Z",
+              "uid": "35240-6126de64-066f-4859-b7c6-cf410f8a5f3f"
+            }
+          ],
+          "id": "c870c890-8ba3-41d3-a64e-ca2d63fcd688",
+          "createdAt": "2026-07-28T03:20:42.000Z",
+          "updatedAt": "2026-07-28T03:20:42.000Z",
+          "uid": "35240-c870c890-8ba3-41d3-a64e-ca2d63fcd688"
+        }
+      ],
+      "id": "20283912-cbad-43d8-902f-b86d5de102e9",
+      "createdAt": "2026-07-28T03:20:42.000Z",
+      "updatedAt": "2026-07-28T03:20:42.000Z",
+      "uid": "35240-20283912-cbad-43d8-902f-b86d5de102e9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "tos_host",
+      "value": "tufin.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tos_host}}/securechangeworkflow/api/securechange"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "info": {
+    "_postman_id": "657a39d6-2a2f-4a14-88c1-196a2e79d34d",
+    "name": "Tufin SecureChange REST Compliance API",
+    "description": "The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.\n\nContact Support:\n Name: Tufin Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:37.000Z",
+    "updatedAt": "2026-07-28T03:20:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-657a39d6-2a2f-4a14-88c1-196a2e79d34d"
+  },
+  "item": [
+    {
+      "name": "risk",
+      "item": [
+        {
+          "name": "Get Risk Analysis",
+          "id": "41ec6a0c-2da2-46a4-980f-de05663c67ca",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/risk?device_id=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "risk"
+              ],
+              "query": [
+                {
+                  "description": "Filter by device ID",
+                  "key": "device_id",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Retrieve risk analysis findings including policy violations and cleanup tasks."
+          },
+          "response": [
+            {
+              "id": "e0b9843d-9770-42c5-a9f7-20987393616e",
+              "name": "Risk analysis results",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/risk?device_id=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "risk"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by device ID",
+                      "key": "device_id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"rule_id\": \"<integer>\",\n    \"device_id\": \"<integer>\",\n    \"risk_type\": \"<string>\",\n    \"severity\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  {\n    \"rule_id\": \"<integer>\",\n    \"device_id\": \"<integer>\",\n    \"risk_type\": \"<string>\",\n    \"severity\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T03:20:37.000Z",
+              "updatedAt": "2026-07-28T03:20:37.000Z",
+              "uid": "35240-e0b9843d-9770-42c5-a9f7-20987393616e"
+            }
+          ],
+          "createdAt": "2026-07-28T03:20:37.000Z",
+          "updatedAt": "2026-07-28T03:20:37.000Z",
+          "uid": "35240-41ec6a0c-2da2-46a4-980f-de05663c67ca"
+        }
+      ],
+      "id": "dbee035b-0245-4d69-8ebf-5d0c3a27d5c9",
+      "createdAt": "2026-07-28T03:20:37.000Z",
+      "updatedAt": "2026-07-28T03:20:37.000Z",
+      "uid": "35240-dbee035b-0245-4d69-8ebf-5d0c3a27d5c9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "tos_host",
+      "value": "tufin.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tos_host}}/securechangeworkflow/api/securechange"
+    }
+  ]
+}
