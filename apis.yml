@@ -427,9 +427,9 @@ common:
 - type: Developers
   url: https://www.tufin.com/developers
 - type: OpenAPI
-  url: openapi/tufin-securetrack-openapi.yml
+  url: openapi/_original/tufin-securetrack-openapi.yml
 - type: OpenAPI
-  url: openapi/tufin-securechange-openapi.yml
+  url: openapi/_original/tufin-securechange-openapi.yml
 - type: Vocabulary
   url: vocabulary/tufin-vocabulary.yml
 - type: JSONLD
