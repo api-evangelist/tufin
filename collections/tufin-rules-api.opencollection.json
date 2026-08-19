@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tufin SecureChange REST Compliance Rules API",
+    "version": "R25-2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Rules By Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/devices/:deviceId/rules",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the device"
+              },
+              {
+                "name": "policy",
+                "value": "",
+                "type": "query",
+                "description": "Filter by policy name"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve all firewall rules for a specific device."
+        },
+        {
+          "info": {
+            "name": "Get Rule By Device and ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/devices/:deviceId/rules/:ruleId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the device"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the rule"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve a specific firewall rule by device and rule ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tufin SecureChange REST Compliance Topology API",
+    "version": "R25-2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Topology",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Network Path",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/topology/path",
+            "params": [
+              {
+                "name": "src",
+                "value": "",
+                "type": "query",
+                "description": "Source IP address or CIDR range"
+              },
+              {
+                "name": "dst",
+                "value": "",
+                "type": "query",
+                "description": "Destination IP address or CIDR range"
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "query",
+                "description": "Service (protocol/port, e.g., tcp/443)"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Query the network topology to determine whether traffic is permitted between source and destination endpoints, and which devices are traversed."
+        },
+        {
+          "info": {
+            "name": "Get Topology Path Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/topology/path/image",
+            "params": [
+              {
+                "name": "src",
+                "value": "",
+                "type": "query",
+                "description": "Source IP address or CIDR range"
+              },
+              {
+                "name": "dst",
+                "value": "",
+                "type": "query",
+                "description": "Destination IP address or CIDR range"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Export a visualization of the network path as a PNG image."
+        },
+        {
+          "info": {
+            "name": "Get Topology Map",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/topology/map",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve the full network topology map."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

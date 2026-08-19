@@ -1,0 +1,303 @@
+{
+  "item": [
+    {
+      "id": "c1212c81-c2b3-4e0a-9202-e516e94fb30e",
+      "name": "Objects",
+      "description": {
+        "content": "Network objects, services, and address groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4d44d97b-39bb-42af-b803-865163d9336b",
+          "name": "Get Network Objects",
+          "request": {
+            "name": "Get Network Objects",
+            "description": {
+              "content": "Search for network objects (hosts, ranges, groups) across all managed devices.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network_objects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by object name"
+                },
+                {
+                  "disabled": false,
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "Filter by IP address"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by object type (host, range, group)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "234b0946-dd60-4de6-8187-b97dd774442a",
+              "name": "List of network objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network_objects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"network_objects\": {\n    \"count\": 3781,\n    \"network_object\": [\n      {\n        \"id\": 4812,\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"ip\": \"string\",\n        \"netmask\": \"string\"\n      },\n      {\n        \"id\": 773,\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"ip\": \"string\",\n        \"netmask\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "098ff172-b793-4f7d-8675-119767507d52",
+          "name": "Get Services",
+          "request": {
+            "name": "Get Services",
+            "description": {
+              "content": "Search for service objects (protocols and ports) across all managed devices.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by service name"
+                },
+                {
+                  "disabled": false,
+                  "key": "port",
+                  "value": "<string>",
+                  "description": "Filter by port number"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of the TOS server",
+                  "type": "any",
+                  "value": "{{tos_host}}",
+                  "key": "tos_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bc72eaf1-7f9e-4152-8940-c61eabeaa649",
+              "name": "List of services",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "port",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of the TOS server",
+                      "type": "any",
+                      "value": "{{tos_host}}",
+                      "key": "tos_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"services\": {\n    \"service\": [\n      {\n        \"id\": 6592,\n        \"name\": \"string\",\n        \"protocol\": \"string\",\n        \"port\": \"string\"\n      },\n      {\n        \"id\": 3387,\n        \"name\": \"string\",\n        \"protocol\": \"string\",\n        \"port\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of the TOS server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "tufin.example.com",
+      "key": "tos_host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tos_host}}/securechangeworkflow/api/securechange",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "78614e8e-52df-48a4-bafd-24851b8c44a1",
+    "name": "Tufin SecureChange REST Compliance Objects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.\n\nContact Support:\n Name: Tufin Support",
+      "type": "text/plain"
+    }
+  }
+}

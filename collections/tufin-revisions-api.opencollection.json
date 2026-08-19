@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tufin SecureChange REST Compliance Revisions API",
+    "version": "R25-2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Revisions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device Revisions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/devices/:deviceId/revisions",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the device"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve the list of policy revisions for a device."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

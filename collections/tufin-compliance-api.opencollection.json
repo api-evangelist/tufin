@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tufin SecureChange REST Compliance API",
+    "version": "R25-2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compliance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Risk Analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/risk",
+            "params": [
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by device ID"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve risk analysis findings including policy violations and cleanup tasks."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

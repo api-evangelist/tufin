@@ -1,0 +1,34 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tufin SecureChange REST Compliance Workflow Definitions API",
+    "version": "R25-2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workflow Definitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Workflow Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tos_host}/securechangeworkflow/api/securechange/workflow_definitions",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve all workflow definitions (templates) configured in SecureChange."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
