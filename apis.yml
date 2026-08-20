@@ -44,6 +44,11 @@ apis:
   baseURL: https://{tos_host}/securechangeworkflow/api
   tags:
   - Application Security
+  - Microsegmentation
+  - Policy Management
+  - Zero Trust
+  tags_raw:
+  - Application Security
   - Micro-Segmentation
   - Policy Management
   - Zero Trust
@@ -61,6 +66,12 @@ apis:
   humanURL: https://forum.tufin.com/support/kc/latest/Content/ST2/API/API_Introduction.htm
   baseURL: https://{tos_ip}/v2/api/sync/graphql
   tags:
+  - GraphQL
+  - Network Topology
+  - Authentication
+  - Policy Analysis
+  - Security Data
+  tags_raw:
   - GraphQL
   - Network Topology
   - OAuth2
@@ -229,6 +240,8 @@ apis:
   humanURL: https://www.tufin.com/products/securetrack
   baseURL: https://{tos_host}/securetrack/api
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
@@ -307,6 +320,8 @@ apis:
   humanURL: https://www.tufin.com/products/securetrack
   baseURL: https://{tos_host}/securetrack/api
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
