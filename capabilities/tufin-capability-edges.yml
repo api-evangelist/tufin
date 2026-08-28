@@ -1,0 +1,48 @@
+slug: tufin
+provider: Tufin
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Tickets
+  spec_file: tufin-tickets-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.75
+  evidence: 'POST /tickets ''Create Ticket''; description: ''programmatic submission and management of
+    access request tickets, approval workflows, and change implementation'''
+  reason: Ticket lifecycle for network security change requests with approval workflows and ITSM integration
+    — squarely IT Service Management (change/request management), not customer service or banking servicing.
+- tag: Devices
+  spec_file: tufin-devices-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.7
+  evidence: GET /devices/{deviceId}/rules  'Get Rules By Device'; schemas Device, Rule, NetworkObject,
+    Revision
+  reason: Inventory and maintenance of firewall/network security devices and their rule sets — network
+    security control management. L1 Cybersecurity Management is supported; evidence does not cleanly single
+    out one sub-capability between security governance and security architecture.
+- tag: Tasks
+  spec_file: tufin-tasks-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.7
+  evidence: GET /tickets/{ticketId}/tasks  'Get Ticket Tasks'; PUT .../tasks/{taskId} 'Update Task'; schemas
+    Task, TaskUpdate
+  reason: Workflow tasks inside change tickets, in a product that 'integrates with ITSM platforms including
+    ServiceNow, Jira, and Remedy for end-to-end change automation' — i.e. IT change/service management
+    workflow execution.

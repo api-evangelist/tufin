@@ -5,6 +5,18 @@ description: >-
   SecureTrack for network topology and policy analysis, SecureChange for automated policy change workflows, SecureApp
   for application-centric policy management, and SecureCloud for cloud-native security posture management. Tufin offers
   comprehensive REST APIs and GraphQL APIs for integrating with ITSM, SIEM, and other security tools.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
@@ -395,6 +407,9 @@ apis:
   - type: Reference
     url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
 common:
+- type: CapabilityMap
+  url: capabilities/tufin-capability-edges.yml
+  name: Tufin Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/tufin/overview
 - type: AgenticAccess
