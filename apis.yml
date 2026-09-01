@@ -56,7 +56,7 @@ apis:
   baseURL: https://{tos_host}/securechangeworkflow/api
   tags:
   - Application Security
-  - Micro-Segmentation
+  - Microsegmentation
   - Policy Management
   - Zero Trust
   tags_raw:
