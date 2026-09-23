@@ -1,34 +1,42 @@
 {
   "provider": "tufin",
   "sources": [
-    "tufin-compliance-api-openapi.yml",
-    "tufin-devices-api-openapi.yml",
-    "tufin-objects-api-openapi.yml",
-    "tufin-revisions-api-openapi.yml",
-    "tufin-rules-api-openapi.yml",
-    "tufin-tasks-api-openapi.yml",
-    "tufin-tickets-api-openapi.yml",
-    "tufin-topology-api-openapi.yml",
-    "tufin-users-api-openapi.yml",
-    "tufin-workflow-definitions-api-openapi.yml",
-    "tufin-zones-api-openapi.yml"
+    "_original/tufin-securechange-openapi.yml",
+    "_original/tufin-securetrack-openapi.yml"
   ],
   "outputs": [
+    "tufin-tasks-api-openapi.yml",
+    "tufin-tickets-api-openapi.yml",
+    "tufin-users-api-openapi.yml",
+    "tufin-workflow-definitions-api-openapi.yml",
     "tufin-compliance-api-openapi.yml",
     "tufin-devices-api-openapi.yml",
     "tufin-objects-api-openapi.yml",
     "tufin-revisions-api-openapi.yml",
     "tufin-rules-api-openapi.yml",
-    "tufin-tasks-api-openapi.yml",
-    "tufin-tickets-api-openapi.yml",
     "tufin-topology-api-openapi.yml",
-    "tufin-users-api-openapi.yml",
-    "tufin-workflow-definitions-api-openapi.yml",
     "tufin-zones-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "tufin-securechange-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "tufin-securetrack-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "tufin-compliance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tufin-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tufin-objects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tufin-revisions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tufin-rules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tufin-tasks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tufin-tickets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tufin-topology-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tufin-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tufin-workflow-definitions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tufin-zones-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

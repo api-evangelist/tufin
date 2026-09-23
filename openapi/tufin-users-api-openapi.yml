@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tufin SecureChange REST Compliance Users API
+  title: Tufin SecureChange REST Users API
   description: The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.
   version: R25-2
   contact:

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tufin SecureChange REST Compliance Tickets API
+  title: Tufin SecureChange REST Tickets API
   description: The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.
   version: R25-2
   contact:
@@ -202,60 +202,6 @@ paths:
                           $ref: '#/components/schemas/Task'
 components:
   schemas:
-    Ticket:
-      type: object
-      description: A security change ticket in SecureChange
-      properties:
-        id:
-          type: integer
-          description: Unique identifier of the ticket
-        subject:
-          type: string
-          description: Subject line of the ticket
-        description:
-          type: string
-          description: Detailed description of the requested change
-        status:
-          type: string
-          description: Current status of the ticket
-          enum:
-          - Open
-          - Resolved
-          - Rejected
-          - Cancelled
-          - In Progress
-        priority:
-          type: string
-          description: Priority level
-          enum:
-          - Low
-          - Normal
-          - High
-          - Critical
-        requester:
-          type: string
-          description: Username of the ticket requester
-        created:
-          type: string
-          format: date-time
-          description: Ticket creation timestamp
-        modified:
-          type: string
-          format: date-time
-          description: Last modification timestamp
-        workflow:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-          description: Workflow definition this ticket follows
-        tasks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Task'
-          description: Workflow tasks for this ticket
     TicketInput:
       type: object
       description: Input for creating or updating a ticket
@@ -326,6 +272,60 @@ components:
           items:
             type: object
           description: Dynamic task fields based on workflow configuration
+    Ticket:
+      type: object
+      description: A security change ticket in SecureChange
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the ticket
+        subject:
+          type: string
+          description: Subject line of the ticket
+        description:
+          type: string
+          description: Detailed description of the requested change
+        status:
+          type: string
+          description: Current status of the ticket
+          enum:
+          - Open
+          - Resolved
+          - Rejected
+          - Cancelled
+          - In Progress
+        priority:
+          type: string
+          description: Priority level
+          enum:
+          - Low
+          - Normal
+          - High
+          - Critical
+        requester:
+          type: string
+          description: Username of the ticket requester
+        created:
+          type: string
+          format: date-time
+          description: Ticket creation timestamp
+        modified:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+        workflow:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+          description: Workflow definition this ticket follows
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+          description: Workflow tasks for this ticket
   securitySchemes:
     basicAuth:
       type: http

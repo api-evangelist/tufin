@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tufin SecureChange REST Compliance Topology API
-  description: The Tufin SecureChange REST API automates security policy change workflows, enabling programmatic submission and management of access request tickets, approval workflows, and change implementation across network infrastructure. SecureChange integrates with ITSM platforms including ServiceNow, Jira, and Remedy for end-to-end change automation. Authentication uses HTTP Basic Auth.
+  title: Tufin SecureTrack REST Topology API
+  description: The Tufin SecureTrack REST API enables programmatic access to network security policy management across multi-vendor firewall infrastructure. It provides endpoints for querying network devices, analyzing firewall rules and policies, performing network topology analysis, executing path queries, managing rule documentation, and retrieving compliance and risk analysis data. Authentication uses HTTP Basic Auth with Tufin Orchestration Suite (TOS) credentials.
   version: R25-2
   contact:
     name: Tufin Support
@@ -10,8 +10,8 @@ info:
     name: Tufin Terms of Use
     url: https://www.tufin.com/terms-of-use
 servers:
-- url: https://{tos_host}/securechangeworkflow/api/securechange
-  description: Tufin SecureChange Server
+- url: https://{tos_host}/securetrack/api
+  description: Tufin Orchestration Suite Server
   variables:
     tos_host:
       description: Hostname or IP address of the TOS server
@@ -144,5 +144,5 @@ components:
       scheme: basic
       description: HTTP Basic Authentication using Tufin Orchestration Suite credentials. The authenticated user's TOS permissions apply to all API requests.
 externalDocs:
-  description: Tufin SecureChange REST API Documentation
-  url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
+  description: Tufin SecureTrack REST API Documentation
+  url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/securetrack_api.htm
