@@ -280,6 +280,8 @@ apis:
   humanURL: https://www.tufin.com/products/securetrack
   baseURL: https://{tos_host}/securetrack/api
   tags:
+  - Ticketing
+  tags_raw:
   - Tickets
   properties:
   - type: OpenAPI

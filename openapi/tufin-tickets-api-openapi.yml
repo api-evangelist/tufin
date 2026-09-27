@@ -202,42 +202,6 @@ paths:
                           $ref: '#/components/schemas/Task'
 components:
   schemas:
-    TicketInput:
-      type: object
-      description: Input for creating or updating a ticket
-      required:
-      - subject
-      - workflow
-      properties:
-        subject:
-          type: string
-          description: Subject line of the ticket
-        description:
-          type: string
-          description: Detailed description of the requested change
-        priority:
-          type: string
-          description: Priority level
-          enum:
-          - Low
-          - Normal
-          - High
-          - Critical
-          default: Normal
-        workflow:
-          type: object
-          required:
-          - name
-          properties:
-            name:
-              type: string
-              description: Name of the workflow definition to use
-        requester:
-          type: string
-          description: Username of the requester (defaults to authenticated user)
-        steps:
-          type: object
-          description: Initial step data for the ticket
     Task:
       type: object
       description: A workflow task within a SecureChange ticket
@@ -326,6 +290,42 @@ components:
           items:
             $ref: '#/components/schemas/Task'
           description: Workflow tasks for this ticket
+    TicketInput:
+      type: object
+      description: Input for creating or updating a ticket
+      required:
+      - subject
+      - workflow
+      properties:
+        subject:
+          type: string
+          description: Subject line of the ticket
+        description:
+          type: string
+          description: Detailed description of the requested change
+        priority:
+          type: string
+          description: Priority level
+          enum:
+          - Low
+          - Normal
+          - High
+          - Critical
+          default: Normal
+        workflow:
+          type: object
+          required:
+          - name
+          properties:
+            name:
+              type: string
+              description: Name of the workflow definition to use
+        requester:
+          type: string
+          description: Username of the requester (defaults to authenticated user)
+        steps:
+          type: object
+          description: Initial step data for the ticket
   securitySchemes:
     basicAuth:
       type: http
