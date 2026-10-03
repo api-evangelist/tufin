@@ -107,25 +107,6 @@ components:
         port:
           type: string
           description: Port number or range
-    NetworkObject:
-      type: object
-      description: A network object (host, range, or group)
-      properties:
-        id:
-          type: integer
-          description: Object identifier
-        name:
-          type: string
-          description: Object name
-        type:
-          type: string
-          description: Object type (host, range, group)
-        ip:
-          type: string
-          description: IP address or range
-        netmask:
-          type: string
-          description: Network mask
     Rule:
       type: object
       description: A firewall rule on a network device
@@ -168,6 +149,25 @@ components:
           type: string
           format: date-time
           description: Last time this rule was matched
+    NetworkObject:
+      type: object
+      description: A network object (host, range, or group)
+      properties:
+        id:
+          type: integer
+          description: Object identifier
+        name:
+          type: string
+          description: Object name
+        type:
+          type: string
+          description: Object type (host, range, group)
+        ip:
+          type: string
+          description: IP address or range
+        netmask:
+          type: string
+          description: Network mask
   securitySchemes:
     basicAuth:
       type: http

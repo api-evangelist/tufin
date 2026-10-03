@@ -118,6 +118,21 @@ paths:
                 $ref: '#/components/schemas/Task'
 components:
   schemas:
+    TaskUpdate:
+      type: object
+      description: Input for updating a task
+      properties:
+        status:
+          type: string
+          description: New task status
+        comment:
+          type: string
+          description: Comment to add to the task
+        fields:
+          type: array
+          items:
+            type: object
+          description: Updated field values
     Task:
       type: object
       description: A workflow task within a SecureChange ticket
@@ -152,21 +167,6 @@ components:
           items:
             type: object
           description: Dynamic task fields based on workflow configuration
-    TaskUpdate:
-      type: object
-      description: Input for updating a task
-      properties:
-        status:
-          type: string
-          description: New task status
-        comment:
-          type: string
-          description: Comment to add to the task
-        fields:
-          type: array
-          items:
-            type: object
-          description: Updated field values
   securitySchemes:
     basicAuth:
       type: http

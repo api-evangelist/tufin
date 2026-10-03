@@ -202,40 +202,42 @@ paths:
                           $ref: '#/components/schemas/Task'
 components:
   schemas:
-    Task:
+    TicketInput:
       type: object
-      description: A workflow task within a SecureChange ticket
+      description: Input for creating or updating a ticket
+      required:
+      - subject
+      - workflow
       properties:
-        id:
-          type: integer
-          description: Unique identifier of the task
-        name:
+        subject:
           type: string
-          description: Task name
-        type:
+          description: Subject line of the ticket
+        description:
           type: string
-          description: Task type (e.g., approval, implementation, verification)
-        status:
+          description: Detailed description of the requested change
+        priority:
           type: string
-          description: Current task status
+          description: Priority level
           enum:
-          - New
-          - In Progress
-          - Completed
-          - Rejected
-          - Not Started
-        assignee:
+          - Low
+          - Normal
+          - High
+          - Critical
+          default: Normal
+        workflow:
+          type: object
+          required:
+          - name
+          properties:
+            name:
+              type: string
+              description: Name of the workflow definition to use
+        requester:
           type: string
-          description: Username assigned to this task
-        due_date:
-          type: string
-          format: date-time
-          description: Task due date
-        fields:
-          type: array
-          items:
-            type: object
-          description: Dynamic task fields based on workflow configuration
+          description: Username of the requester (defaults to authenticated user)
+        steps:
+          type: object
+          description: Initial step data for the ticket
     Ticket:
       type: object
       description: A security change ticket in SecureChange
@@ -290,42 +292,40 @@ components:
           items:
             $ref: '#/components/schemas/Task'
           description: Workflow tasks for this ticket
-    TicketInput:
+    Task:
       type: object
-      description: Input for creating or updating a ticket
-      required:
-      - subject
-      - workflow
+      description: A workflow task within a SecureChange ticket
       properties:
-        subject:
+        id:
+          type: integer
+          description: Unique identifier of the task
+        name:
           type: string
-          description: Subject line of the ticket
-        description:
+          description: Task name
+        type:
           type: string
-          description: Detailed description of the requested change
-        priority:
+          description: Task type (e.g., approval, implementation, verification)
+        status:
           type: string
-          description: Priority level
+          description: Current task status
           enum:
-          - Low
-          - Normal
-          - High
-          - Critical
-          default: Normal
-        workflow:
-          type: object
-          required:
-          - name
-          properties:
-            name:
-              type: string
-              description: Name of the workflow definition to use
-        requester:
+          - New
+          - In Progress
+          - Completed
+          - Rejected
+          - Not Started
+        assignee:
           type: string
-          description: Username of the requester (defaults to authenticated user)
-        steps:
-          type: object
-          description: Initial step data for the ticket
+          description: Username assigned to this task
+        due_date:
+          type: string
+          format: date-time
+          description: Task due date
+        fields:
+          type: array
+          items:
+            type: object
+          description: Dynamic task fields based on workflow configuration
   securitySchemes:
     basicAuth:
       type: http
