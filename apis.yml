@@ -409,6 +409,12 @@ apis:
   - type: Reference
     url: https://forum.tufin.com/support/kc/latest/Content/Suite/RESTAPI/12309.htm
 common:
+- type: Plans
+  url: plans/tufin-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/tufin-rate-limits.yml
+- type: FinOps
+  url: finops/tufin-finops.yml
 - type: CapabilityMap
   url: capabilities/tufin-capability-edges.yml
   name: Tufin Business Capability Map
