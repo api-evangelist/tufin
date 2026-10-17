@@ -102,20 +102,6 @@ paths:
                 $ref: '#/components/schemas/TopologyMap'
 components:
   schemas:
-    TopologyMap:
-      type: object
-      description: Network topology map data
-      properties:
-        nodes:
-          type: array
-          items:
-            type: object
-          description: Topology nodes (devices, subnets)
-        edges:
-          type: array
-          items:
-            type: object
-          description: Topology connections between nodes
     TopologyPath:
       type: object
       description: Result of a network topology path query
@@ -138,6 +124,20 @@ components:
                 type: integer
                 description: Device ID
           description: Devices traversed in the path
+    TopologyMap:
+      type: object
+      description: Network topology map data
+      properties:
+        nodes:
+          type: array
+          items:
+            type: object
+          description: Topology nodes (devices, subnets)
+        edges:
+          type: array
+          items:
+            type: object
+          description: Topology connections between nodes
   securitySchemes:
     basicAuth:
       type: http

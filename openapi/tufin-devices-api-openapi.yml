@@ -259,76 +259,6 @@ components:
         description:
           type: string
           description: Description of changes in this revision
-    Device:
-      type: object
-      description: A network device managed by SecureTrack
-      properties:
-        id:
-          type: integer
-          description: Unique identifier of the device
-        name:
-          type: string
-          description: Display name of the device
-        ip:
-          type: string
-          description: Management IP address
-        vendor:
-          type: string
-          description: Device vendor (e.g., Cisco, Palo Alto Networks, Check Point)
-        model:
-          type: string
-          description: Device model
-        version:
-          type: string
-          description: Software version
-        domain:
-          type: string
-          description: Management domain
-        topology:
-          type: boolean
-          description: Whether this device participates in topology analysis
-        managedBy:
-          type: string
-          description: Management system (e.g., Panorama, SmartCenter)
-    DeviceInput:
-      type: object
-      description: Input for adding or updating a device
-      required:
-      - vendor
-      - model
-      - name
-      properties:
-        vendor:
-          type: string
-          description: Device vendor
-        model:
-          type: string
-          description: Device model
-        name:
-          type: string
-          description: Device display name
-        ip:
-          type: string
-          description: Management IP address
-    NetworkObject:
-      type: object
-      description: A network object (host, range, or group)
-      properties:
-        id:
-          type: integer
-          description: Object identifier
-        name:
-          type: string
-          description: Object name
-        type:
-          type: string
-          description: Object type (host, range, group)
-        ip:
-          type: string
-          description: IP address or range
-        netmask:
-          type: string
-          description: Network mask
     Rule:
       type: object
       description: A firewall rule on a network device
@@ -387,6 +317,76 @@ components:
         port:
           type: string
           description: Port number or range
+    Device:
+      type: object
+      description: A network device managed by SecureTrack
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the device
+        name:
+          type: string
+          description: Display name of the device
+        ip:
+          type: string
+          description: Management IP address
+        vendor:
+          type: string
+          description: Device vendor (e.g., Cisco, Palo Alto Networks, Check Point)
+        model:
+          type: string
+          description: Device model
+        version:
+          type: string
+          description: Software version
+        domain:
+          type: string
+          description: Management domain
+        topology:
+          type: boolean
+          description: Whether this device participates in topology analysis
+        managedBy:
+          type: string
+          description: Management system (e.g., Panorama, SmartCenter)
+    NetworkObject:
+      type: object
+      description: A network object (host, range, or group)
+      properties:
+        id:
+          type: integer
+          description: Object identifier
+        name:
+          type: string
+          description: Object name
+        type:
+          type: string
+          description: Object type (host, range, group)
+        ip:
+          type: string
+          description: IP address or range
+        netmask:
+          type: string
+          description: Network mask
+    DeviceInput:
+      type: object
+      description: Input for adding or updating a device
+      required:
+      - vendor
+      - model
+      - name
+      properties:
+        vendor:
+          type: string
+          description: Device vendor
+        model:
+          type: string
+          description: Device model
+        name:
+          type: string
+          description: Device display name
+        ip:
+          type: string
+          description: Management IP address
   securitySchemes:
     basicAuth:
       type: http
