@@ -16,3 +16,29 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: tufin-cisco-catalyst-sd-wan-own
+  label: Cisco Catalyst SD-WAN (own)
+  partner: cisco-catalyst-sdwan
+  partner_name: Cisco Catalyst SD-WAN (own)
+  category: AIOps, Automation & Orchestration
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.cisco.com/en-US/apps/426593
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: tufin-cisco-meraki-own
+  label: Cisco Meraki (own)
+  partner: cisco-meraki
+  partner_name: Cisco Meraki (own)
+  category: AIOps, Automation & Orchestration
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.cisco.com/en-US/apps/426593
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

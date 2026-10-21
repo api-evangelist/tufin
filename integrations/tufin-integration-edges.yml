@@ -2,6 +2,8 @@ generated: '2026-10-14'
 method: searched
 checked:
 - palo-alto-networks/integrations/palo-alto-networks-integration-edges.yml
+- cisco-catalyst-sdwan/integrations/cisco-catalyst-sdwan-integration-edges.yml
+- cisco-meraki/integrations/cisco-meraki-integration-edges.yml
 source:
 - palo-alto-networks/integrations/palo-alto-networks-integration-edges.yml
 edges:
@@ -25,3 +27,37 @@ edges:
   badges:
   - support:partner
   - certification:certified
+- partner_name: Cisco Catalyst SD-WAN (own)
+  partner: cisco-catalyst-sdwan
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.cisco.com/en-US/apps/426593
+  mirror_of: cisco-catalyst-sdwan/integrations/cisco-catalyst-sdwan-integration-edges.yml
+  apps:
+  - Tufin Orchestration Suite
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: AIOps, Automation & Orchestration
+- partner_name: Cisco Meraki (own)
+  partner: cisco-meraki
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.cisco.com/en-US/apps/426593
+  mirror_of: cisco-meraki/integrations/cisco-meraki-integration-edges.yml
+  apps:
+  - Tufin Orchestration Suite
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: AIOps, Automation & Orchestration
